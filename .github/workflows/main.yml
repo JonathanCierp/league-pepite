@@ -18,3 +18,6 @@ jobs:
             cd /home/jonathan/reverse-proxy/code/league-pepite
             git pull
             cd /home/jonathan/reverse-proxy
+            docker-compose stop leaguepepite
+            docker-compose rm -f leaguepepite
+            docker-compose up -d leaguepepite
