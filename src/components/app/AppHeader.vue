@@ -66,7 +66,7 @@ import BaseSpacer from '@/components/base/BaseSpacer.vue'
 const isMenuMobileOpen = ref(false)
 const menus = reactive([
   {
-    label: 'Test Menu',
+    label: 'Présentation',
     to: '/'
   },
   {
