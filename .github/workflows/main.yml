@@ -17,5 +17,4 @@ jobs:
           script: |
             cd /root/reverse-proxy/code/league-pepite
             git pull
-            yarn
             docker-compose up -d --force-recreate --no-deps --build leaguepepite
