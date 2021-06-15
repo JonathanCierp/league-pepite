@@ -15,7 +15,6 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
-            cd /root/reverse-proxy/code/league-pepite
+            cd /home/jonathan/reverse-proxy/code/league-pepite
             git pull
-            cd /root/reverse-proxy
-            docker-compose up -d --force-recreate --no-deps --build leaguepepite
+            cd /home/jonathan/reverse-proxy
