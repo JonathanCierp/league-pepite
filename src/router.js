@@ -1,22 +1,37 @@
+import { defineComponent, h } from 'vue'
 import { createMemoryHistory, createRouter as _createRouter, createWebHistory } from 'vue-router'
+import Home from '@/pages/Home.vue'
+import rankingsRoutes from '@/modules/rankings/rankings.routes'
+//import checkAuth from '@/middleware/checkAuth'
 
-// Auto generates routes from vue files under ./pages
-// https://vitejs.dev/guide/features.html#glob-import
-const pages = import.meta.glob('./pages/*.vue')
-
-const routes = Object.keys(pages).map((path) => {
-  const name = path.match(/\.\/pages(.*)\.vue$/)[1].toLowerCase()
-  return {
-    path: name === '/home' ? '/' : name,
-    component: pages[path] // () => import('./pages/*.vue')
-  }
-})
-
-export function createRouter() {
-  return _createRouter({
-    // use appropriate history implementation for server/client
-    // import.meta.env.SSR is injected by Vite.
+const createRouter = () => {
+  const router = _createRouter({
     history: import.meta.env.SSR ? createMemoryHistory() : createWebHistory(),
-    routes
+    routes: [
+      {
+        path: '/',
+        component: Home
+      },
+      ...rankingsRoutes
+    ]
   })
+
+  router.beforeEach(async (/*to*/) => {
+    /*const isAuthenticated = await checkAuth()
+  const isAllowedNoConnected = to.meta.layout === 'blank'
+  if (isAuthenticated) {
+    if (isAllowedNoConnected || to.path === '/') {
+      return '/customers'
+    }
+  } else {
+    if (!isAllowedNoConnected) {
+      return '/auth/signin'
+    }
+  }
+
+  return true*/
+  })
+
+  return router
 }
+export { createRouter }

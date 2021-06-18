@@ -74,11 +74,11 @@ body main {
 
 /* V Tooltip */
 .v-popper.v-popper--theme-dropdown:not(.v-popper--theme-menu):not(.v-popper--theme-tooltip) {
-  width: 100% !important;
+  /*width: 100% !important;*/
 }
 
 .v-popper.v-popper--theme-tooltip {
-  width: 100% !important;
+  /*width: 100% !important;*/
 }
 
 .v-popper__inner {

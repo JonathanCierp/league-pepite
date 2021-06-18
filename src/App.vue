@@ -1,10 +1,10 @@
 <template>
   <AppHeader />
-  <!--<RouterView v-slot="{ Component }">
+  <RouterView v-slot="{ Component }">
     <Suspense>
       <component :is="Component" />
     </Suspense>
-  </RouterView>-->
+  </RouterView>
 </template>
 
 <script setup>
