@@ -12,13 +12,14 @@
             :key="menu.label"
             tag="li"
             :to="menu.to ? menu.to : ''"
-            class="flex items-center font-medium text-sm cursor-pointer my-3 md:mx-3 hover:text-gray-300"
+            :class="[$route.path == menu.to ? 'underline' : 'text-gray-300']"
+            class="flex items-center font-medium cursor-pointer my-3 md:mx-3 hover:text-gray-300"
           >
             {{ menu.label }}
           </BaseLink>
           <BaseSpacer />
           <BaseMenu>
-            <li class="flex items-center font-medium text-sm cursor-pointer hover:text-gray-300">
+            <li class="flex items-center font-medium cursor-pointer hover:text-gray-300">
               <img src="https://picsum.photos/200" class="rounded-full w-10 mr-4" alt="" />
               Jonathan CIERP
             </li>

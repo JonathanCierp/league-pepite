@@ -2,6 +2,7 @@ import { defineComponent, h } from 'vue'
 import { createMemoryHistory, createRouter as _createRouter, createWebHistory } from 'vue-router'
 import Home from '@/pages/Home.vue'
 import rankingsRoutes from '@/modules/rankings/rankings.routes'
+import challengesRoutes from '@/modules/challenges/challenges.routes'
 //import checkAuth from '@/middleware/checkAuth'
 
 const createRouter = () => {
@@ -12,7 +13,8 @@ const createRouter = () => {
         path: '/',
         component: Home
       },
-      ...rankingsRoutes
+      ...rankingsRoutes,
+      ...challengesRoutes
     ]
   })
 
