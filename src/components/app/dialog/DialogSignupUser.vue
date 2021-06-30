@@ -2,21 +2,29 @@
   <BaseDialog v-if="modelValue" width="500px">
     <BaseDialogTitle @close="$emit('update:modelValue', false)">Inscription</BaseDialogTitle>
     <BaseDialogBody>
-      <BaseForm class="mb-6" @submit.prevent="onSubmit">
+      <BaseForm ref="formEl" class="mb-6" @submit.prevent="onSubmit">
         <BaseRow class="mb-4">
-          <BaseFormInput label="Email" required required-star :rules="[requiredRule, emailRule]" />
+          <BaseFormInput ref="emailEl" v-model="email" type="email" label="Email" required required-star :rules="[requiredRule, emailRule]" />
         </BaseRow>
         <BaseRow class="mb-4">
-          <BaseFormInput label="Identifiant" required required-star :rules="[requiredRule]" />
+          <BaseFormInput ref="usernameEl" v-model="username" label="Identifiant" required required-star :rules="[requiredRule]" />
         </BaseRow>
         <BaseRow class="mb-4">
-          <BaseFormInput label="Mot de passe" required required-star :rules="[requiredRule]" />
+          <BaseFormInput ref="passwordEl" v-model="password" type="password" label="Mot de passe" required required-star :rules="[requiredRule]" />
         </BaseRow>
         <BaseRow class="mb-4">
-          <BaseFormInput label="Confirmer le mot de passe" required required-star :rules="[requiredRule]" />
+          <BaseFormInput
+            ref="passwordConfirmEl"
+            v-model="passwordConfirm"
+            type="password"
+            label="Confirmer le mot de passe"
+            required
+            required-star
+            :rules="[requiredRule, (v) => v === password || 'Les mots de passe ne sont pas identiques.']"
+          />
         </BaseRow>
         <BaseRow class="mb-4 justify-end">
-          <p>Vous n'avez pas de compte ? <span class="underline cursor-pointer" @click="switchToSignup">S'inscrire</span></p>
+          <p>Vous avez déjà un compte ? <span class="underline cursor-pointer" @click="switchToSignin">Se connecter</span></p>
         </BaseRow>
         <BaseDialogAction no-gutters>
           <BaseButton class="mr-2" text :loading="loading" size="sm" @click="$emit('update:modelValue', false)">Fermer</BaseButton>
@@ -28,7 +36,8 @@
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
+import { defineComponent, provide, reactive, ref, toRefs } from 'vue'
+import { useStore } from 'vuex'
 import useValidationRule from '@/composables/useValidationRule'
 import BaseDialog from '@/components/base/dialog/BaseDialog.vue'
 import BaseDialogAction from '@/components/base/dialog/BaseDialogAction.vue'
@@ -59,22 +68,53 @@ export default defineComponent({
   },
   emits: ['switch', 'update:modelValue'],
   setup(_, { emit }) {
+    const store = useStore()
     const { requiredRule, emailRule } = useValidationRule()
+    const formEl = ref(null)
+    const emailEl = ref(null)
+    const usernameEl = ref(null)
+    const passwordEl = ref(null)
+    const passwordConfirmEl = ref(null)
     const loading = ref(false)
+    const form = reactive({
+      email: 'azerty24041997@gmail.com',
+      username: 'Jonathan CIERP',
+      password: 'Jonathan83',
+      passwordConfirm: 'Jonathan83'
+    })
 
-    const onSubmit = () => {
-      console.log('signup')
+    provide('children', [emailEl, usernameEl, passwordEl, passwordConfirmEl])
+
+    const onSubmit = async () => {
+      if (loading.value) return
+
+      formEl.value.validateForm()
+      if (formEl.value.isValid) {
+        loading.value = true
+        try {
+          await store.dispatch('users/signupUser', form)
+          switchToSignin()
+        } finally {
+          loading.value = false
+        }
+      }
     }
-    const switchToSignup = () => {
+    const switchToSignin = () => {
       emit('switch', 'signin')
     }
 
     return {
       requiredRule,
       emailRule,
+      formEl,
+      emailEl,
+      usernameEl,
+      passwordEl,
+      passwordConfirmEl,
       loading,
+      ...toRefs(form),
       onSubmit,
-      switchToSignup
+      switchToSignin
     }
   }
 })

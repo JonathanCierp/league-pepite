@@ -2,13 +2,12 @@
   <BaseDialog v-if="modelValue" width="500px">
     <BaseDialogTitle @close="$emit('update:modelValue', false)">Connexion</BaseDialogTitle>
     <BaseDialogBody>
-      <BaseForm ref="passwordEl" class="mb-6" @submit.prevent="onSubmit">
-        <button type="submit">aze</button>
+      <BaseForm ref="formEl" class="mb-6" @submit.prevent="onSubmit">
         <BaseRow class="mb-4">
           <BaseFormInput ref="usernameEl" v-model="username" label="Email ou Identifiant" required required-star :rules="[requiredRule]" />
         </BaseRow>
         <BaseRow class="mb-4">
-          <BaseFormInput v-model="password" label="Mot de passe" required required-star :rules="[requiredRule]" />
+          <BaseFormInput ref="passwordEl" v-model="password" type="password" label="Mot de passe" required required-star :rules="[requiredRule]" />
         </BaseRow>
         <BaseRow class="mb-4 justify-end">
           <p>Vous n'avez pas de compte ? <span class="underline cursor-pointer" @click="switchToSignup">S'inscrire</span></p>
@@ -23,7 +22,8 @@
 </template>
 
 <script>
-import { defineComponent, reactive, ref, toRefs } from 'vue'
+import { defineComponent, provide, reactive, ref, toRefs } from 'vue'
+import { useStore } from 'vuex'
 import useValidationRule from '@/composables/useValidationRule'
 import BaseDialog from '@/components/base/dialog/BaseDialog.vue'
 import BaseDialogAction from '@/components/base/dialog/BaseDialogAction.vue'
@@ -53,20 +53,33 @@ export default defineComponent({
     }
   },
   emits: ['switch', 'update:modelValue'],
-  setup(_, { emit }) {
+  setup(props, { emit }) {
+    const store = useStore()
     const { requiredRule } = useValidationRule()
+    const formEl = ref(null)
     const usernameEl = ref(null)
     const passwordEl = ref(null)
     const loading = ref(false)
     const form = reactive({
-      username: '',
-      password: ''
+      username: 'azerty24041997@gmail.com',
+      password: 'Jonathan83'
     })
 
-    const onSubmit = () => {
-      console.log(usernameEl)
-      console.log(passwordEl)
-      console.log('signin')
+    provide('children', [usernameEl, passwordEl])
+
+    const onSubmit = async () => {
+      if (loading.value) return
+
+      formEl.value.validateForm()
+      if (formEl.value.isValid) {
+        loading.value = true
+        try {
+          await store.dispatch('users/signinUser', form)
+          emit('update:modelValue', false)
+        } finally {
+          loading.value = false
+        }
+      }
     }
     const switchToSignup = () => {
       emit('switch', 'signup')
@@ -74,6 +87,7 @@ export default defineComponent({
 
     return {
       requiredRule,
+      formEl,
       usernameEl,
       passwordEl,
       loading,

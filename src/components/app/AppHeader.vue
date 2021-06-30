@@ -1,5 +1,9 @@
 <template>
-  <header class="bg-background-800 border-b border-border transition-all duration-200 relative" :class="[isMenuMobileOpen ? 'h-68' : 'h-16']">
+  <header
+    v-if="isLoaded"
+    class="bg-background-800 border-b border-border transition-all duration-200 relative"
+    :class="[isMenuMobileOpen ? 'h-68' : 'h-16']"
+  >
     <div class="h-full container mx-auto pt-4 pl-4 sm:pt-0 sm:pl-0 flex flex-col md:flex-row md:items-center justify-center">
       <BaseLink tag="img" to="/" class="w-40 mb-2 sm:mb-0 cursor-pointer" src="/logo-light.png" alt="Katenga logo" />
       <nav
@@ -18,10 +22,10 @@
             {{ menu.label }}
           </BaseLink>
           <BaseSpacer />
-          <BaseMenu v-if="false">
+          <BaseMenu v-if="$store.state.users.isLogged">
             <li class="flex items-center font-medium cursor-pointer hover:text-gray-300">
-              <img src="https://picsum.photos/200" class="rounded-full w-10 mr-4" alt="" />
-              Jonathan CIERP
+              <img :src="profileImage" class="rounded-full w-10 mr-4" :alt="fullname" />
+              {{ fullname }}
             </li>
 
             <template #popper>
@@ -32,6 +36,7 @@
                   class="py-3 px-8 cursor-pointer text-sm flex items-center border-b border-border hover:bg-background-900 hover:text-gray-300"
                   tag="li"
                   :to="userMenu.to ? userMenu.to : ''"
+                  @click="userMenu.onClick"
                 >
                   <base-icon class="mr-4" :name="userMenu.icon" />
                   {{ userMenu.label }}
@@ -39,7 +44,7 @@
               </ul>
             </template>
           </BaseMenu>
-          <BaseButton @click="dialogSigninUserIsOpen = true">Mon compte</BaseButton>
+          <BaseButton v-else @click="dialogSigninUserIsOpen = true">Mon compte</BaseButton>
         </ul>
       </nav>
       <AppBurgerMenu v-model="isMenuMobileOpen" />
@@ -50,7 +55,8 @@
 </template>
 
 <script>
-import { defineComponent, reactive, ref } from 'vue'
+import { computed, defineComponent, onMounted, reactive, ref } from 'vue'
+import { useStore } from 'vuex'
 import DialogSigninUser from '@/components/app/dialog/DialogSigninUser.vue'
 import DialogSignupUser from '@/components/app/dialog/DialogSignupUser.vue'
 import AppBurgerMenu from '@/components/app/AppBurgerMenu.vue'
@@ -73,6 +79,8 @@ export default defineComponent({
     BaseSpacer
   },
   setup() {
+    const store = useStore()
+    const isLoaded = ref(false)
     const isMenuMobileOpen = ref(false)
     const dialogSigninUserIsOpen = ref(false)
     const dialogSignupUserIsOpen = ref(false)
@@ -99,7 +107,7 @@ export default defineComponent({
       }
     ])
     const userMenus = reactive([
-      {
+      /*{
         label: 'Mon profil',
         icon: 'user',
         to: '/profiles'
@@ -108,13 +116,25 @@ export default defineComponent({
         label: 'Administration',
         icon: 'settings',
         to: '/administrations'
-      },
+      },*/
       {
         label: 'Se déconnecter',
         icon: 'log-out',
-        to: ''
+        to: '',
+        onClick: async () => {
+          await store.dispatch('users/logoutUser')
+        }
       }
     ])
+
+    const fullname = computed(() => store.state.users.user.channel?.name || store.state.users.user.username)
+    const profileImage = computed(
+      () => import.meta.env.VITE_API_BASE_URL + (store.state.users.user.channel?.profile_image || store.state.users.user.profile_image)
+    )
+
+    onMounted(() => {
+      isLoaded.value = true
+    })
 
     const onSwitchAuth = (dialog) => {
       if (dialog === 'signin') {
@@ -127,11 +147,14 @@ export default defineComponent({
     }
 
     return {
+      isLoaded,
       isMenuMobileOpen,
       dialogSigninUserIsOpen,
       dialogSignupUserIsOpen,
       menus,
       userMenus,
+      fullname,
+      profileImage,
       onSwitchAuth
     }
   }

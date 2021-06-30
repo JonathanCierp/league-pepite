@@ -1,9 +1,8 @@
-import { defineComponent, h } from 'vue'
 import { createMemoryHistory, createRouter as _createRouter, createWebHistory } from 'vue-router'
 import Home from '@/pages/Home.vue'
 import rankingsRoutes from '@/modules/rankings/rankings.routes'
 import challengesRoutes from '@/modules/challenges/challenges.routes'
-//import checkAuth from '@/middleware/checkAuth'
+import checkAuth from '@/middleware/checkAuth'
 
 const createRouter = () => {
   const router = _createRouter({
@@ -18,20 +17,20 @@ const createRouter = () => {
     ]
   })
 
-  router.beforeEach(async (/*to*/) => {
-    /*const isAuthenticated = await checkAuth()
-  const isAllowedNoConnected = to.meta.layout === 'blank'
-  if (isAuthenticated) {
-    if (isAllowedNoConnected || to.path === '/') {
-      return '/customers'
+  router.beforeEach(async (to) => {
+    const isAuthenticated = await checkAuth()
+    /*const isAllowedNoConnected = to.meta.layout === 'blank'
+    if (isAuthenticated) {
+      if (isAllowedNoConnected || to.path === '/') {
+        return '/'
+      }
+    } else {
+      if (!isAllowedNoConnected) {
+        return '/auth/signin'
+      }
     }
-  } else {
-    if (!isAllowedNoConnected) {
-      return '/auth/signin'
-    }
-  }
 
-  return true*/
+    return true*/
   })
 
   return router

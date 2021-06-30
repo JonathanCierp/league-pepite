@@ -26,10 +26,12 @@ export default defineComponent({
       required: true
     }
   },
-  setup(props) {
+  emits: ['click'],
+  setup(props, { emit }) {
     const router = useRouter()
     const onChangePage = () => {
       router.push(props.to)
+      emit('click')
     }
 
     return {
