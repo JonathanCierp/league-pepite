@@ -6,7 +6,7 @@
       style="width: max-content"
       @click="shown = true"
     >
-      <span>{{ options.find((option) => option.key == modelValue.key).label }}</span>
+      <span>{{ options.find((option) => option[itemKey] == modelValue[itemKey])[itemValue] }}</span>
       <BaseSpacer />
       <BaseIcon class="ml-3" name="chevron-down" size="20" />
     </div>
@@ -14,13 +14,13 @@
       <ul class="flex flex-col">
         <li
           v-for="option in options"
-          :key="option.key"
+          :key="option[itemKey]"
           class="py-3 pr-6 cursor-pointer text-sm flex items-center border-b border-border hover:bg-background-900 hover:text-gray-300"
-          :class="[option.key == modelValue.key ? 'bg-background-900 text-gray-300' : '']"
+          :class="[option[itemKey] == modelValue[itemKey] ? 'bg-background-900 text-gray-300' : '']"
           @click="onChangeValue(option)"
         >
-          <BaseIcon class="mx-3" :class="[option.key == modelValue.key ? 'visible' : 'invisible']" name="check" size="18" />
-          {{ option.label }}
+          <BaseIcon class="mx-3" :class="[option[itemKey] == modelValue[itemKey] ? 'visible' : 'invisible']" name="check" size="18" />
+          {{ option[itemValue] }}
         </li>
       </ul>
     </template>
@@ -45,12 +45,20 @@ export default defineComponent({
       type: Object,
       default: () => {}
     },
+    itemKey: {
+      type: String,
+      default: 'key'
+    },
+    itemValue: {
+      type: String,
+      default: 'value'
+    },
     options: {
       type: Array,
       default: () => []
     }
   },
-  emits: ['update:modelValue'],
+  emits: ['update:modelValue', 'change'],
   setup(_, { emit }) {
     const selectEl = ref(null)
     const shown = ref(false)
@@ -58,6 +66,7 @@ export default defineComponent({
     const onChangeValue = (v) => {
       shown.value = false
       emit('update:modelValue', v)
+      emit('change', v)
     }
 
     return {

@@ -1,6 +1,24 @@
 <template>
-  <main class="container mx-auto my-10">
+  <main v-if="isLoaded" class="container mx-auto my-10">
     <section>
+      <h2 class="text-center text-2xl font-medium italic">Classement {{ currentSeason.label }}</h2>
+      <div class="mt-10 flex items-center">
+        <ul class="flex items-center w-full">
+          <li
+            v-for="championship in championships"
+            :key="championship.id"
+            class="mr-6 text-md cursor-pointer"
+            :class="[championship.id == currentChampionship.id ? 'underline font-medium' : 'text-gray-300']"
+            @click="currentChampionship = championship"
+          >
+            {{ championship.label }}
+          </li>
+        </ul>
+        <BaseSpacer />
+        <BaseFormSelect v-model="currentSeason" :options="seasons" item-key="id" item-value="label" @change="onChangeSeasons" />
+      </div>
+    </section>
+    <!--<section>
       <h2 class="text-center text-2xl font-medium italic">Classement {{ option.label }}</h2>
       <div class="mt-10 flex items-center">
         <ul class="flex items-center w-full">
@@ -50,12 +68,13 @@
           </tr>
         </tbody>
       </table>
-    </div>
+    </div>-->
   </main>
 </template>
 
 <script>
-import { defineComponent, reactive, ref } from 'vue'
+import { computed, defineComponent, onMounted, reactive, ref } from 'vue'
+import { useStore } from 'vuex'
 import BaseFormSelect from '@/components/base/form/BaseFormSelect.vue'
 import BaseSpacer from '@/components/base/BaseSpacer.vue'
 
@@ -65,224 +84,33 @@ export default defineComponent({
     BaseSpacer
   },
   setup() {
-    const option = ref({
-      key: 2,
-      label: '2020 / 2021'
-    })
-    const options = reactive([
-      {
-        key: 1,
-        label: '2021 / 2022'
-      },
-      {
-        key: 2,
-        label: '2020 / 2021'
-      },
-      {
-        key: 3,
-        label: '2019 / 2020'
-      }
-    ])
+    const store = useStore()
+    const isLoaded = ref(false)
+    const currentSeason = ref({})
+    const currentChampionship = ref({})
 
-    const championships = reactive([
-      {
-        key: 1,
-        label: 'Championnat Pépite'
-      },
-      {
-        key: 2,
-        label: 'Championnat Challenger'
-      },
-      {
-        key: 3,
-        label: 'Autre championnat'
-      }
-    ])
-    const currentDivision = ref(1)
-    const currentChampionship = ref({
-      key: 1,
-      label: 'Championnat Pépite',
-      divisions: [
-        {
-          key: 1,
-          label: 'Division 1',
-          rankings: [
-            {
-              key: 1,
-              rank: 1,
-              label: 'Bambou',
-              currentChallengePoint: 12,
-              totalPoints: 97,
-              lastChallenges: [1, 2, 15, 3]
-            },
-            {
-              key: 2,
-              rank: 2,
-              label: 'Bambou',
-              currentChallengePoint: 12,
-              totalPoints: 97,
-              lastChallenges: [1, 2, 15, 3]
-            },
-            {
-              key: 3,
-              rank: 3,
-              label: 'Bambou',
-              currentChallengePoint: 12,
-              totalPoints: 97,
-              lastChallenges: [1, 2, 15, 3]
-            },
-            {
-              key: 4,
-              rank: 4,
-              label: 'Bambou',
-              currentChallengePoint: 12,
-              totalPoints: 97,
-              lastChallenges: [1, 2, 15, 3]
-            },
-            {
-              key: 5,
-              rank: 5,
-              label: 'Bambou',
-              currentChallengePoint: 12,
-              totalPoints: 97,
-              lastChallenges: [1, 2, 15, 3]
-            },
-            {
-              key: 6,
-              rank: 6,
-              label: 'Bambou',
-              currentChallengePoint: 12,
-              totalPoints: 97,
-              lastChallenges: [1, 2, 15, 3]
-            },
-            {
-              key: 7,
-              rank: 7,
-              label: 'Bambou',
-              currentChallengePoint: 12,
-              totalPoints: 97,
-              lastChallenges: [1, 2, 15, 3]
-            },
-            {
-              key: 8,
-              rank: 8,
-              label: 'Bambou',
-              currentChallengePoint: 12,
-              totalPoints: 97,
-              lastChallenges: [1, 2, 15, 3]
-            },
-            {
-              key: 9,
-              rank: 9,
-              label: 'Bambou',
-              currentChallengePoint: 12,
-              totalPoints: 97,
-              lastChallenges: [1, 2, 15, 3]
-            },
-            {
-              key: 10,
-              rank: 10,
-              label: 'Bambou',
-              currentChallengePoint: 12,
-              totalPoints: 97,
-              lastChallenges: [1, 2, 15, 3]
-            },
-            {
-              key: 11,
-              rank: 11,
-              label: 'Bambou',
-              currentChallengePoint: 12,
-              totalPoints: 97,
-              lastChallenges: [1, 2, 15, 3]
-            },
-            {
-              key: 12,
-              rank: 12,
-              label: 'Bambou',
-              currentChallengePoint: 12,
-              totalPoints: 97,
-              lastChallenges: [1, 2, 15, 3]
-            },
-            {
-              key: 13,
-              rank: 13,
-              label: 'Bambou',
-              currentChallengePoint: 12,
-              totalPoints: 97,
-              lastChallenges: [1, 2, 15, 3]
-            },
-            {
-              key: 14,
-              rank: 14,
-              label: 'Bambou',
-              currentChallengePoint: 12,
-              totalPoints: 97,
-              lastChallenges: [1, 2, 15, 3]
-            },
-            {
-              key: 15,
-              rank: 15,
-              label: 'Bambou',
-              currentChallengePoint: 12,
-              totalPoints: 97,
-              lastChallenges: [1, 2, 15, 3]
-            },
-            {
-              key: 16,
-              rank: 16,
-              label: 'Bambou',
-              currentChallengePoint: 12,
-              totalPoints: 97,
-              lastChallenges: [1, 2, 15, 3]
-            },
-            {
-              key: 17,
-              rank: 17,
-              label: 'Bambou',
-              currentChallengePoint: 12,
-              totalPoints: 97,
-              lastChallenges: [1, 2, 15, 3]
-            },
-            {
-              key: 18,
-              rank: 18,
-              label: 'Bambou',
-              currentChallengePoint: 12,
-              totalPoints: 97,
-              lastChallenges: [1, 2, 15, 3]
-            },
-            {
-              key: 19,
-              rank: 19,
-              label: 'Bambou',
-              currentChallengePoint: 12,
-              totalPoints: 97,
-              lastChallenges: [1, 2, 15, 3]
-            },
-            {
-              key: 20,
-              rank: 20,
-              label: 'Bambou',
-              currentChallengePoint: 12,
-              totalPoints: 97,
-              lastChallenges: [1, 2, 15, 3]
-            }
-          ]
-        },
-        {
-          key: 2,
-          label: 'Division 2',
-          rankings: []
-        }
-      ]
+    onMounted(async () => {
+      await store.dispatch('rankings/getSeasons')
+      currentSeason.value = seasons.value[0]
+      await onChangeSeasons()
+      currentChampionship.value = championships.value[0]
+      isLoaded.value = true
     })
+
+    const seasons = computed(() => store.state.rankings.seasons)
+    const championships = computed(() => store.state.rankings.championships)
+
+    const onChangeSeasons = async () => {
+      await store.dispatch('rankings/getChampionshipsBySeasonId', currentSeason.value)
+    }
 
     return {
-      option,
-      options,
+      isLoaded,
+      currentSeason,
+      currentChampionship,
+      seasons,
       championships,
-      currentDivision,
-      currentChampionship
+      onChangeSeasons
     }
   }
 })

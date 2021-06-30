@@ -2,6 +2,7 @@ import { createStore } from 'vuex'
 import cookies from 'js-cookie'
 import { useAxiosInstance } from '@/composables/useAxios'
 import useNotification from '@/composables/useNotification'
+import rankingsStore from '@/modules/rankings/rankings.store'
 
 const notification = useNotification()
 
@@ -9,10 +10,10 @@ const store = createStore({
   modules: {
     users: {
       namespaced: true,
-      state: {
+      state: () => ({
         user: {},
         isLogged: false
-      },
+      }),
       mutations: {
         setUser(state, user) {
           state.user = user
@@ -54,6 +55,10 @@ const store = createStore({
           }
         }
       }
+    },
+    rankings: {
+      namespaced: true,
+      ...rankingsStore
     }
   }
 })
