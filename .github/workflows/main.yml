@@ -16,6 +16,7 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             cd /home/jonathan/reverse-proxy/code/league-pepite
+            git reset --hard
             git pull
             cd /home/jonathan/reverse-proxy
             docker-compose stop leaguepepite
