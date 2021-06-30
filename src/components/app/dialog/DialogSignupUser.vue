@@ -77,10 +77,10 @@ export default defineComponent({
     const passwordConfirmEl = ref(null)
     const loading = ref(false)
     const form = reactive({
-      email: 'azerty24041997@gmail.com',
-      username: 'Jonathan CIERP',
-      password: 'Jonathan83',
-      passwordConfirm: 'Jonathan83'
+      email: '',
+      username: '',
+      password: '',
+      passwordConfirm: ''
     })
 
     provide('children', [emailEl, usernameEl, passwordEl, passwordConfirmEl])

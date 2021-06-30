@@ -61,8 +61,8 @@ export default defineComponent({
     const passwordEl = ref(null)
     const loading = ref(false)
     const form = reactive({
-      username: 'azerty24041997@gmail.com',
-      password: 'Jonathan83'
+      username: '',
+      password: ''
     })
 
     provide('children', [usernameEl, passwordEl])
