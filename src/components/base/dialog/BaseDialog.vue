@@ -14,7 +14,7 @@
 <script>
 import { defineComponent } from 'vue'
 import BaseCard from '@/components/base/BaseCard.vue'
-import BaseOverLay from '@/components/base/BaseOverLay.vue'
+import BaseOverLay from '@/components/base/BaseOverlay.vue'
 
 export default defineComponent({
   name: 'base-dialog',
