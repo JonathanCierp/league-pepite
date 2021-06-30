@@ -15,8 +15,8 @@
         <li
           v-for="option in options"
           :key="option.key"
-          class="py-3 pr-6 cursor-pointer text-sm flex items-center border-b border-border rounded-t-lg hover:bg-background hover:text-gray-300"
-          :class="[option.key == modelValue.key ? 'bg-background text-gray-300' : '']"
+          class="py-3 pr-6 cursor-pointer text-sm flex items-center border-b border-border hover:bg-background-900 hover:text-gray-300"
+          :class="[option.key == modelValue.key ? 'bg-background-900 text-gray-300' : '']"
           @click="onChangeValue(option)"
         >
           <BaseIcon class="mx-3" :class="[option.key == modelValue.key ? 'visible' : 'invisible']" name="check" size="18" />
@@ -27,29 +27,44 @@
   </BaseDropdown>
 </template>
 
-<script setup>
-import { defineEmit, defineProps, reactive, ref } from 'vue'
+<script>
+import { defineComponent, ref } from 'vue'
 import BaseDropdown from '@/components/base/BaseDropdown.vue'
 import BaseIcon from '@/components/base/BaseIcon.vue'
 import BaseSpacer from '@/components/base/BaseSpacer.vue'
 
-const emit = defineEmit(['update:modelValue'])
-const props = defineProps({
-  modelValue: {
-    type: Object,
-    default: () => {}
+export default defineComponent({
+  name: 'base-form-select',
+  components: {
+    BaseDropdown,
+    BaseIcon,
+    BaseSpacer
   },
-  options: {
-    type: Array,
-    default: () => []
+  props: {
+    modelValue: {
+      type: Object,
+      default: () => {}
+    },
+    options: {
+      type: Array,
+      default: () => []
+    }
+  },
+  emits: ['update:modelValue'],
+  setup(_, { emit }) {
+    const selectEl = ref(null)
+    const shown = ref(false)
+
+    const onChangeValue = (v) => {
+      shown.value = false
+      emit('update:modelValue', v)
+    }
+
+    return {
+      selectEl,
+      shown,
+      onChangeValue
+    }
   }
 })
-
-const selectEl = ref(null)
-const shown = ref(false)
-
-const onChangeValue = (v) => {
-  shown.value = false
-  emit('update:modelValue', v)
-}
 </script>

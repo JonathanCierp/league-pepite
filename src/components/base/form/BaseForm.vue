@@ -1,11 +1,13 @@
 <template>
-  <div class="flex-grow" />
+  <form novalidate>
+    <slot />
+  </form>
 </template>
 
 <script>
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'base-spacer'
+  name: 'base-form'
 })
 </script>

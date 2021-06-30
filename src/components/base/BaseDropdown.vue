@@ -8,23 +8,33 @@
   </VDropdown>
 </template>
 
-<script setup>
-import { defineEmit, defineProps, ref, watch } from 'vue'
+<script>
+import { defineComponent, ref, watch } from 'vue'
 import { Dropdown as VDropdown } from 'v-tooltip'
 
-defineEmit(['hide', 'show'])
-const props = defineProps({
-  modelValue: {
-    type: Boolean,
-    default: false
+export default defineComponent({
+  name: 'base-dropdown',
+  components: {
+    VDropdown
+  },
+  props: {
+    modelValue: {
+      type: Boolean,
+      default: false
+    }
+  },
+  emits: ['hide', 'show'],
+  setup(props) {
+    const shown = ref(props.modelValue)
+    watch(
+      () => props.modelValue,
+      (modelValue) => {
+        shown.value = modelValue
+      }
+    )
+    return {
+      shown
+    }
   }
 })
-
-const shown = ref(props.modelValue)
-watch(
-  () => props.modelValue,
-  (modelValue) => {
-    shown.value = modelValue
-  }
-)
 </script>

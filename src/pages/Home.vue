@@ -1,3 +1,3 @@
 <template>za</template>
 
-<script setup></script>
+<script></script>

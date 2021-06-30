@@ -8,6 +8,14 @@
   </Menu>
 </template>
 
-<script setup>
+<script>
+import { defineComponent } from 'vue'
 import { Menu } from 'v-tooltip'
+
+export default defineComponent({
+  name: 'base-menu',
+  components: {
+    Menu
+  }
+})
 </script>

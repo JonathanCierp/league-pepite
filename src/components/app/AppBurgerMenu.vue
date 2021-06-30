@@ -21,13 +21,16 @@
   </div>
 </template>
 
-<script setup>
-import { defineProps } from 'vue'
+<script>
+import { defineComponent } from 'vue'
 
-defineProps({
-  modelValue: {
-    type: Boolean,
-    default: false
+export default defineComponent({
+  name: 'app-burger-menu',
+  props: {
+    modelValue: {
+      type: Boolean,
+      default: false
+    }
   }
 })
 </script>

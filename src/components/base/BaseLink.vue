@@ -10,23 +10,31 @@
   <component :is="tag" v-else v-bind="$attrs" @click="onChangePage" />
 </template>
 
-<script setup>
-import { defineProps } from 'vue'
+<script>
+import { defineComponent } from 'vue'
 import { useRouter } from 'vue-router'
 
-const props = defineProps({
-  tag: {
-    type: String,
-    default: ''
+export default defineComponent({
+  name: 'base-link',
+  props: {
+    tag: {
+      type: String,
+      default: ''
+    },
+    to: {
+      type: String,
+      required: true
+    }
   },
-  to: {
-    type: String,
-    required: true
+  setup(props) {
+    const router = useRouter()
+    const onChangePage = () => {
+      router.push(props.to)
+    }
+
+    return {
+      onChangePage
+    }
   }
 })
-
-const router = useRouter()
-const onChangePage = () => {
-  router.push(props.to)
-}
 </script>

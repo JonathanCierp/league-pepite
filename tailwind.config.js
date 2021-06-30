@@ -34,8 +34,6 @@ module.exports = {
     colors: {
       ...colors,
       text: 'var(--color-text)',
-      background: 'var(--color-background)',
-      'background-lighter': 'var(--color-background-lighter)',
       blue: {
         100: 'var(--color-blue-100)',
         200: 'var(--color-blue-200)',
@@ -68,6 +66,17 @@ module.exports = {
         700: 'var(--color-green-700)',
         800: 'var(--color-green-800)',
         900: 'var(--color-green-900)'
+      },
+      background: {
+        100: 'var(--color-background-100)',
+        200: 'var(--color-background-200)',
+        300: 'var(--color-background-300)',
+        400: 'var(--color-background-400)',
+        500: 'var(--color-background-500)',
+        600: 'var(--color-background-600)',
+        700: 'var(--color-background-700)',
+        800: 'var(--color-background-800)',
+        900: 'var(--color-background-900)'
       },
       border: 'var(--color-border)'
     },

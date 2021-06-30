@@ -7,6 +7,13 @@
   </RouterView>
 </template>
 
-<script setup>
+<script>
+import { defineComponent } from 'vue'
 import AppHeader from '@/components/app/AppHeader.vue'
+
+export default defineComponent({
+  components: {
+    AppHeader
+  }
+})
 </script>

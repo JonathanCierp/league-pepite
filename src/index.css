@@ -4,8 +4,8 @@
 
 :root {
   --color-text: #121c42;
-  --color-background: #f9fafc;
-  --color-background-lighter: #ffffff;
+  /*--color-background: #f9fafc;*/
+  /*--color-background-lighter: #ffffff;*/
   --color-border: #d5e3ec;
 
   --color-blue-100: #e5f5ff;
@@ -38,13 +38,23 @@
   --color-red-800: #8e000c;
   --color-red-900: #550007;
 
+  --color-background-100: #b8bfc6;
+  --color-background-200: #9ca6af;
+  --color-background-300: #808c99;
+  --color-background-400: #66737f;
+  --color-background-500: #505963;
+  --color-background-600: #40464d;
+  --color-background-700: #383f47;
+  --color-background-800: #272b2f;
+  --color-background-900: #212529;
+
   --shadow: #d8e1e8;
 }
 
 .theme-dark {
   --color-text: #ffffff;
-  --color-background: #212529;
-  --color-background-lighter: #272b2f;
+  /*-color-background: #212529;*/
+  /*-color-background-lighter: #272b2f;*/
   --color-border: #333a41;
 
   --shadow: rgba(0, 0, 0, 0.2);
@@ -64,7 +74,7 @@ body {
   font-weight: 400;
   scroll-margin: 100px 0 0 0;
   color: var(--color-text);
-  background-color: var(--color-background);
+  background-color: var(--color-background-900);
   word-break: break-word;
 }
 
@@ -83,13 +93,13 @@ body main {
 
 .v-popper__inner {
   padding: 0 !important;
-  background-color: var(--color-background-lighter) !important;
+  background-color: var(--color-background-800) !important;
   box-shadow: 0 10px 15px -3px var(--shadow), 0 4px 6px -2px var(--shadow) !important;
   color: var(--color-text) !important;
 }
 
 .v-popper__arrow {
-  border-color: var(--color-background-lighter) !important;
+  border-color: var(--color-background-800) !important;
 }
 
 /* KEYFRAMES */
