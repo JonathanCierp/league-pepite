@@ -2,6 +2,7 @@ import { createMemoryHistory, createRouter as _createRouter, createWebHistory } 
 import Home from '@/pages/Home.vue'
 import rankingsRoutes from '@/modules/rankings/rankings.routes'
 import challengesRoutes from '@/modules/challenges/challenges.routes'
+import partnersRoutes from '@/modules/partners/partners.routes'
 import checkAuth from '@/middleware/checkAuth'
 
 const createRouter = () => {
@@ -13,7 +14,8 @@ const createRouter = () => {
         component: Home
       },
       ...rankingsRoutes,
-      ...challengesRoutes
+      ...challengesRoutes,
+      ...partnersRoutes
     ]
   })
 

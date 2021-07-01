@@ -3,6 +3,7 @@ import cookies from 'js-cookie'
 import { useAxiosInstance } from '@/composables/useAxios'
 import useNotification from '@/composables/useNotification'
 import rankingsStore from '@/modules/rankings/rankings.store'
+import partnersStore from '@/modules/partners/partners.store'
 
 const notification = useNotification()
 
@@ -59,6 +60,10 @@ const store = createStore({
     rankings: {
       namespaced: true,
       ...rankingsStore
+    },
+    partners: {
+      namespaced: true,
+      ...partnersStore
     }
   }
 })

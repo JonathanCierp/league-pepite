@@ -2,7 +2,7 @@
   <BaseDialog v-if="modelValue" width="500px">
     <BaseDialogTitle @close="$emit('update:modelValue', false)">Connexion</BaseDialogTitle>
     <BaseDialogBody>
-      <BaseForm ref="formEl" class="mb-6" @submit.prevent="onSubmit">
+      <BaseForm ref="formEl" @submit.prevent="onSubmit">
         <BaseRow class="mb-4">
           <BaseFormInput ref="usernameEl" v-model="username" label="Email ou Identifiant" required required-star :rules="[requiredRule]" />
         </BaseRow>
