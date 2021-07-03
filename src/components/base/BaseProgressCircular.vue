@@ -38,6 +38,7 @@
 import { defineComponent, computed } from 'vue'
 
 export default defineComponent({
+  name: 'base-progress-circular',
   props: {
     indeterminate: {
       type: Boolean,

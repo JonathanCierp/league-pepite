@@ -104,6 +104,10 @@ export default defineComponent({
       {
         label: 'A propos',
         to: '/abouts'
+      },
+      {
+        label: 'Rejoindre le concours',
+        to: '/joins'
       }
     ])
     const userMenus = reactive([
@@ -120,7 +124,6 @@ export default defineComponent({
       {
         label: 'Se déconnecter',
         icon: 'log-out',
-        to: '',
         onClick: async () => {
           await store.dispatch('users/logoutUser')
         }
