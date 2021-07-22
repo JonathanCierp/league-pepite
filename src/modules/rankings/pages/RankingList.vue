@@ -62,30 +62,9 @@
         </tbody>
       </table>
     </div>
-    <!--
-      <table class="w-full">
-        <thead>
-          <tr class="border-b border-border">
-            <th class="bg-background-800 py-5 px-5 text-left" style="width: 10%">Classement</th>
-            <th class="bg-background-800 py-5 px-5 text-left" style="width: 48%">Nom de l'équipe</th>
-            <th class="bg-background-800 py-5 px-5 text-left" style="width: 12%">Point de l'étape</th>
-            <th class="bg-background-800 py-5 px-5 text-left" style="width: 10%">Total points</th>
-            <th class="bg-background-800 py-5 px-5" style="width: 20%">Challenges précédents</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="ranking in currentChampionship.divisions[0].rankings" :key="ranking.key" class="border-b border-border">
-            <td class="bg-background-800 py-3 px-5">{{ ranking.rank }}</td>
-            <td class="bg-background-800 py-3 px-5">{{ ranking.label }}</td>
-            <td class="bg-background-800 py-3 px-5">{{ ranking.currentChallengePoint }}</td>
-            <td class="bg-background-800 py-3 px-5">{{ ranking.totalPoints }}</td>
-            <td class="bg-background-800 py-3 px-5 text-center">
-              {{ ranking.lastChallenges.join('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;') }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>-->
+  </main>
+  <main v-else class="h-screen flex items-center justify-center">
+    <BaseProgressCircular color="#fff" size="50" indeterminate />
   </main>
 </template>
 
@@ -94,11 +73,13 @@ import { computed, defineComponent, onMounted, ref } from 'vue'
 import { useStore } from 'vuex'
 import { dynamicSort } from '@/utils'
 import BaseFormSelect from '@/components/base/form/BaseFormSelect.vue'
+import BaseProgressCircular from '@/components/base/BaseProgressCircular.vue'
 import BaseSpacer from '@/components/base/BaseSpacer.vue'
 
 export default defineComponent({
   components: {
     BaseFormSelect,
+    BaseProgressCircular,
     BaseSpacer
   },
   setup() {
@@ -113,9 +94,6 @@ export default defineComponent({
       await store.dispatch('rankings/getSeasons')
       currentSeason.value = seasons.value[0]
       await onChangeSeasons()
-      await onChangeChampionships(championships.value[0])
-      await onChangeChampionshipsTypes(championshipsTypes.value[0])
-      await onChangeDivisions(divisions.value[0])
       isLoaded.value = true
     })
 
@@ -126,22 +104,45 @@ export default defineComponent({
     const teams = computed(() => [...store.state.rankings.teams].sort(dynamicSort('total_points', 'DESC')))
 
     const onChangeSeasons = async () => {
-      await store.dispatch('rankings/getChampionshipsBySeasonId', currentSeason.value)
-      currentChampionship.value = championships.value[0]
+      try {
+        isLoaded.value = false
+        await store.dispatch('rankings/getChampionshipsBySeasonId', currentSeason.value)
+        currentChampionship.value = championships.value[0]
+        await onChangeChampionships(championships.value[0])
+      } finally {
+        isLoaded.value = true
+      }
     }
     const onChangeChampionships = async (championship) => {
-      currentChampionship.value = championship
-      await store.dispatch('rankings/getChampionshipsTypesByChampionshipId', championship)
-      currentChampionshipsType.value = championshipsTypes.value[0]
+      try {
+        isLoaded.value = false
+        currentChampionship.value = championship
+        await store.dispatch('rankings/getChampionshipsTypesByChampionshipId', championship)
+        currentChampionshipsType.value = championshipsTypes.value[0]
+        await onChangeChampionshipsTypes(championshipsTypes.value[0])
+      } finally {
+        isLoaded.value = true
+      }
     }
     const onChangeChampionshipsTypes = async (championshipsType) => {
-      currentChampionshipsType.value = championshipsType
-      await store.dispatch('rankings/getDivisionByChampionshipsTypeId', championshipsType)
-      currentDivision.value = divisions.value[0]
+      try {
+        isLoaded.value = false
+        currentChampionshipsType.value = championshipsType
+        await store.dispatch('rankings/getDivisionByChampionshipsTypeId', championshipsType)
+        currentDivision.value = divisions.value[0]
+        await onChangeDivisions(divisions.value[0])
+      } finally {
+        isLoaded.value = true
+      }
     }
     const onChangeDivisions = async (division) => {
-      currentDivision.value = division
-      await store.dispatch('rankings/getTeamsByDivisionId', division)
+      try {
+        isLoaded.value = false
+        currentDivision.value = division
+        await store.dispatch('rankings/getTeamsByDivisionId', division)
+      } finally {
+        isLoaded.value = true
+      }
     }
 
     return {

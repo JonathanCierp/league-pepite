@@ -2,6 +2,7 @@ import { createStore } from 'vuex'
 import cookies from 'js-cookie'
 import { useAxiosInstance } from '@/composables/useAxios'
 import useNotification from '@/composables/useNotification'
+import challengesStore from '@/modules/challenges/challenges.store'
 import rankingsStore from '@/modules/rankings/rankings.store'
 import partnersStore from '@/modules/partners/partners.store'
 
@@ -9,6 +10,10 @@ const notification = useNotification()
 
 const store = createStore({
   modules: {
+    challenges: {
+      namespaced: true,
+      ...challengesStore
+    },
     users: {
       namespaced: true,
       state: () => ({
