@@ -1,8 +1,9 @@
 import { createMemoryHistory, createRouter as _createRouter, createWebHistory } from 'vue-router'
 import Home from '@/pages/Home.vue'
-import rankingsRoutes from '@/modules/rankings/rankings.routes'
+import joinsRoutes from '@/modules/joins/joins.routes'
 import challengesRoutes from '@/modules/challenges/challenges.routes'
 import partnersRoutes from '@/modules/partners/partners.routes'
+import rankingsRoutes from '@/modules/rankings/rankings.routes'
 import checkAuth from '@/middleware/checkAuth'
 
 const createRouter = () => {
@@ -13,9 +14,10 @@ const createRouter = () => {
         path: '/',
         component: Home
       },
-      ...rankingsRoutes,
+      ...joinsRoutes,
       ...challengesRoutes,
-      ...partnersRoutes
+      ...partnersRoutes,
+      ...rankingsRoutes
     ]
   })
 

@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-background-800 border border-border">
+  <section class="bg-background-800 border border-border" :style="[{ width }]">
     <slot />
   </section>
 </template>
@@ -8,6 +8,12 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'base-card'
+  name: 'base-card',
+  props: {
+    width: {
+      type: String,
+      default: null
+    }
+  }
 })
 </script>
