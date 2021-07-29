@@ -1,5 +1,6 @@
 import { createMemoryHistory, createRouter as _createRouter, createWebHistory } from 'vue-router'
 import Home from '@/pages/Home.vue'
+import aboutsRoutes from '@/modules/abouts/abouts.routes'
 import joinsRoutes from '@/modules/joins/joins.routes'
 import challengesRoutes from '@/modules/challenges/challenges.routes'
 import partnersRoutes from '@/modules/partners/partners.routes'
@@ -14,6 +15,7 @@ const createRouter = () => {
         path: '/',
         component: Home
       },
+      ...aboutsRoutes,
       ...joinsRoutes,
       ...challengesRoutes,
       ...partnersRoutes,

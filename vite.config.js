@@ -12,5 +12,11 @@ export default defineConfig({
         replacement: path.resolve(__dirname, 'src')
       }
     ]
+  },
+  server: {
+    hmr: {
+      port: 20000,
+      clientPort: 20000
+    }
   }
 })

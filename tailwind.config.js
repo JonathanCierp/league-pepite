@@ -82,6 +82,9 @@ module.exports = {
     },
     boxShadow: {
       DEFAULT: '0 10px 15px -3px var(--shadow), 0 4px 6px -2px var(--shadow)'
+    },
+    rotate: {
+      226: '226deg'
     }
   },
   variants: {

@@ -106,7 +106,7 @@ export default defineComponent({
         to: '/abouts'
       },
       {
-        label: 'Rejoindre le concours',
+        label: 'La LEAGUE',
         to: '/joins'
       }
     ])
