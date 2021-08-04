@@ -20,16 +20,12 @@ import BaseSpacer from '@/components/base/BaseSpacer.vue'
 import BaseIcon from '@/components/base/BaseIcon.vue'
 
 export default defineComponent({
-  name: 'challenge-type-item',
+  name: 'base-accordion',
   components: { BaseRow, BaseSpacer, BaseIcon },
   props: {
     modelValue: {
       type: Number,
       default: null
-    },
-    challengeType: {
-      type: Object,
-      default: () => {}
     },
     label: {
       type: String,

@@ -30,17 +30,6 @@
           {{ championshipsType.label }}
         </div>
       </div>
-      <div class="w-32">
-        <div
-          v-for="division in divisions"
-          :key="division.id"
-          class="flex items-center cursor-pointer h-11"
-          :class="[division.id == currentDivision.id ? 'underline font-medium' : 'text-gray-300']"
-          @click="onChangeDivisions(division)"
-        >
-          {{ division.label }}
-        </div>
-      </div>
       <table class="w-full">
         <thead>
           <tr class="border-b border-border">
@@ -62,6 +51,17 @@
         </tbody>
       </table>
     </div>
+    <div class="mt-6">
+      <BaseAccordion
+          v-for="challenge in challenges"
+          :key="challenge.id"
+          v-model="accordionValue"
+          :label="challenge.name"
+          :value="challenge.id"
+      >
+        az
+      </BaseAccordion>
+    </div>
   </main>
   <main v-else class="h-screen flex items-center justify-center">
     <BaseProgressCircular color="#fff" size="50" indeterminate />
@@ -72,12 +72,14 @@
 import { computed, defineComponent, onMounted, ref } from 'vue'
 import { useStore } from 'vuex'
 import { dynamicSort } from '@/utils'
+import BaseAccordion from '@/components/base/BaseAccordion.vue'
 import BaseFormSelect from '@/components/base/form/BaseFormSelect.vue'
 import BaseProgressCircular from '@/components/base/BaseProgressCircular.vue'
 import BaseSpacer from '@/components/base/BaseSpacer.vue'
 
 export default defineComponent({
   components: {
+    BaseAccordion,
     BaseFormSelect,
     BaseProgressCircular,
     BaseSpacer
@@ -88,7 +90,7 @@ export default defineComponent({
     const currentSeason = ref({})
     const currentChampionship = ref({})
     const currentChampionshipsType = ref({})
-    const currentDivision = ref({})
+    const accordionValue = ref(null)
 
     onMounted(async () => {
       await store.dispatch('rankings/getSeasons')
@@ -100,8 +102,8 @@ export default defineComponent({
     const seasons = computed(() => store.state.rankings.seasons)
     const championships = computed(() => store.state.rankings.championships)
     const championshipsTypes = computed(() => store.state.rankings.championshipsTypes)
-    const divisions = computed(() => store.state.rankings.divisions)
     const teams = computed(() => [...store.state.rankings.teams].sort(dynamicSort('total_points', 'DESC')))
+    const challenges = computed(() => store.state.rankings.challenges)
 
     const onChangeSeasons = async () => {
       try {
@@ -127,19 +129,9 @@ export default defineComponent({
     const onChangeChampionshipsTypes = async (championshipsType) => {
       try {
         isLoaded.value = false
+        await store.dispatch('rankings/getTeamsByChampionshipId', championshipsType)
+        await store.dispatch('rankings/getTeamsByChallengeByChampionshipId', championshipsType)
         currentChampionshipsType.value = championshipsType
-        await store.dispatch('rankings/getDivisionByChampionshipsTypeId', championshipsType)
-        currentDivision.value = divisions.value[0]
-        await onChangeDivisions(divisions.value[0])
-      } finally {
-        isLoaded.value = true
-      }
-    }
-    const onChangeDivisions = async (division) => {
-      try {
-        isLoaded.value = false
-        currentDivision.value = division
-        await store.dispatch('rankings/getTeamsByDivisionId', division)
       } finally {
         isLoaded.value = true
       }
@@ -150,16 +142,15 @@ export default defineComponent({
       currentSeason,
       currentChampionship,
       currentChampionshipsType,
-      currentDivision,
+      accordionValue,
       seasons,
       championships,
       championshipsTypes,
-      divisions,
       teams,
+      challenges,
       onChangeSeasons,
       onChangeChampionships,
-      onChangeChampionshipsTypes,
-      onChangeDivisions
+      onChangeChampionshipsTypes
     }
   }
 })

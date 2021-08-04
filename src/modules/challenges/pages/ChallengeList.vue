@@ -23,7 +23,7 @@
         </tbody>
       </table>
     </div> -->
-    <ChallengeTypeItem
+    <BaseAccordion
       v-for="challengesType in challengesTypes"
       :key="challengesType.id"
       v-model="accordionValue"
@@ -31,18 +31,18 @@
       :value="challengesType.id"
     >
       <ChallengeItem v-for="challenge in challengesType.challenges" :key="challenge.id" :challenge="challenge" />
-    </ChallengeTypeItem>
+    </BaseAccordion>
   </main>
 </template>
 
 <script>
 import { computed, defineComponent, onMounted, ref } from 'vue'
 import { useStore } from 'vuex'
-import ChallengeTypeItem from '@/modules/challenges/components/ChallengeTypeItem.vue'
+import BaseAccordion from '@/components/base/BaseAccordion.vue'
 import ChallengeItem from '@/modules/challenges/components/ChallengeItem.vue'
 
 export default defineComponent({
-  components: { ChallengeTypeItem, ChallengeItem },
+  components: { BaseAccordion, ChallengeItem },
   setup() {
     const store = useStore()
     const isLoaded = ref(false)
@@ -52,7 +52,9 @@ export default defineComponent({
       await store.dispatch('challenges/getChallengesTypes')
       isLoaded.value = true
     })
+
     const challengesTypes = computed(() => store.state.challenges.challengesTypes)
+
     return {
       isLoaded,
       accordionValue,

@@ -2,10 +2,13 @@
   <header
     v-if="isLoaded"
     class="bg-background-800 border-b border-border transition-all duration-200 relative"
-    :class="[isMenuMobileOpen ? 'h-68' : 'h-16']"
+    :class="[isMenuMobileOpen ? 'h-68' : 'h-20']"
   >
     <div class="h-full container mx-auto pt-4 pl-4 sm:pt-0 sm:pl-0 flex flex-col md:flex-row md:items-center justify-center">
-      <BaseLink tag="img" to="/" class="w-40 mb-2 sm:mb-0 cursor-pointer" src="/logo-light.png" alt="Katenga logo" />
+      <BaseLink to="/" class="flex items-center w-52 mb-2 sm:mb-0 cursor-pointer">
+        <img class="h-14 mr-4" src="/league-pepite-logo-light.png" alt="League PEPITE logo" />
+        <span>League PEPITE</span>
+      </BaseLink>
       <nav
         class="ml-12 md:mt-0 transition-all duration-100 md:opacity-100 md:visible w-full"
         :class="[isMenuMobileOpen ? 'opacity-100 visible' : 'opacity-0 invisible']"

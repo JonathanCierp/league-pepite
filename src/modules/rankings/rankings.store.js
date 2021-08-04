@@ -8,7 +8,6 @@ const store = {
     seasons: [],
     championships: [],
     championshipsTypes: [],
-    divisions: [],
     teams: []
   }),
   mutations: {
@@ -21,11 +20,11 @@ const store = {
     setChampionshipsTypes(state, championshipsTypes) {
       state.championshipsTypes = championshipsTypes
     },
-    setDivisions(state, divisions) {
-      state.divisions = divisions
-    },
     setTeams(state, teams) {
       state.teams = teams
+    },
+    setChallenges(state, challenges) {
+      state.challenges = challenges
     }
   },
   actions: {
@@ -56,20 +55,20 @@ const store = {
         notification.error(e.response?.data.message || e.message)
       }
     },
-    async getDivisionByChampionshipsTypeId({ commit }, championshipsType) {
+    async getTeamsByChampionshipId({ commit }, championshipsType) {
       try {
-        const { data } = await useAxiosAuthInstance().get(`/championshipsTypes/${championshipsType.id}/divisions`)
+        const { data } = await useAxiosAuthInstance().get(`/championshipsTypes/${championshipsType.id}/teams`)
 
-        commit('setDivisions', data.data)
+        commit('setTeams', data.data)
       } catch (e) {
         notification.error(e.response?.data.message || e.message)
       }
     },
-    async getTeamsByDivisionId({ commit }, division) {
+    async getTeamsByChallengeByChampionshipId({ commit }, championshipsType) {
       try {
-        const { data } = await useAxiosAuthInstance().get(`/divisions/${division.id}/teams`)
+        const { data } = await useAxiosAuthInstance().get(`/challenges/championshipsTypes/${championshipsType.id}/teams`)
 
-        commit('setTeams', data.data)
+        commit('setChallenges', data.data)
       } catch (e) {
         notification.error(e.response?.data.message || e.message)
       }
