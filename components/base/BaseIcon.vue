@@ -14,11 +14,10 @@
 </template>
 
 <script>
-import { defineComponent, ref, watch } from 'vue'
-import useIcon from '@/composables/useIcon'
+import { ref, watch } from '@nuxtjs/composition-api'
+import useIcon from "@/composables/useIcon"
 
-export default defineComponent({
-  name: 'base-icon',
+export default {
   props: {
     name: {
       type: String,
@@ -51,17 +50,15 @@ export default defineComponent({
   },
   setup(props) {
     const icon = ref(useIcon(props.name))
-
     watch(
       () => props.name,
       (newIcon) => {
         icon.value = useIcon(newIcon)
       }
     )
-
     return {
       icon
     }
   }
-})
+}
 </script>

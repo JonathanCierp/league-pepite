@@ -1,14 +1,13 @@
 <template>
-  <div class="flex" :class="[centerClass]">
+  <div class="flex" :class="[centerClass]" @click="$emit('click', $event)">
     <slot />
   </div>
 </template>
 
 <script>
-import { computed, defineComponent } from 'vue'
+import { computed } from '@nuxtjs/composition-api'
 
-export default defineComponent({
-  name: 'base-row',
+export default {
   props: {
     center: {
       type: Boolean,
@@ -17,10 +16,9 @@ export default defineComponent({
   },
   setup(props) {
     const centerClass = computed(() => (props.center ? 'items-center justify-center' : ''))
-
     return {
       centerClass
     }
   }
-})
+}
 </script>

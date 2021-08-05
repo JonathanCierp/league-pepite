@@ -6,23 +6,22 @@
     :disabled="disabled"
     @click="onClick"
   >
-    <BaseIcon v-if="iconLeft && !loading" :name="iconLeft" :size="iconSize" :class="[iconLeft ? 'mr-2' : '']" />
-    <BaseProgressCircular v-if="loading" color="#fff" size="20" indeterminate />
-    <slot v-else />
+<!--    <BaseIcon v-if="iconLeft && !loading" :name="iconLeft" :size="iconSize" :class="[iconLeft ? 'mr-2' : '']" />-->
+<!--    <BaseProgressCircular v-if="loading" color="#fff" size="20" indeterminate />-->
+<!--    <slot v-else />-->
+    <slot />
   </button>
 </template>
 
 <script>
-import { computed, defineComponent } from 'vue'
-import BaseIcon from '@/components/base/BaseIcon.vue'
-import BaseProgressCircular from '@/components/base/BaseProgressCircular.vue'
+import { computed } from '@nuxtjs/composition-api'
 
 const button = {
   block: 'w-full',
   color: {
-    blue: {
-      base: 'bg-background-600 hover:bg-background-700 active:bg-background-600 text-white',
-      text: 'hover:bg-background-900 bg-transparent'
+    orange: {
+      base: 'bg-orange-500 hover:bg-orange-600 active:bg-orange-700',
+      text: 'hover:bg-orange-900 bg-transparent'
     }
   },
   size: {
@@ -31,12 +30,7 @@ const button = {
   }
 }
 
-export default defineComponent({
-  name: 'base-button',
-  components: {
-    BaseIcon,
-    BaseProgressCircular
-  },
+export default {
   props: {
     type: {
       type: String,
@@ -72,7 +66,7 @@ export default defineComponent({
     },
     color: {
       type: String,
-      default: 'blue'
+      default: 'orange'
     },
     hoverColor: {
       type: String,
@@ -83,7 +77,6 @@ export default defineComponent({
       default: false
     }
   },
-  emits: ['click'],
   setup(props, { emit }) {
     const colorClass = computed(() => {
       if (props.icon) return
@@ -95,6 +88,7 @@ export default defineComponent({
     const iconClass = computed(() => (props.icon ? 'hover:bg-background-500' : ''))
     const hoverClass = computed(() => (props.hoverColor ? `hover:${props.hoverColor}` : ''))
     const disabledClass = computed(() => (props.disabled ? 'cursor-not-allowed' : ''))
+
     const onClick = (e) => {
       emit('click', e)
     }
@@ -109,5 +103,5 @@ export default defineComponent({
       onClick
     }
   }
-})
+}
 </script>

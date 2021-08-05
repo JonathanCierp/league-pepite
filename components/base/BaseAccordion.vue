@@ -1,5 +1,6 @@
+
 <template>
-  <div class="overflow-hidden my-4">
+  <div class="overflow-hidden mb-6 shadow">
     <BaseRow class="items-center w-full p-5 leading-normal cursor-pointer" :class="[isSelectedLabelClasses]" @click="onSelectAccordion">
       <h2>
         {{ label }}
@@ -14,17 +15,12 @@
 </template>
 
 <script>
-import { computed, defineComponent, ref, watch } from 'vue'
-import BaseRow from '@/components/base/BaseRow.vue'
-import BaseSpacer from '@/components/base/BaseSpacer.vue'
-import BaseIcon from '@/components/base/BaseIcon.vue'
+import { ref, watch, computed } from '@nuxtjs/composition-api'
 
-export default defineComponent({
-  name: 'base-accordion',
-  components: { BaseRow, BaseSpacer, BaseIcon },
+export default {
   props: {
     modelValue: {
-      type: Number,
+      type: [String, Number],
       default: null
     },
     label: {
@@ -32,18 +28,21 @@ export default defineComponent({
       default: ''
     },
     value: {
-      type: Number,
+      type: [String, Number],
       default: null
     }
   },
-  emits: ['update:modelValue'],
+  model: {
+    prop: 'modelValue',
+    event: 'update:modelValue'
+  },
   setup(props, { emit }) {
-    const isSelected = ref(props.modelValue === parseInt(props.value))
+    const isSelected = ref(props.modelValue == props.value)
 
     watch(
       () => props.modelValue,
       (newVal) => {
-        isSelected.value = newVal === parseInt(props.value)
+        isSelected.value = newVal == props.value
       }
     )
 
@@ -51,8 +50,8 @@ export default defineComponent({
       emit('update:modelValue', isSelected.value ? null : props.value)
     }
 
-    const isSelectedAccordionClasses = computed(() => (isSelected.value ? 'max-h-screen bg-background-800' : 'max-h-0'))
-    const isSelectedLabelClasses = computed(() => (isSelected.value ? 'bg-background-700 border-background-500 border-l-4' : 'bg-background-800'))
+    const isSelectedAccordionClasses = computed(() => (isSelected.value ? 'max-h-screen bg-background-lighter' : 'max-h-0'))
+    const isSelectedLabelClasses = computed(() => (isSelected.value ? 'bg-orange-100 border-orange-500 border-l-4' : 'bg-background-lighter'))
     const isSelectedIconClasses = computed(() => (isSelected.value ? 'rotate-226' : 'rotate-0'))
 
     return {
@@ -63,5 +62,5 @@ export default defineComponent({
       isSelectedIconClasses
     }
   }
-})
+}
 </script>
