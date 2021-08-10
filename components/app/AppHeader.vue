@@ -1,5 +1,5 @@
 <template>
-  <header class="bg-background-lighter border-b border-border px-10" :class="[isMenuMobileOpen ? 'h-68' : 'h-20']">
+  <header class="bg-background-lighter border-b border-border px-10" :class="[isMenuMobileOpen ? 'h-68' : '']">
     <div class="h-full container mx-auto pt-4 pl-4 sm:pt-0 sm:pl-0 flex flex-col md:flex-row md:items-center justify-center">
       <BaseLink to="/" tag="img" :src="require('~/assets/img/league-pepite-logo-horizontal.png')" class="w-52 cursor-pointer" />
       <nav
@@ -13,7 +13,7 @@
             tag="li"
             :to="menu.to ? menu.to : ''"
             :class="[$route.path === menu.to ? 'text-orange-500' : '']"
-            class="flex items-center font-medium cursor-pointer my-3 md:mx-3 hover:text-orange-500"
+            class="flex items-center font-medium cursor-pointer uppercase text-sm py-6 md:px-3 hover:text-orange-500"
           >
             {{ menu.label }}
           </BaseLink>

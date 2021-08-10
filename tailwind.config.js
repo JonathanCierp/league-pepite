@@ -2,6 +2,29 @@ export default {
   mode: 'jit',
   theme: {
     extend: {
+      animation: {
+        'progress-circular-rotate': 'progress-circular-rotate 1.4s linear infinite',
+        'progress-circular-dash': 'progress-circular-dash 1.4s ease-in-out infinite'
+      },
+      keyframes: {
+        'progress-circular-rotate': {
+          to: { transform: 'rotate(1turn)' }
+        },
+        'progress-circular-dash': {
+          '0%': {
+            'stroke-dasharray': '1, 200',
+            'stroke-dashoffset': '0'
+          },
+          '50%': {
+            'stroke-dasharray': '100, 200',
+            'stroke-dashoffset': '-15px'
+          },
+          to: {
+            'stroke-dasharray': '100, 200',
+            'stroke-dashoffset': '-125px'
+          }
+        }
+      },
       colors: {
         text: 'var(--color-text)',
         background: 'var(--color-background)',

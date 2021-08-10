@@ -1,5 +1,5 @@
 <template>
-  <main class="container mx-auto my-10">
+  <main v-if="isLoaded" class="container mx-auto my-10">
     <BaseAccordion
       v-for="challengesVariant in challengesVariants"
       :key="challengesVariant.id"
@@ -11,6 +11,9 @@
         {{ challengesVariant.description }}
       </p>
     </BaseAccordion>
+  </main>
+  <main v-else class="mt-40 flex items-center justify-center">
+    <BaseProgressCircular size="36" indeterminate color="var(--color-orange-500)" />
   </main>
 </template>
 

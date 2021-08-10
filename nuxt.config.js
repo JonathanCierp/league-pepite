@@ -2,7 +2,7 @@ require('dotenv').config()
 
 export default {
   server: {
-    port: 9030,
+    port: 9040,
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
