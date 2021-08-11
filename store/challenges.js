@@ -9,7 +9,7 @@ export const mutations = {
   },
   setChallengesVariants(state, challengesVariants) {
     state.challengesVariants = challengesVariants
-  },
+  }
 }
 
 export const actions = {

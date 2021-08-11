@@ -1,5 +1,3 @@
-require('dotenv').config()
-
 export default {
   server: {
     port: 9040,
@@ -40,7 +38,9 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
     // https://composition-api.nuxtjs.org
-    '@nuxtjs/composition-api/module'
+    '@nuxtjs/composition-api/module',
+    // https://github.com/nuxt-community/dotenv-module
+    '@nuxtjs/dotenv'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -51,7 +51,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: process.env.BASE_API_URL
+    baseURL: process.env.API_URL
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
