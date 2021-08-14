@@ -12,13 +12,13 @@
             :key="menu.label"
             tag="li"
             :to="menu.to ? menu.to : ''"
-            :class="[$route.path === menu.to ? 'text-orange-500' : '']"
+            :class="[$route.path === menu.to ? 'text-orange-500 border-b-2 border-orange-500' : '']"
             class="flex items-center font-medium cursor-pointer uppercase text-sm py-6 md:px-3 hover:text-orange-500"
           >
             {{ menu.label }}
           </BaseLink>
           <BaseSpacer />
-          <BaseButton>Mon compte</BaseButton>
+          <BaseButton to="/join-the-league">Rejoindre la league</BaseButton>
         </ul>
       </nav>
     </div>

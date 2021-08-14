@@ -49,5 +49,8 @@ export default {
         226: '226deg'
       }
     }
-  }
+  },
+  variants: {
+    borderColor: ['focus']
+  },
 }

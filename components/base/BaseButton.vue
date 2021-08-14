@@ -1,16 +1,18 @@
 <template>
-  <button
+  <component
+    :is="tagValue"
     class="inline-flex items-center justify-center cursor-pointer font-medium transition-colors duration-150 border-sm focus:outline-none"
     :class="[colorClass, sizeClass, blockClass, iconClass, hoverClass, disabledClass]"
     :type="type"
     :disabled="disabled"
+    :to="to ? to : ''"
     @click="onClick"
   >
 <!--    <BaseIcon v-if="iconLeft && !loading" :name="iconLeft" :size="iconSize" :class="[iconLeft ? 'mr-2' : '']" />-->
 <!--    <BaseProgressCircular v-if="loading" color="#fff" size="20" indeterminate />-->
 <!--    <slot v-else />-->
     <slot />
-  </button>
+  </component>
 </template>
 
 <script>
@@ -75,6 +77,10 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+    to: {
+      type: String,
+      default: ''
     }
   },
   setup(props, { emit }) {
@@ -88,6 +94,7 @@ export default {
     const iconClass = computed(() => (props.icon ? 'hover:bg-background-500' : ''))
     const hoverClass = computed(() => (props.hoverColor ? `hover:${props.hoverColor}` : ''))
     const disabledClass = computed(() => (props.disabled ? 'cursor-not-allowed' : ''))
+    const tagValue = computed(() => props.to ? 'NuxtLink' : 'button')
 
     const onClick = (e) => {
       emit('click', e)
@@ -100,6 +107,7 @@ export default {
       iconClass,
       hoverClass,
       disabledClass,
+      tagValue,
       onClick
     }
   }

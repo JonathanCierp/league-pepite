@@ -50,7 +50,7 @@ export default {
       emit('update:modelValue', isSelected.value ? null : props.value)
     }
 
-    const isSelectedAccordionClasses = computed(() => (isSelected.value ? 'max-h-screen bg-background-lighter' : 'max-h-0'))
+    const isSelectedAccordionClasses = computed(() => (isSelected.value ? 'max-h-full bg-background-lighter' : 'max-h-0'))
     const isSelectedLabelClasses = computed(() => (isSelected.value ? 'bg-orange-100 border-orange-500 border-l-4' : 'bg-background-lighter'))
     const isSelectedIconClasses = computed(() => (isSelected.value ? 'rotate-226' : 'rotate-0'))
 

@@ -22,6 +22,9 @@ import { ref, onMounted, computed, useStore } from '@nuxtjs/composition-api'
 
 export default {
   layout: 'default',
+  head: {
+    title: 'Challenge | League Pépite'
+  },
   setup() {
     const store = useStore()
     const isLoaded = ref(false)
