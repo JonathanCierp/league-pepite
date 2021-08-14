@@ -1,7 +1,7 @@
 export default {
   server: {
-    host: '0.0.0.0',
-    port: 9040
+    host: process.env.HOST,
+    port: process.env.PORT
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
