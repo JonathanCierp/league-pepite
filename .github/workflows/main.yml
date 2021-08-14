@@ -2,7 +2,7 @@ name: Deploy application
 
 on:
   push:
-    branches: [ main ]
+    branches: [ next ]
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -17,7 +17,7 @@ jobs:
           script: |
             cd /home/jonathan/reverse-proxy/code/league-pepite
             git reset --hard
-            git pull
+            git pull origin next
             cd /home/jonathan/reverse-proxy
             docker-compose stop leaguepepite
             docker-compose rm -f leaguepepite
