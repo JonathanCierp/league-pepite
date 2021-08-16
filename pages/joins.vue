@@ -8,8 +8,8 @@
       <div class="flex flex-col items-center p-6">
         <img class="mb-6" src="~/assets/img/joins/la-saison.svg" alt="La Saison">
         <ul class="ml-4">
-          <li class="list-disc">2 championnat de 3 mois</li>
-          <li class="list-disc">20 équipe maximmum par championnat</li>
+          <li class="list-disc">2 championnats de 3 mois</li>
+          <li class="list-disc">20 équipes maximmum par championnat</li>
           <li class="list-disc">7 challenges par championnat</li>
         </ul>
       </div>
