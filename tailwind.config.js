@@ -49,7 +49,7 @@ export default {
         226: '226deg'
       },
       maxWidth: {
-        19: '19rem'
+        22: '22rem'
       }
     }
   },
