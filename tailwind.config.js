@@ -47,6 +47,9 @@ export default {
       },
       rotate: {
         226: '226deg'
+      },
+      maxWidth: {
+        17: '17rem'
       }
     }
   },

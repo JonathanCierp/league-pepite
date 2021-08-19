@@ -1,6 +1,6 @@
 <template>
-  <main v-if="isLoaded" class="h-screen container mx-auto flex items-center justify-center">
-    <BaseCard class="text-center p-10 rounded-md" style="width: 600px;">
+  <main v-if="isLoaded" class="container mx-auto my-4 lg:my-10 px-4 lg:px-0 sm:h-screen sm:flex sm:items-center sm:justify-center">
+    <BaseCard class="text-center p-4 sm:p-10 rounded-md w-full max-w-xl">
       <h2 class="text-2xl font-medium mb-14">Rejoindre la LEAGUE</h2>
       <form @submit.prevent="onSubmit">
         <BaseFormInput ref="firstnameEl" v-model="form.firstname" :rules="[requiredRule]" class="text-left my-4" label="Prénom"

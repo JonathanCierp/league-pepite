@@ -1,12 +1,12 @@
 <template>
-  <main v-if="isLoaded" class="container mx-auto my-10">
+    <main v-if="isLoaded" class="container mx-auto my-4 lg:my-10 px-4 lg:px-0">
     <BaseAccordion
       v-model="accordionValue"
       label="La Saison"
       value="la-saison"
     >
       <div class="flex flex-col items-center p-6">
-        <img class="mb-6" src="~/assets/img/joins/la-saison.svg" alt="La Saison">
+        <img class="mb-6 max-w-17" src="~/assets/img/joins/la-saison.svg" alt="La Saison">
         <ul class="ml-4">
           <li class="list-disc">2 championnats de 3 mois</li>
           <li class="list-disc">20 équipes maximmum par championnat</li>
@@ -21,8 +21,8 @@
     >
      <div class="flex flex-col items-center w-full">
        <div class="flex flex-col items-center p-6" style="width: 600px">
-         <img class="mb-6" src="~/assets/img/joins/le-championnat-1.svg" alt="Le championnat 1">
-         <table class="w-full mb-6">
+         <img class="mb-6 max-w-lg" src="~/assets/img/joins/le-championnat-1.svg" alt="Le championnat 1">
+         <table class="w-full mb-6 max-w-17">
            <tr>
              <td class="p-2 text-center font-medium border-2 border-black">ÉQUIPES</td>
              <td class="p-2 text-center font-medium border-2 border-black">ENTREPRISES</td>
@@ -47,8 +47,8 @@
              <td class="p-2 text-center border-2 border-black">Remplaçant : Joueur 6</td>
            </tr>
          </table>
-         <img class="mb-6" src="~/assets/img/joins/le-championnat-2.svg" alt="Le championnat 2">
-         <table class="text-sm w-full mb-6">
+         <img class="mb-6 max-w-lg" src="~/assets/img/joins/le-championnat-2.svg" alt="Le championnat 2">
+         <table class="text-sm w-full mb-6 max-w-17">
            <tbody>
            <tr>
              <td class="p-2 text-center border-2 border-black">Challenge 1</td>
@@ -76,8 +76,8 @@
            </tr>
            </tbody>
          </table>
-         <img class="mb-6" src="~/assets/img/joins/le-championnat-3.svg" alt="Le championnat 3">
-         <table class="text-sm w-full mb-6">
+         <img class="mb-6 max-w-lg" src="~/assets/img/joins/le-championnat-3.svg" alt="Le championnat 3">
+         <table class="text-sm w-full mb-6 max-w-17">
            <tr>
              <td class="p-2 text-center font-medium border-2 border-black">CLASSEMENT</td>
              <td class="p-2 text-center font-medium border-2 border-black">ÉQUIPE</td>

@@ -1,10 +1,10 @@
 <template>
-  <main v-if="isLoaded" class="container mx-auto my-10 flex flex-wrap">
-    <BaseCard v-for="(partner, k) in partners" :key="partner.id" class="flex p-4 mb-10 mr-4 " :style="[{ width: 'calc(50% - 16px)' }]">
+  <main v-if="isLoaded" class="container mx-auto my-4 lg:my-10 px-4 lg:px-0 grid gap-4 grid-cols-1 xl:grid-cols-2">
+    <BaseCard v-for="(partner, k) in partners" :key="partner.id" class="flex flex-col sm:flex-row p-4">
       <div class="flex items-center max-h-32 mr-4" style="min-width: 8rem">
         <img :src="partnerLogo(partner)" :alt="partner.label" class="max-h-32" />
       </div>
-      <div>
+      <div class="mt-4 sm:mt-0">
         <h2 class="text-2xl font-medium mb-4">{{ partner.label }}</h2>
         <div class="text-sm" v-html="partner.description" />
       </div>

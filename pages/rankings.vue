@@ -1,21 +1,21 @@
 <template>
-  <main v-if="isLoaded" class="container mx-auto my-10 flex flex-wrap">
-    <h3 class="text-5xl font-medium text-center w-full mt-10 mb-20">Début du championnat le {{ new Date('01/02/2022').toLocaleDateString() }}</h3>
-    <div class="flex items-center justify-center w-full">
-      <BaseCard class="text-center py-10 rounded-md w-36 mr-12">
-        <p class="text-3xl font-medium">{{ countdown.days }}</p>
+  <main v-if="isLoaded" class="container mx-auto my-4 sm:my-10 px-4 sm:px-0 flex flex-wrap">
+    <h3 class="text-3xl sm:text-5xl font-medium text-center w-full sm:mt-10 sm:mb-20 mb-10">Début du championnat le {{ new Date('01/02/2022').toLocaleDateString() }}</h3>
+    <div class="grid gap-4 grid-cols-2 sm:grid-cols-4 mx-auto">
+      <BaseCard class="text-center py-10 rounded-md w-36">
+        <p class="text-2xl sm:text-3xl font-medium">{{ countdown.days }}</p>
         <p class="text-lg">Jours</p>
       </BaseCard>
-      <BaseCard class="text-center py-10 rounded-md w-36 mr-12">
-        <p class="text-3xl font-medium">{{ countdown.hours }}</p>
+      <BaseCard class="text-center py-10 rounded-md w-36">
+        <p class="text-2xl sm:text-3xl font-medium">{{ countdown.hours }}</p>
         <p class="text-lg">Heures</p>
       </BaseCard>
-      <BaseCard class="text-center py-10 rounded-md w-36 mr-12">
-        <p class="text-3xl font-medium">{{ countdown.minutes }}</p>
+      <BaseCard class="text-center py-10 rounded-md w-36">
+        <p class="text-2xl sm:text-3xl font-medium">{{ countdown.minutes }}</p>
         <p class="text-lg">Minutes</p>
       </BaseCard>
       <BaseCard class="text-center py-10 rounded-md w-36">
-        <p class="text-3xl font-medium">{{ countdown.seconds }}</p>
+        <p class="text-2xl sm:text-3xl font-medium">{{ countdown.seconds }}</p>
         <p class="text-lg">Secondes</p>
       </BaseCard>
     </div>
