@@ -19,7 +19,7 @@
             {{ menu.label }}
           </BaseLink>
           <BaseSpacer />
-          <BaseButton class="mt-4 sm:mt-0" to="/join-the-league">Rejoindre la league</BaseButton>
+          <BaseButton class="mt-4 sm:mt-0" to="/join-the-league" @click="isMenuMobileOpen = false">Rejoindre la league</BaseButton>
         </ul>
       </nav>
       <AppBurgerMenu v-model="isMenuMobileOpen" />
