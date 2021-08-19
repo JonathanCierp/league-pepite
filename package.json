@@ -1,7 +1,7 @@
 {
   "name": "league-pepite",
   "version": "1.0.0",
-  "description": "La meilleure platforme de challenge pour les étudiants",
+  "description": "La meilleure plateforme de challenge pour les étudiants",
   "private": true,
   "scripts": {
     "dev": "nuxt",
