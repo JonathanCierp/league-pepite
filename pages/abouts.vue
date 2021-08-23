@@ -2,7 +2,7 @@
   <main v-if="isLoaded" class="container mx-auto my-4 lg:my-10 px-4 lg:px-0 flex flex-col items-center">
    <h4 class="text-2xl font-medium sm:w-2/3 mb-6">
      La LEAGUE PEPITE est un championnat par équipe mis en place chaque année, qui regroupe, au niveau national,
-     des talents en cours d’études dans des écoles d’enseignements supérieurs.
+     des talents en cours d’études dans des écoles d’enseignements supérieures.
    </h4>
     <h5 class="text-center text-lg font-medium sm:w-2/3 mb-6">Pourquoi la LEAGUE PEPITE est innovante ?</h5>
     <p class="sm:w-2/3 mb-6">
