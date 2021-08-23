@@ -1,5 +1,5 @@
 <template>
-  <main v-if="isLoaded" class="container mx-auto my-4 lg:my-10 px-4 lg:px-0 sm:h-screen sm:flex sm:items-center sm:justify-center">
+  <main v-if="isLoaded" class="container mx-auto px-4 lg:px-0 sm:h-screen sm:flex sm:items-center sm:justify-center" :style="height: calc(100vh - 149px);">
     <BaseCard class="text-center p-4 sm:p-10 rounded-md w-full max-w-xl">
       <h2 class="text-2xl font-medium mb-14">Rejoindre la LEAGUE</h2>
       <form @submit.prevent="onSubmit">
