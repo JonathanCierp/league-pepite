@@ -7,9 +7,11 @@
       :label="challengesVariant.label"
       :value="challengesVariant.id"
     >
-      <p class="p-6">
-        {{ challengesVariant.description }}
-      </p>
+<!--      <div class="p-6" v-html="challengesVariant.description" />-->
+      <div class="flex items-center p-6">
+        <img class="w-20 mr-4" :src="require(`~/assets/img/challenges/${challengesVariant.label}.png`)">
+        <div v-html="challengesVariant.description" />
+      </div>
     </BaseAccordion>
   </main>
   <main v-else class="mt-40 flex items-center justify-center">
