@@ -2,7 +2,7 @@
 <template>
   <div class="overflow-hidden mb-6 shadow">
     <BaseRow class="items-center w-full p-5 leading-normal cursor-pointer" :class="[isSelectedLabelClasses]" @click="onSelectAccordion">
-      <h2>
+      <h2 class="font-medium">
         {{ label }}
       </h2>
       <BaseSpacer />
