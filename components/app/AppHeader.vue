@@ -14,7 +14,7 @@
             :to="menu.to ? menu.to : ''"
             @click="isMenuMobileOpen = false"
             :class="[$route.path === menu.to ? 'text-orange-500 border-b-2 border-orange-500' : '']"
-            class="flex items-center font-medium cursor-pointer uppercase text-sm py-4 sm:py-6 lg:px-2 hover:text-orange-500"
+            class="flex items-center font-medium cursor-pointer uppercase text-sm py-4 md:py-6 lg:px-2 hover:text-orange-500"
           >
             {{ menu.label }}
           </BaseLink>
