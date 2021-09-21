@@ -1,7 +1,7 @@
 <template>
   <header class="bg-background-lighter border-b border-border px-4 xl:px-10 py-4 lg:py-0" :class="[isMenuMobileOpen ? 'h-68' : 'h-16 lg:h-auto']">
     <div class="h-full mx-auto flex flex-col lg:flex-row lg:items-center justify-center">
-      <BaseLink to="/" tag="img" :src="require('~/assets/img/league-pepite-logo-horizontal.png')" class="w-44 lg-52 cursor-pointer" />
+      <BaseLink to="/" tag="img" :src="require('~/assets/img/league-pepite-logo-horizontal.png')" class="w-44 lg-52 cursor-pointer" alt="Logo horizontal LEAGUE PEPITE" />
       <nav
         class="ml-0 xl:ml-12 transition-all duration-100 lg:opacity-100 lg:visible w-full"
         :class="[isMenuMobileOpen ? 'opacity-100 visible mt-4' : 'opacity-0 invisible']"
