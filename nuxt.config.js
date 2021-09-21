@@ -31,6 +31,7 @@ export default {
       { property: 'twitter:description', content: process.env.npm_package_description || '' }
     ],
     link: [
+      { rel: 'canonical', href: 'https://leaguepepite.com' },
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap' },
     ],
@@ -84,12 +85,19 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://github.com/nuxt-community/community-modules/tree/master/packages/toast
-    '@nuxtjs/toast'
+    '@nuxtjs/toast',
+    // https://www.npmjs.com/package/@nuxtjs/robots
+    '@nuxtjs/robots'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     baseURL: process.env.API_URL
+  },
+
+  // Robots module configuration: https://www.npmjs.com/package/@nuxtjs/robots
+  robots: {
+    UserAgent: '*'
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
