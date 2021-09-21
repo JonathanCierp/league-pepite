@@ -13,11 +13,48 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { name: 'format-detection', content: 'telephone=no' },
+      { charset: 'utf-8' },
+      { 'http-equiv': 'pragma', content: 'no-cache' },
+      { 'http-equiv': 'cache-control', content: 'no-cache' },
+      { 'http-equiv': 'expires', content: '0' },
+      { content: 'telephone=no', name: 'format-detection' },
+      // Open Graph / Facebook
+      { property: 'og:type', content: 'website' },
+      { property: 'og:url', content: 'https://leaguepepite.com/' },
+      { property: 'og:title', content: 'Présentation | League Pépite' },
+      { property: 'og:description', content: process.env.npm_package_description || '' },
+      { property: 'og:image', content: '/_nuxt/assets/img/league-pepite-logo-horizontal-social.png' },
+      // Twitter
+      { property: 'twitter:card', content: 'summary_large_image' },
+      { property: 'twitter:url', content: 'https://leaguepepite.com/' },
+      { property: 'twitter:title', content: 'Présentation | League Pépite' },
+      { property: 'twitter:description', content: process.env.npm_package_description || '' },
+      { property: 'twitter:image', content: '/_nuxt/assets/img/league-pepite-logo-horizontal-social.png' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap' },
+    ],
+    __dangerouslyDisableSanitizers: ['script'],
+    script: [
+      {
+        hid: 'gtm-script1',
+        src: 'https://www.googletagmanager.com/gtag/js?id=G-QFBHN6C536',
+        defer: true
+      },
+      {
+        hid: 'gtm-script2',
+        innerHTML: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-QFBHN6C536');
+        `,
+        type: 'text/javascript',
+        charset: 'utf-8'
+      }
     ]
   },
 
@@ -28,7 +65,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/axios.js'
+    '~/plugins/axios.js',
+    '~/plugins/gtag.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -41,7 +79,9 @@ export default {
     // https://composition-api.nuxtjs.org
     '@nuxtjs/composition-api/module',
     // https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    // https://google-analytics.nuxtjs.org
+    //'@nuxtjs/google-analytics'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -56,6 +96,14 @@ export default {
   axios: {
     baseURL: process.env.API_URL
   },
+
+  // Google analytics module configuration: https://google-analytics.nuxtjs.org
+  /*googleAnalytics: {
+    id: process.env.GOOGLE_ANALYTICS_ID,
+    debug: {
+      enabled: true
+    }
+  },*/
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

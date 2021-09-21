@@ -13,3 +13,16 @@
       </div>-->
   </div>
 </template>
+
+<script>
+export default {
+  layout: 'default',
+  head: {
+    title: 'Challenge | League Pépite'
+  },
+  mounted() {
+    //this.$ga.page(this.$router)
+  }
+}
+</script>
+
