@@ -24,13 +24,11 @@ export default {
       { property: 'og:url', content: 'https://leaguepepite.com/' },
       { property: 'og:title', content: 'Présentation | League Pépite' },
       { property: 'og:description', content: process.env.npm_package_description || '' },
-      { property: 'og:image', content: '/_nuxt/img/league-pepite-logo-horizontal-social.png' },
       // Twitter
       { property: 'twitter:card', content: 'summary_large_image' },
       { property: 'twitter:url', content: 'https://leaguepepite.com/' },
       { property: 'twitter:title', content: 'Présentation | League Pépite' },
-      { property: 'twitter:description', content: process.env.npm_package_description || '' },
-      { property: 'twitter:image', content: '/_nuxt/img/league-pepite-logo-horizontal-social.png' }
+      { property: 'twitter:description', content: process.env.npm_package_description || '' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -65,8 +63,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/axios.js',
-    '~/plugins/gtag.js'
+    '~/plugins/axios.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
