@@ -40,7 +40,7 @@ export default {
     script: [
       {
         hid: 'gtm-script1',
-        src: 'https://www.googletagmanager.com/gtag/js?id=G-QFBHN6C536',
+        src: `https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTICS_ID}`,
         defer: true
       },
       {
@@ -50,7 +50,7 @@ export default {
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
 
-          gtag('config', 'G-QFBHN6C536');
+          gtag('config', '${process.env.GOOGLE_ANALYTICS_ID}');
         `,
         type: 'text/javascript',
         charset: 'utf-8'
@@ -79,9 +79,7 @@ export default {
     // https://composition-api.nuxtjs.org
     '@nuxtjs/composition-api/module',
     // https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv',
-    // https://google-analytics.nuxtjs.org
-    //'@nuxtjs/google-analytics'
+    '@nuxtjs/dotenv'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -96,14 +94,6 @@ export default {
   axios: {
     baseURL: process.env.API_URL
   },
-
-  // Google analytics module configuration: https://google-analytics.nuxtjs.org
-  /*googleAnalytics: {
-    id: process.env.GOOGLE_ANALYTICS_ID,
-    debug: {
-      enabled: true
-    }
-  },*/
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
