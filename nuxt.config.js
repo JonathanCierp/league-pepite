@@ -85,19 +85,12 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://github.com/nuxt-community/community-modules/tree/master/packages/toast
-    '@nuxtjs/toast',
-    // https://www.npmjs.com/package/@nuxtjs/robots
-    '@nuxtjs/robots'
+    '@nuxtjs/toast'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     baseURL: process.env.API_URL
-  },
-
-  // Robots module configuration: https://www.npmjs.com/package/@nuxtjs/robots
-  robots: {
-    UserAgent: '*'
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
