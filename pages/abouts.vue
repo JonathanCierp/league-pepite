@@ -4,7 +4,7 @@
      La LEAGUE PEPITE est un championnat par équipe mis en place chaque année, qui regroupe, au niveau national,
      des talents en cours d’études dans des écoles d’enseignements supérieures.
    </h4>
-    <h5 class="text-center text-lg font-medium sm:w-2/3 mb-6">Pourquoi la LEAGUE PEPITE est innovante ?</h5>
+    <h1 class="text-center text-lg font-medium sm:w-2/3 mb-6">Pourquoi la LEAGUE PEPITE est innovante ?</h1>
     <p class="sm:w-2/3 mb-6">
       La LEAGUE PEPITE a pour vocation de faire émerger les compétences d’étudiants en cours de formation ou en
       fin de cycle afin de faciliter le recrutement des entreprises.

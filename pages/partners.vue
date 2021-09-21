@@ -1,5 +1,6 @@
 <template>
   <main v-if="isLoaded" class="container mx-auto my-4 lg:my-10 px-4 lg:px-0 grid gap-4 grid-cols-1 xl:grid-cols-2">
+    <h1 class="hidden">LEAGUE PEPITE : Page partenaire</h1>
     <BaseCard v-for="(partner, k) in partners" :key="partner.id" class="flex flex-col sm:flex-row p-4">
       <div class="flex items-center max-h-32 mr-4" style="min-width: 8rem">
         <img :src="partnerLogo(partner)" :alt="partner.label" class="max-h-32" />

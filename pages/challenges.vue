@@ -1,5 +1,6 @@
 <template>
   <main v-if="isLoaded" class="container mx-auto my-4 lg:my-10 px-4 lg:px-0">
+    <h1 class="hidden">LEAGUE PEPITE : Page challenge</h1>
     <BaseAccordion
       v-for="challengesVariant in challengesVariants"
       :key="challengesVariant.id"

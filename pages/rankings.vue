@@ -1,6 +1,6 @@
 <template>
   <main v-if="isLoaded" class="container mx-auto my-4 sm:my-10 px-4 sm:px-0 flex flex-wrap">
-    <h3 class="text-3xl sm:text-5xl font-medium text-center w-full sm:mt-10 sm:mb-20 mb-10">Début du championnat le {{ new Date('01/02/2022').toLocaleDateString() }}</h3>
+    <h1 class="text-3xl sm:text-5xl font-medium text-center w-full sm:mt-10 sm:mb-20 mb-10">Début du championnat le {{ new Date('01/02/2022').toLocaleDateString() }}</h1>
     <div class="grid gap-4 grid-cols-2 sm:grid-cols-4 mx-auto">
       <BaseCard class="text-center py-10 rounded-md w-36">
         <p class="text-2xl sm:text-3xl font-medium">{{ countdown.days }}</p>
