@@ -1,5 +1,5 @@
 <template>
-  <footer class="flex items-center justify-between bg-background-lighter border-t border-border px-4 h-20">
+  <footer class="flex items-center justify-between bg-background-lighter border-t border-border px-4 h-20 mt-auto">
     <div></div>
     <div class="flex">
       <a class="border border-text rounded-full mr-8 p-3 cursor-pointer hover:text-orange-500 hover:border-orange-500" href="https://www.linkedin.com/company/league-pepite"
