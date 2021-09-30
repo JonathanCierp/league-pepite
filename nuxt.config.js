@@ -22,12 +22,12 @@ export default {
       // Open Graph / Facebook
       { property: 'og:type', content: 'website' },
       { property: 'og:url', content: 'https://leaguepepite.com/' },
-      { property: 'og:title', content: 'Présentation | League Pépite' },
+      { property: 'og:title', content: 'Présentation | League PEPITE' },
       { property: 'og:description', content: process.env.npm_package_description || '' },
       // Twitter
       { property: 'twitter:card', content: 'summary_large_image' },
       { property: 'twitter:url', content: 'https://leaguepepite.com/' },
-      { property: 'twitter:title', content: 'Présentation | League Pépite' },
+      { property: 'twitter:title', content: 'Présentation | League PEPITE' },
       { property: 'twitter:description', content: process.env.npm_package_description || '' }
     ],
     link: [
@@ -57,6 +57,10 @@ export default {
     ]
   },
 
+  router: {
+    middleware: 'auth'
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '~/assets/main.css'
@@ -64,7 +68,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/axios.js'
+    '~/plugins/axios.js',
+    '~/plugins/v-tooltip.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -85,7 +90,9 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://github.com/nuxt-community/community-modules/tree/master/packages/toast
-    '@nuxtjs/toast'
+    '@nuxtjs/toast',
+    // https://www.npmjs.com/package/cookie-universal-nuxt
+    'cookie-universal-nuxt',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

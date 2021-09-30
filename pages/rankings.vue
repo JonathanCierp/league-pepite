@@ -31,7 +31,7 @@ import { ref, onMounted } from '@nuxtjs/composition-api'
 export default {
   layout: 'default',
   head: {
-    title: 'Classement | League Pépite'
+    title: 'Classement | League PEPITE'
   },
   setup() {
     const isLoaded = ref(false)

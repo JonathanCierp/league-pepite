@@ -9,7 +9,7 @@
 export default {
   layout: 'default',
   head: {
-    title: 'Présentation | League Pépite'
+    title: 'Présentation | League PEPITE'
   }
 }
 </script>

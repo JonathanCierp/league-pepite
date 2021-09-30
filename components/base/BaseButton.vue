@@ -23,12 +23,12 @@ const button = {
   color: {
     orange: {
       base: 'bg-orange-500 hover:bg-orange-600 active:bg-orange-700',
-      text: 'hover:bg-orange-900 bg-transparent'
+      text: 'hover:bg-orange-200 bg-transparent'
     }
   },
   size: {
     sm: 'h-8 py-0 px-3 text-sm',
-    md: 'h-9 py-0 px-5'
+    md: 'h-9 py-0 px-4'
   }
 }
 

@@ -50,6 +50,9 @@ export default {
       },
       maxWidth: {
         22: '22rem'
+      },
+      height: {
+        'fit-content': 'fit-content'
       }
     }
   },

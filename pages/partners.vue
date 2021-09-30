@@ -22,7 +22,7 @@ import { ref, onMounted, useStore, computed } from '@nuxtjs/composition-api'
 export default {
   layout: 'default',
   head: {
-    title: 'Partenaire | League Pépite'
+    title: 'Partenaire | League PEPITE'
   },
   setup() {
     const store = useStore()

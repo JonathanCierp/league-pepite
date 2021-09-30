@@ -1,17 +1,12 @@
-/*
-export default function ({ $axios }, inject) {
-  // Create a custom axios instance
-  const api = $axios.create({
+export default ({ $axios, $cookies }, inject) => {
+  inject('axios', $axios.create({
+    baseURL: process.env.API_URL
+  }))
+
+  inject('axiosApi', $axios.create({
+    baseURL: process.env.API_URL,
     headers: {
-      common: {
-        Accept: 'text/plain, *!/!*'
-      }
+      Authorization: `Bearer ${$cookies.get('jwt')}`
     }
-  })
-
-  // Set baseURL to something different
-  api.setBaseURL('https://my_api.com')
-
-  // Inject to context as $api
-  inject('api', api)
-}*/
+  }))
+}
