@@ -61,7 +61,6 @@ export const actions = {
       await this.$axios.$get(`/auth/activate_account/${activationCode}`)
 
       this.$toast.success('Compte activé avec succès.', { duration: 6000 })
-      await this.$router.push('/')
     } catch(e) {
       this.$toast.error(e.response?.data.message || e.message, { duration: 6000 })
     }

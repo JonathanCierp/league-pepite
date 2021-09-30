@@ -20,10 +20,11 @@ export default {
     onMounted(async () => {
       if (!route.value.params.activationCode) {
         root.$toast.error("L'url d'activation du compte n'est pas valide.", { duration: 6000 })
-        router.push('/')
+      } else {
+        await store.dispatch('users/activateAccountUser', route.value.params.activationCode)
       }
 
-      await store.dispatch('users/activateAccountUser', route.value.params.activationCode)
+      router.push('/')
     })
 
     return {
