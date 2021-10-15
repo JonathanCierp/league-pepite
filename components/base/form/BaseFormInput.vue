@@ -67,7 +67,6 @@ export default {
     }
 
     const validate = (v = props.modelValue) => {
-
       input.value = useValidation(v, props.rules)
     }
 

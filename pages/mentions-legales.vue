@@ -42,7 +42,7 @@
       <p class="mb-4">L'utilisateur est informé que lors de ses visites sur le site leaguepepite.com, un cookie peut s'installer automatiquement ayant pour but l'authentification de l'utilisateur.</p>
       <p class="mb-4">Le cookie est un bloc de données qui ne permet pas d'identifier les utilisateurs mais sert à enregistrer des informations relatives à la navigation de celui-ci sur le site.</p>
     </section>
-    <section class="mb-20">
+    <section>
       <h2 class="text-left uppercase text-4xl mb-6">5. Propriété intellectuelle</h2>
       <p class="mb-4">La structure générale ainsi que les logiciels, textes, images animées ou non, son savoir-faire et tous les autres éléments composant la LEAGUE PEPITE sont la propriété exclusive de KATENGA.</p>
       <p class="mb-4">Toute représentation totale ou partielle de la LEAGUE PEPITE par quelque personne que ce soit, sans l'autorisation expresse de KATENGA est interdite et constituerait une contrefaçon sanctionnée par la loi française sur le copyright.</p>

@@ -1,7 +1,7 @@
 <template>
   <main v-if="isLoaded" class="container mx-auto px-4 lg:px-0 my-8 sm:flex sm:items-center sm:justify-center">
     <h1 class="hidden">LEAGUE PEPITE : Page rejoindre la league</h1>
-    <BaseCard class="text-center p-4 sm:px-10 sm:py-5 rounded-md w-full max-w-xl">
+    <BaseCard class="text-center p-4 sm:px-10 sm:py-5 rounded-md w-full max-w-2xl">
       <h2 class="text-2xl font-medium mb-14">Rejoindre la LEAGUE</h2>
       <form @submit.prevent="onSubmit">
         <BaseFormInput ref="firstnameEl" v-model="form.firstname" :rules="[requiredRule]" class="text-left my-3" label="Prénom"
@@ -26,6 +26,13 @@
         <BaseFormFile ref="cvEl" v-model="cv" :rules="[requiredRule]" class="text-left my-4" label="CV" required
                       required-star
         />
+        <BaseFormCheckbox ref="termsAccepEl" v-model="termsAccept" :rules="[requiredRule]" class="text-xs" required required-star>
+          <template #label>
+            J’accepte les <a href="/mentions-legales" target="_blank" class="underline text-orange-600">Conditions Générales</a> de la
+            LEAGUE PEPITE et je reconnais avoir été informé(e) et consentir au traitement de mes
+            données personnelles détaillées dans la Politique de confidentialité de la LEAGUE PEPITE <span class="text-red-500">*</span>.
+          </template>
+        </BaseFormCheckbox>
         <BaseButton block class="mt-4" type="submit">REJOINDRE</BaseButton>
       </form>
     </BaseCard>
@@ -56,6 +63,7 @@ export default {
     const passwordEl = ref(null)
     const passwordConfirmEl = ref(null)
     const cvEl = ref(null)
+    const termsAccepEl = ref(null)
     const form = ref({
       firstname: '',
       lastname: '',
@@ -65,6 +73,7 @@ export default {
       passwordConfirm: ''
     })
     const cv = ref(null)
+    const termsAccept = ref(false)
 
     onMounted(async () => {
       isLoaded.value = true
@@ -78,9 +87,10 @@ export default {
       passwordEl.value.validate()
       passwordConfirmEl.value.validate()
       cvEl.value.validate()
+      termsAccepEl.value.validate()
 
-      if(firstnameEl.value.input.isValid && lastnameEl.value.input.isValid && emailEl.value.input.isValid &&
-        usernameEl.value.input.isValid && cvEl.value.input.isValid && passwordEl.value.input.isValid && passwordConfirmEl.value.input.isValid) {
+      if(firstnameEl.value.input.isValid && lastnameEl.value.input.isValid && emailEl.value.input.isValid && usernameEl.value.input.isValid
+        && cvEl.value.input.isValid && passwordEl.value.input.isValid && passwordConfirmEl.value.input.isValid && termsAccepEl.value.input.isValid) {
         isLoadingButton.value = true
         try {
           await store.dispatch('users/signupUser', { form: form.value, cv: cv.value })
@@ -101,8 +111,10 @@ export default {
       passwordEl,
       passwordConfirmEl,
       cvEl,
+      termsAccepEl,
       form,
       cv,
+      termsAccept,
       onSubmit
     }
   }

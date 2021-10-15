@@ -1,7 +1,7 @@
 <template>
-  <main v-if="isLoaded" class="container mx-auto px-4 lg:px-0 my-8 sm:mt-24 sm:flex sm:items-center sm:justify-center">
+  <main v-if="isLoaded" class="container mx-auto px-4 lg:px-0 my-8 sm:flex sm:items-center sm:justify-center">
     <h1 class="hidden">LEAGUE PEPITE : Page se connecter</h1>
-    <BaseCard class="text-center p-4 sm:p-8 rounded-md w-full max-w-xl">
+    <BaseCard class="text-center p-4 sm:p-8 rounded-md w-full max-w-2xl">
       <h2 class="text-2xl font-medium mb-14">Se connecter</h2>
       <form @submit.prevent="onSubmit">
         <BaseFormInput ref="usernameEl" v-model="form.username" :rules="[requiredRule]" class="text-left my-3" label="Email ou Identifiant"
