@@ -40,6 +40,10 @@ body {
   right: 15px !important;
 }
 
+.v-popover .trigger {
+  width: 100%;
+}
+
 .tooltip {
   display: block !important;
   z-index: 10000;

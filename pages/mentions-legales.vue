@@ -7,11 +7,11 @@
       <p class="mb-4">La LEAGUE PEPITE est éditée par:</p>
       <p class="mb-4">KATENGA SAS, une société de droit français dont le siège social est situé au 294 rue du cygne 45430 Mardie France. RCS n° 884487331.</p>
       <p class="mb-4 flex items-center">
-        <base-icon name="check-square" class="text-orange-600 mr-2" />
+        <BaseIcon name="check-square" class="text-orange-600 mr-2" />
         Adresse de courrier électronique: organisation@leaguepepite.com
       </p>
       <p class="mb-4 flex items-center">
-        <base-icon name="check-square" class="text-orange-600 mr-2" />
+        <BaseIcon name="check-square" class="text-orange-600 mr-2" />
         Directeur de la publication: Paul MARTIN-DOUYAT
       </p>
       <p class="mb-4">L’hébergeur est : OVH – 2 rue Kellermann 59100 Roubaix 1007 https://www.ovh.com Téléphone: +33 (0)8 99 70 17 61.</p>

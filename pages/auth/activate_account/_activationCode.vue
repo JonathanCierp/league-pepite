@@ -26,10 +26,6 @@ export default {
 
       router.push('/')
     })
-
-    return {
-
-    }
   }
 }
 </script>

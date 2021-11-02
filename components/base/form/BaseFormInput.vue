@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full">
+  <div class="w-full text-sm">
     <label v-if="label" class="font-medium inline-block mb-2" v-html="fullLabel" />
     <div class="flex flex-col">
       <input

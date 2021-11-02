@@ -1,7 +1,9 @@
 export const state = () => ({
   isLogged: false,
   user: {},
-  token: ''
+  token: '',
+  skills: '',
+  softSkills: ''
 })
 
 export const mutations = {
@@ -13,6 +15,12 @@ export const mutations = {
   },
   setToken(state, token) {
     state.token = token
+  },
+  setSkills(state, skills) {
+    state.skills = skills
+  },
+  setSoftSkills(state, softSkills) {
+    state.softSkills = softSkills
   }
 }
 
@@ -33,7 +41,7 @@ export const actions = {
   async signinUser({ commit, $cookies }, form) {
     try {
       const { data } = await this.$axios.$post('/auth/signin', form)
-      this.$toast.success('Connecté avec succès...', { duration: 6000 })
+      this.$toast.success('Connecté avec succès...', { duration: 1000 })
 
       commit('setIsLogged', true)
       commit('setUser', data.user)
@@ -61,6 +69,24 @@ export const actions = {
       await this.$axios.$get(`/auth/activate_account/${activationCode}`)
 
       this.$toast.success('Compte activé avec succès.', { duration: 6000 })
+    } catch(e) {
+      this.$toast.error(e.response?.data.message || e.message, { duration: 6000 })
+    }
+  },
+  async getSkills({ commit }) {
+    try {
+      const { data } = await this.$axios.$get('/skills')
+
+      commit('setSkills', data)
+    } catch(e) {
+      this.$toast.error(e.response?.data.message || e.message, { duration: 6000 })
+    }
+  },
+  async getSoftSkills({ commit }) {
+    try {
+      const { data } = await this.$axios.$get('/soft_skills')
+
+      commit('setSoftSkills', data)
     } catch(e) {
       this.$toast.error(e.response?.data.message || e.message, { duration: 6000 })
     }

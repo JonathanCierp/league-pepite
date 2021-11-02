@@ -1,7 +1,7 @@
 import jwt_decode from 'jwt-decode'
 
 const forbidenConnectedRoutes = ['auth-signin', 'auth-signup']
-const forbidenNoConnectedRoutes = []
+const forbidenNoConnectedRoutes = ['profile-cvs', 'profile-cvs-create']
 
 export const checkAuth = async (store, axiosApi, cookies) => {
   if (!cookies.get('jwt')) {
@@ -14,18 +14,24 @@ export const checkAuth = async (store, axiosApi, cookies) => {
     return false
   }
 
-  if (process.client) {
-    const { data } = await axiosApi.get('/auth/me', {
-      headers: {
-        Authorization: `Bearer ${cookies.get('jwt')}`
-      }
-    })
-
-    store.commit('users/setIsLogged', true)
-    store.commit('users/setUser', data.data)
+  if (!process.client) {
+    return true
   }
 
-  return true
+  const { data } = await axiosApi.get('/auth/me', {
+    headers: {
+      Authorization: `Bearer ${cookies.get('jwt')}`
+    }
+  })
+
+  if (data.data || data.data.length) {
+    store.commit('users/setIsLogged', true)
+    store.commit('users/setUser', data.data)
+
+    return true
+  }
+
+  return false
 }
 
 export const auth = async ({ store, route, redirect, $axiosApi, $cookies }) => {
@@ -33,6 +39,7 @@ export const auth = async ({ store, route, redirect, $axiosApi, $cookies }) => {
   const isForbidenNoConnected = forbidenNoConnectedRoutes.includes(route.name)
   const isForbidenConnected = forbidenConnectedRoutes.includes(route.name)
 
+  console.log(isAuthenticated)
   if (isAuthenticated) {
     if (isForbidenConnected) {
       redirect('/')

@@ -23,11 +23,15 @@
             <BaseButton class="mt-4 lg:mt-0" to="/auth/signup">Rejoindre la league</BaseButton>
             <BaseButton class="mt-4 lg:mt-0" to="/auth/signin" text>Se connecter</BaseButton>
           </div>
-          <v-popover v-else offset="8">
+          <v-popover v-else trigger="hover">
             <span class="cursor-pointer hover:text-orange-500">{{ $store.state.users.user.username }}</span>
 
             <template slot="popover">
-              <ul class="tooltip-content">
+              <ul>
+                <nuxt-link tag="li" to="/profile/cvs" class="flex items-center px-8 py-4 cursor-pointer hover:text-orange-500">
+                  <base-icon class="mr-4" name="file-text" />
+                  Mes CVs
+                </nuxt-link>
                 <li class="flex items-center px-8 py-4 cursor-pointer hover:text-orange-500" @click="onLogout">
                   <base-icon class="mr-4" name="log-out" />
                   Se déconnecter

@@ -19,6 +19,16 @@ const dynamicSort = (property, sortType = 'ASC') => {
   }
 }
 
+const simpleSort = (sortType = 'ASC') => {
+  let sortOrder = sortType === 'ASC' ? 1 : -1
+
+  return function (a, b) {
+    let result = a < b ? -1 : a > b ? 1 : 0
+
+    return result * sortOrder
+  }
+}
+
 const groupBy = (xs, key) => {
   return xs.reduce(function (rv, x) {
     ;(rv[x[key]] = rv[x[key]] || []).push(x)
@@ -26,4 +36,4 @@ const groupBy = (xs, key) => {
   }, {})
 }
 
-export { generateRandomId, dynamicSort, groupBy }
+export { generateRandomId, dynamicSort, simpleSort,  groupBy }
