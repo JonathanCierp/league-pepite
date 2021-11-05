@@ -64,3 +64,7 @@ body {
   border-color: var(--color-background-lighter);
   z-index: 1;
 }
+
+.mx-datepicker {
+  width: inherit !important;
+}

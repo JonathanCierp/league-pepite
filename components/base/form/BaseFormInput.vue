@@ -7,6 +7,7 @@
         :class="[!input.isValid ? 'border-red-500' : 'border-border focus:border-orange-500']"
         :type="type"
         :value="modelValue"
+        :readonly="readonly"
         @input="onChangeValue"
         @blur="onChangeValue"
       />
@@ -47,6 +48,10 @@ export default {
     rules: {
       type: Array,
       default: () => []
+    },
+    readonly: {
+      type: Boolean,
+      default: false
     }
   },
   model: {

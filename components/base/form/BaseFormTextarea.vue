@@ -5,7 +5,7 @@
       :placeholder="placeholder"
       :value="modelValue"
       class="bg-background-lighter border-2 p-2 rounded-sm border-border focus:border-orange-500"
-      rows="4"
+      :rows="rows"
       @input="onInput"
     ></textarea>
   </div>
@@ -27,6 +27,10 @@ export default {
     placeholder: {
       type: String,
       default: ''
+    },
+    rows: {
+      type: [String, Number],
+      default: '4'
     }
   },
   model: {

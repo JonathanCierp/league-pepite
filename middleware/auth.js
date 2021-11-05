@@ -24,11 +24,11 @@ export const checkAuth = async (store, axiosApi, cookies) => {
     }
   })
 
-  if (data.data || data.data.length) {
-    store.commit('users/setIsLogged', true)
-    store.commit('users/setUser', data.data)
+  if (data.data && (data.data.length || Object.entries(data.data).length)) {
+    store.commit("users/setIsLogged", true);
+    store.commit("users/setUser", data.data);
 
-    return true
+    return true;
   }
 
   return false
@@ -39,7 +39,6 @@ export const auth = async ({ store, route, redirect, $axiosApi, $cookies }) => {
   const isForbidenNoConnected = forbidenNoConnectedRoutes.includes(route.name)
   const isForbidenConnected = forbidenConnectedRoutes.includes(route.name)
 
-  console.log(isAuthenticated)
   if (isAuthenticated) {
     if (isForbidenConnected) {
       redirect('/')

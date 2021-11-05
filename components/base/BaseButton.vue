@@ -23,7 +23,18 @@ const button = {
   color: {
     orange: {
       base: 'bg-orange-500 hover:bg-orange-600 active:bg-orange-700',
-      text: 'hover:bg-orange-200 bg-transparent'
+      text: 'hover:bg-orange-200 bg-transparent',
+      icon: 'text-orange-500 hover:bg-orange-200 bg-transparent'
+    },
+    red: {
+      base: 'bg-red-500 hover:bg-red-600 active:bg-red-700',
+      text: 'hover:bg-red-200 bg-transparent',
+      icon: 'text-red-500 hover:bg-red-200 bg-transparent'
+    },
+    green: {
+      base: 'text-white bg-green-500 hover:bg-green-600 active:bg-green-700',
+      text: 'hover:bg-green-200 bg-transparent',
+      icon: 'text-green-500 hover:bg-green-200 bg-transparent'
     }
   },
   size: {
@@ -85,7 +96,7 @@ export default {
   },
   setup(props, { emit }) {
     const colorClass = computed(() => {
-      if (props.icon) return
+      if (props.icon) return button.color[props.color].icon
       else if (props.text) return button.color[props.color].text
       else return button.color[props.color].base
     })

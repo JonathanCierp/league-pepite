@@ -30,7 +30,7 @@
               <ul>
                 <nuxt-link tag="li" to="/profile/cvs" class="flex items-center px-8 py-4 cursor-pointer hover:text-orange-500">
                   <base-icon class="mr-4" name="file-text" />
-                  Mes CVs
+                  Mes fiches
                 </nuxt-link>
                 <li class="flex items-center px-8 py-4 cursor-pointer hover:text-orange-500" @click="onLogout">
                   <base-icon class="mr-4" name="log-out" />

@@ -20,7 +20,7 @@
                 :key="v"
                 class="line-clamp-1 relative overflow-hidden flex items-center bg-orange-200 mr-2 my-0.5 rounded-full px-3 py-1 pr-8 text-sm"
               >
-                {{ options.find((option) => option[itemKey] === v)[itemValue] }}
+                {{ options.find((option) => option[itemKey] === v) ? options.find((option) => option[itemKey] === v)[itemValue] : '' }}
                 <span
                   class="absolute cursor-pointer top-1/2 transform -translate-y-1/2 right-2.5"
                   @click="onDeleteValue(options.find((option) => option[itemKey] === v))"

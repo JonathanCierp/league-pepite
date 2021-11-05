@@ -36,4 +36,16 @@ const groupBy = (xs, key) => {
   }, {})
 }
 
-export { generateRandomId, dynamicSort, simpleSort,  groupBy }
+const toCamelCase = (text) => {
+  return text.replace(/-\w/g, clearAndUpper);
+}
+
+const toPascalCase = (text) => {
+  return text.replace(/(^\w|-\w)/g, clearAndUpper);
+}
+
+const clearAndUpper = (text) => {
+  return text.replace(/-/, "").toUpperCase();
+}
+
+export { generateRandomId, dynamicSort, simpleSort, groupBy, toCamelCase, toPascalCase, clearAndUpper }
