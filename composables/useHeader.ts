@@ -2,7 +2,7 @@ export default function () {
   const menus = ref([
     {
       to: '/',
-      label: 'Présentaion'
+      label: 'Présentation'
     },
     {
       to: '/rankings',
@@ -21,8 +21,13 @@ export default function () {
       label: 'La League'
     }
   ])
+  const mobileMenuIsOpen = useState('mobileMenuIsOpen', () => false)
+
+  const toggleMobileMenu = () => mobileMenuIsOpen.value = !mobileMenuIsOpen.value
 
   return {
-    menus
+    menus,
+    mobileMenuIsOpen,
+    toggleMobileMenu
   }
 }
