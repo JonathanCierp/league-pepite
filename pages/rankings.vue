@@ -27,24 +27,15 @@
   </main>
 </template>
 
-<script>
-export default {
-  head: {
-    title: 'Classement | League PEPITE'
-  },
-  setup() {
-    const { countDownDate, countdown } = useCountdown()
-    const isLoaded = ref(false)
+<script setup>
+useMeta({
+  title: 'Classement | League PEPITE'
+})
 
-    onMounted(() => {
-      setTimeout(() => isLoaded.value = true, 1000)
-    })
+const { countDownDate, countdown } = useCountdown()
+const isLoaded = ref(false)
 
-    return {
-      countDownDate,
-      countdown,
-      isLoaded
-    }
-  }
-}
+onMounted(() => {
+  setTimeout(() => isLoaded.value = true, 1000)
+})
 </script>

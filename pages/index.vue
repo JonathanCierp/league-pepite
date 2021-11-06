@@ -5,10 +5,8 @@
   </main>
 </template>
 
-<script>
-export default {
-  head: {
-    title: 'Présentation | League PEPITE'
-  }
-}
+<script setup>
+useMeta({
+  title: 'Présentation | League PEPITE'
+})
 </script>
