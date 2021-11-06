@@ -10,6 +10,16 @@
 </template>
 
 <script setup>
+const button = {
+  orange: {
+    base: 'bg-orange-500 hover:bg-orange-600 active:bg-orange-700',
+    text: 'hover:bg-orange-200 bg-transparent'
+  },
+  red: {
+    base: 'bg-red-500 hover:bg-red-600 active:bg-red-700',
+    text: 'hover:bg-red-200 bg-transparent'
+  }
+}
 const props = defineProps({
   to: {
     type: String,
@@ -35,8 +45,8 @@ const props = defineProps({
 
 const tagValue = computed(() => props.to ? 'NuxtLink' : 'button')
 const colorClass = computed(() => {
-  let color = `bg-${props.color}-500 hover:bg-${props.color}-600 active:bg-${props.color}-700`
-  if (props.text) color = `hover:bg-${props.color}-200 bg-transparent`
+  let color = button[props.color].base
+  if (props.text) color = button[props.color].text
 
   return color
 })
