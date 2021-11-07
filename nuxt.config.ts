@@ -7,9 +7,16 @@ export default defineNuxtConfig({
     ]
   },
   css: [
-    '@/assets/css/tailwind.css',
-    '@/assets/css/main.css',
+    '~/assets/css/tailwind.css',
+    '~/assets/css/main.css',
   ],
+  publicRuntimeConfig: {
+    BASE_API_URL: process.env.BASE_API_URL,
+    API_URL: process.env.API_URL,
+    HOST: process.env.HOST,
+    PORT: process.env.PORT,
+    JWT_ISS: process.env.JWT_ISS
+  },
   build: {
     postcss: {
       postcssOptions: require("./postcss.config.js")

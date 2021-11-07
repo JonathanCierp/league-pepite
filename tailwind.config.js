@@ -52,6 +52,18 @@ module.exports = {
           800: 'var(--color-orange-800)',
           900: 'var(--color-orange-900)'
         }
+      },
+      boxShadow: {
+        DEFAULT: '0 10px 15px -3px var(--shadow), 0 4px 6px -2px var(--shadow)'
+      },
+      rotate: {
+        226: '226deg'
+      },
+      maxWidth: {
+        22: '22rem'
+      },
+      height: {
+        'fit-content': 'fit-content'
       }
     }
   },

@@ -1,4 +1,4 @@
-export default function () {
+export default () => {
   const countDownDate = new Date('01/02/2022')
   const countdown = ref({
     isTime: false,

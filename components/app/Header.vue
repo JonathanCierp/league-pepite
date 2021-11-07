@@ -4,7 +4,7 @@
     :class="[mobileMenuIsOpen ? '' : 'h-16']"
   >
     <div class="flex items-center mt-5 lg:mt-0">
-      <img class="w-40 xl:w-52" src="@/assets/img/league-pepite-logo-horizontal.png">
+      <img class="w-40 xl:w-52" src="~/assets/img/league-pepite-logo-horizontal.png">
     </div>
     <nav
       class="lg:flex lg:flex-row items-center flex-1 h-full gap-2 font-medium uppercase lg:text-xs xl:text-sm lg:ml-6 xl:ml-12"

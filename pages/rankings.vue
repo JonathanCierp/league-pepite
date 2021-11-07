@@ -35,7 +35,5 @@ useMeta({
 const { countDownDate, countdown } = useCountdown()
 const isLoaded = ref(false)
 
-onMounted(() => {
-  setTimeout(() => isLoaded.value = true, 1000)
-})
+setTimeout(() => isLoaded.value = true, 1000)
 </script>
