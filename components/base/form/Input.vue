@@ -1,8 +1,9 @@
 <template>
-  <div class="w-full text-sm">
-    <label v-if="label" class="font-medium inline-block mb-2" v-html="fullLabel" />
+  <div class="w-full text-sm text-left">
+    <label v-if="label" :for="id" class="font-medium inline-block mb-2" v-html="fullLabel" />
     <div class="flex flex-col">
       <input
+        :id="id"
         class="bg-background-lighter border-2 p-2 rounded-sm"
         :class="[!input.isValid ? 'border-red-500' : 'border-border focus:border-orange-500']"
         :type="type"
@@ -20,6 +21,8 @@
 </template>
 
 <script setup>
+import { generateRandomId } from '~/utils'
+
 const emit = defineEmits(['update:modelValue'])
 const props = defineProps({
   modelValue: {
@@ -54,6 +57,8 @@ const props = defineProps({
 
 const input = ref(useValidation(props.modelValue, props.rules, false))
 const isValid = ref(input.value.isValid)
+
+const id = computed(() => `base-form-input-${generateRandomId()}`)
 const fullLabel = computed(() => (props.requiredStar ? `${props.label} <span class="text-red-500">*</span>` : props.label))
 
 const onChangeValue = (e) => {

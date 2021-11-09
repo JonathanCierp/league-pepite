@@ -12,13 +12,23 @@ export default () => {
   const isLogged = useState('isLogged', () => false)
   const user = useState<User>('user')
   const isLoadingButton = ref(false)
-  const signinForm = ref({
+  const authForm = ref({
+    firstname: '',
+    lastname: '',
+    email: '',
     username: '',
-    password: ''
+    password: '',
+    passwordConfirm: '',
+    termsAccept: false
   })
+  const firstnameEl = ref()
+  const lastnameEl = ref()
+  const emailEl = ref()
   const usernameEl = ref()
   const passwordEl = ref()
-  
+  const passwordConfirmEl = ref()
+  const termsAccepEl = ref()
+
   const onSignin = async () => {
     usernameEl.value?.validate()
     passwordEl.value?.validate()
@@ -26,8 +36,8 @@ export default () => {
     if(usernameEl.value.isValid && passwordEl.value.isValid) {
       isLoadingButton.value = true
       try {
-        const { data }: BaseAuthResponse  = await $fetch('/auth/signin', { method: 'POST', body: signinForm.value, baseURL: API_URL })
-        notification?.success('Connecté avec succès...')
+        const { data, message }: BaseAuthResponse  = await $fetch('/auth/signin', { method: 'POST', body: authForm.value, baseURL: API_URL })
+        notification?.success(message)
 
         isLogged.value = true
         user.value = data.user
@@ -42,17 +52,43 @@ export default () => {
     }
   }
 
-  const onSignup = () => {
-    console.log('signup')
+  const onSignup = async () => {
+    firstnameEl.value?.validate()
+    lastnameEl.value?.validate()
+    emailEl.value?.validate()
+    usernameEl.value?.validate()
+    passwordEl.value?.validate()
+    passwordConfirmEl.value?.validate()
+    termsAccepEl.value?.validate()
+
+    if(firstnameEl.value.isValid && lastnameEl.value.isValid && emailEl.value.isValid && usernameEl.value.isValid
+      && passwordEl.value.isValid && passwordConfirmEl.value.isValid && termsAccepEl.value.isValid) {
+      isLoadingButton.value = true
+      try {
+        const { data, message }: BaseAuthResponse  = await $fetch('/auth/signup', { method: 'POST', body: authForm.value, baseURL: API_URL })
+        notification?.success(message)
+
+        // TODO : Change for useRouter later
+        //document.location.href = '/'
+      } catch (e) {
+        notification?.error(e.response?.data.message || "Erreur lors de l'éxécution de la requête.")
+        isLoadingButton.value = false
+      }
+    }
   }
 
   return {
     isLogged,
     user,
     isLoadingButton,
-    signinForm,
+    authForm,
+    firstnameEl,
+    lastnameEl,
+    emailEl,
     usernameEl,
     passwordEl,
+    passwordConfirmEl,
+    termsAccepEl,
     onSignin,
     onSignup
   }
