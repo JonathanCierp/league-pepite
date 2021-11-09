@@ -19,8 +19,10 @@
         {{ menu.label }}
       </NuxtLink>
       <BaseSpacer />
-      <BaseButton to="/auth/signup" class="mr-2">Rejoindre la League</BaseButton>
-      <BaseButton to="/auth/signin" text>Se connecter</BaseButton>
+      <template v-if="!isLogged">
+        <BaseButton to="/auth/signup" class="mr-2">Rejoindre la League</BaseButton>
+        <BaseButton to="/auth/signin" text>Se connecter</BaseButton>
+      </template>
     </nav>
     <AppBurgerMenu />
   </header>
@@ -28,4 +30,5 @@
 
 <script setup>
 const { menus, mobileMenuIsOpen } = useHeader()
+const { isLogged } = useAuth()
 </script>

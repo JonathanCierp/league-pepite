@@ -4,8 +4,10 @@
     class="inline-flex items-center justify-center cursor-pointer font-medium transition-colors duration-150 border-sm focus:outline-none"
     :class="[colorClass, sizeClass, blockClass]"
     :to="to ? to : ''"
+    :disabled="loading"
   >
-    <slot />
+    <BaseProgressCircular v-if="loading" color="#fff" size="20" indeterminate />
+    <slot v-else />
   </component>
 </template>
 
@@ -34,6 +36,10 @@ const props = defineProps({
     default: 'orange'
   },
   block: {
+    type: Boolean,
+    default: false
+  },
+  loading: {
     type: Boolean,
     default: false
   },
