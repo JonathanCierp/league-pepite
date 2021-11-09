@@ -24,7 +24,7 @@
         </BaseRow>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-4">
           <BaseFormInput ref="passwordEl" v-model="authForm.password" :rules="[requiredRule]" label="Mot de passe"
-                         required required-star
+                         required required-star type="password"
           />
           <BaseFormInput ref="passwordConfirmEl" v-model="authForm.passwordConfirm" :rules="[requiredRule]" label="Confirmation de mot de passe"
                          required required-star type="password"
@@ -43,6 +43,7 @@
         </BaseRow>
         <BaseButton block class="mt-4" type="submit" :loading="isLoadingButton">REJOINDRE</BaseButton>
       </form>
+<!--      {{$route}}-->
     </BaseCard>
   </main>
 </template>

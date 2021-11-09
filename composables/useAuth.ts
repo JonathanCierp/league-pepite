@@ -13,13 +13,13 @@ export default () => {
   const user = useState<User>('user')
   const isLoadingButton = ref(false)
   const authForm = ref({
-    firstname: '',
-    lastname: '',
-    email: '',
-    username: '',
-    password: '',
-    passwordConfirm: '',
-    termsAccept: false
+    firstname: 'a',
+    lastname: 'a',
+    email: 'azerty24041997@gmail.com',
+    username: 'a',
+    password: 'a',
+    passwordConfirm: 'a',
+    termsAccept: true
   })
   const firstnameEl = ref()
   const lastnameEl = ref()

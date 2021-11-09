@@ -1,17 +1,17 @@
 <template>
   <div class="flex flex-col text-sm">
     <div class="flex items-center">
-      <input :id="id" class="hidden" type="checkbox" />
+      <input :id="id" class="hidden" type="checkbox" :disabled="disabled" :checked="checkedValue" />
       <div>
         <div
           class="flex items-center justify-center cursor-pointer border-2 w-5 h-5 transition-colors duration-100"
-          :class="[checkedParentClass]"
+          :class="[checkedParentClass, disabledClass]"
           @click="onClick"
         >
           <div class="transition-colors duration-100" :class="[checkedInnerClass]" />
         </div>
       </div>
-      <label class="ml-2 mt-0.5 font-medium cursor-pointer" :for="id" @click="onClick">
+      <label class="ml-2 mt-0.5 font-medium cursor-pointer" :for="id" :class="[disabledClassLabel]" @click="onClick">
         <slot name="label">
           <span v-html="fullLabel" />
         </slot>
@@ -70,27 +70,54 @@ const emit = defineEmits(['update:modelValue'])
 const input = ref(useValidation(props.modelValue, props.rules, false))
 const isValid = ref(input.value.isValid)
 const checked = ref(false)
+const checkedValue = ref(props.modelValue)
 
 const id = computed(() => `base-form-checkbox-${generateRandomId()}`)
-const checkedParentClass = computed(() => (checked.value ? 'border-orange-500 bg-orange-500' : 'border-border bg-background-lighter'))
+const checkedParentClass = computed(() => (checked.value ? 'border-orange-500 bg-orange-500 border-3' : 'border-border border-2'))
 const checkedInnerClass = computed(() => (checked.value ? 'bg-background-lighter w-3 h-3' : ''))
-const fullLabel = computed(() => (props.requiredStar ? `${props.label} <span class="text-red-500">*</span>` : props.label))
+const disabledClass = computed(() => (props.disabled ? 'bg-gray-100 cursor-not-allowed' : 'bg-background-lighter'))
+const disabledClassLabel = computed(() => (props.disabled ? 'cursor-not-allowed' : 'cursor-pointer'))
 
-const onClick = (e) => {
-  if (e.target.tagName !== 'A') {
-    let value = !props.modelValue
-    checked.value = value
-    if (props.trueValue !== '' && props.falseValue !== '') {
-      value = props.modelValue === props.trueValue ? props.falseValue : props.trueValue
-      checked.value = value === props.trueValue
+watch(
+  () => props.modelValue,
+  (newVal) => {
+    checkedValue.value = newVal
+    onStart()
+  }
+)
+
+const onStart = () => {
+  if (props.returnArray) {
+    const valueArr = Array.isArray(checkedValue.value) ? checkedValue.value : []
+    checked.value = !!valueArr.find((v) => v === props.trueValue)
+  } else {
+    checked.value = checkedValue.value
+  }
+}
+const onClick = () => {
+  if (!props.disabled) {
+    checked.value = !checked.value
+
+    if (props.returnArray) {
+      const valueArr = Array.isArray(checkedValue.value) ? checkedValue.value : []
+      if (checked.value) {
+        emit('update:modelValue', [...valueArr, props.trueValue])
+      } else {
+        emit('update:modelValue', [...valueArr.filter((v) => v !== props.trueValue)])
+      }
+    } else {
+      emit('update:modelValue', checked.value ? props.trueValue : props.falseValue)
     }
-    if (props.required) validate(value)
-    emit('update:modelValue', value)
+    if (props.required) validate(checked.value)
   }
 }
 const validate = (v = props.modelValue) => {
   input.value = useValidation(v, props.rules)
 }
+
+onMounted(() => {
+  onStart()
+})
 
 defineExpose({
   validate,
