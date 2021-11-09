@@ -5,3 +5,7 @@
     <AppFooter />
   </div>
 </template>
+
+<script setup>
+useState('config', () => useRuntimeConfig())
+</script>

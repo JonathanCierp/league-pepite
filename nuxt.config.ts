@@ -9,6 +9,7 @@ export default defineNuxtConfig({
   css: [
     '~/assets/css/tailwind.css',
     '~/assets/css/main.css',
+    '~/assets/css/animation.css',
   ],
   publicRuntimeConfig: {
     BASE_API_URL: process.env.BASE_API_URL,
