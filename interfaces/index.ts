@@ -1,8 +1,13 @@
-import { UserAuth } from '~/interfaces/User';
+import { User, UserAuth } from '~/interfaces/User';
 
 interface BaseAuthResponse {
   data: UserAuth
   message: string
 }
 
-export { BaseAuthResponse }
+interface BaseUserResponse {
+  data: User
+  message: string
+}
+
+export { BaseAuthResponse, BaseUserResponse };
