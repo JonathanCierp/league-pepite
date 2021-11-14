@@ -54,24 +54,4 @@
   </main>
 </template>
 
-<script>
-import { ref, onMounted } from '@nuxtjs/composition-api'
-
-export default {
-  layout: 'default',
-  head: {
-    title: 'Mentions Légales | League PEPITE'
-  },
-  setup() {
-    const isLoaded = ref(false)
-
-    onMounted(async () => {
-      isLoaded.value = true
-    })
-
-    return {
-      isLoaded
-    }
-  }
-}
-</script>
+</template>

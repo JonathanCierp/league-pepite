@@ -1,6 +1,8 @@
 <template>
   <main v-if="isLoaded" class="container mx-auto my-4 sm:my-10 px-4 sm:px-0 flex flex-wrap">
-    <h1 class="text-3xl sm:text-5xl font-medium text-center w-full sm:mt-10 sm:mb-20 mb-10">Début du championnat le {{ new Date('01/02/2022').toLocaleDateString() }}</h1>
+    <h1 class="text-3xl sm:text-5xl font-medium text-center w-full sm:mt-10 sm:mb-20 mb-10">
+      Début du championnat le {{ countDownDate.toLocaleDateString() }}
+    </h1>
     <div class="grid gap-4 grid-cols-2 sm:grid-cols-4 mx-auto">
       <BaseCard class="text-center py-10 rounded-md w-36">
         <p class="text-2xl sm:text-3xl font-medium">{{ countdown.days }}</p>
@@ -25,51 +27,13 @@
   </main>
 </template>
 
-<script>
-import { ref, onMounted } from '@nuxtjs/composition-api'
+<script setup>
+useMeta({
+  title: 'Classement | League PEPITE'
+})
 
-export default {
-  layout: 'default',
-  head: {
-    title: 'Classement | League PEPITE'
-  },
-  setup() {
-    const isLoaded = ref(false)
-    const countdown = ref({
-      isTime: false,
-      days: 0,
-      hours: 0,
-      minutes: 0,
-      seconds: 0
-    })
+const { countDownDate, countdown } = useCountdown()
+const isLoaded = ref(false)
 
-    onMounted(async () => {
-      const countDownDate = new Date('01/02/2022').getTime();
-      const interval = setInterval(() => {
-        const now = new Date().getTime();
-        const distance = countDownDate - now;
-
-        countdown.value = {
-          days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((distance % (1000 * 60)) / 1000)
-        }
-
-        if (distance < 0) {
-          clearInterval(interval);
-          countdown.value.isTime = true
-        }
-      }, 1000)
-      setTimeout(() => {
-        isLoaded.value = true
-      }, 1000)
-    })
-
-    return {
-      isLoaded,
-      countdown
-    }
-  }
-}
+setTimeout(() => isLoaded.value = true, 1000)
 </script>

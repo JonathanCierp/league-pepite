@@ -1,57 +1,45 @@
-<template>
+<template>  
   <main v-if="isLoaded" class="container mx-auto my-4 lg:my-10 px-4 lg:px-0 flex flex-col">
-    <BaseRow>
-      <h1 class="uppercase text-5xl font-medium mb-12">Créer ma fiche</h1>
-      <BaseButton @click="a">
+    <BaseRow class="items-center mb-12">
+      <h1 class="uppercase text-5xl font-medium">Créer ma fiche</h1>
+      <BaseSpacer />
+      <BaseButton tag="a" href="/profile/cvs/preview" target="_blank" @click="openPreview" class="mr-4" :loading="isLoadingButton">
+        <BaseIcon class="mr-4" name="eye" />
         Aperçu
       </BaseButton>
-    </BaseRow>
+      <BaseButton @click="saveCv" :loading="isLoadingButton">
+        <BaseIcon class="mr-4" name="plus-circle" />
+        Enregistrer la fiche
+      </BaseButton>
+    </BaseRow>  
     <PageCvsCreateForm />
+    <BaseRow class="items-center mt-12">
+      <BaseSpacer />
+      <BaseButton @click="saveCv" :loading="isLoadingButton">
+        <BaseIcon class="mr-4" name="plus-circle" />
+        Enregistrer la fiche
+      </BaseButton>
+    </BaseRow>
   </main>
 </template>
 
-<script>
-import { onMounted, ref, useStore } from '@nuxtjs/composition-api'
-import useCv from '@/composables/useCv'
+<script setup lang="ts">
+import { BaseAuthResponse } from '~/interfaces'
 
-export default {
-  layout: 'default',
-  head: {
-    title: 'Créer un CV | League PEPITE'
-  },
-  setup() {
-    const store = useStore()
-    const isLoaded = ref(false)
-    const { jobOptions, baseEducation, baseExperience, cvForm } = useCv()
+const { isLoadingButton, saveCv, openPreview, getSkills, getSoftSkills } = useCv()
+const cvForm = useState('cvForm')
+const skills = useState('skills', () => [])
+const softSkills = useState('softSkills', () => [])
+const isLoaded = ref(false)
 
-    onMounted(async () => {
-      await store.dispatch('users/getSkills')
-      await store.dispatch('users/getSoftSkills')
-      store.commit('users/setCvForm', {
-        firstname: store.state.users.user.firstname,
-        lastname: store.state.users.user.lastname,
-        job: jobOptions[0].key,
-        email: store.state.users.user.email,
-        phone: '',
-        city: '',
-        informations: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-        skills: [4],
-        softSkills: [4, 5],
-        educations: [ { ...baseEducation } ],
-        experiences: [ { ...baseExperience } ]
-      })
-      isLoaded.value = true
-    })
+onMounted(async () => {
+  try {
+    const skillsTemp: BaseAuthResponse = await getSkills()
+    const softSkillsTemp: BaseAuthResponse = await getSoftSkills()
 
-    const a = () => {
-    
-    }
-
-    return {
-      isLoaded,
-      cvForm,
-      a
-    }
-  }
-}
+    skills.value = skillsTemp.data
+    softSkills.value = softSkillsTemp.data
+    isLoaded.value = true
+  } catch(e) {}
+})
 </script>

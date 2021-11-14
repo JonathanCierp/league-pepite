@@ -1,9 +1,9 @@
 <template>
-  <main v-if="isLoaded" class="container mx-auto my-4 lg:my-10 px-4 lg:px-0 flex flex-col items-center">
-   <h4 class="text-2xl font-medium sm:w-2/3 mb-6">
-     La LEAGUE PEPITE est un championnat par équipe mis en place chaque année, qui regroupe, au niveau national,
-     des talents en cours d’études dans des écoles d’enseignements supérieures.
-   </h4>
+  <main class="container mx-auto my-4 lg:my-10 px-4 lg:px-0 flex flex-col items-center">
+    <h4 class="text-2xl font-medium sm:w-2/3 mb-6">
+      La LEAGUE PEPITE est un championnat par équipe mis en place chaque année, qui regroupe, au niveau national,
+      des talents en cours d’études dans des écoles d’enseignements supérieures.
+    </h4>
     <h1 class="text-center text-lg font-medium sm:w-2/3 mb-6">Pourquoi la LEAGUE PEPITE est innovante ?</h1>
     <p class="sm:w-2/3 mb-6">
       La LEAGUE PEPITE a pour vocation de faire émerger les compétences d’étudiants en cours de formation ou en
@@ -38,29 +38,10 @@
     <h4 class="text-2xl font-medium sm:w-2/3 mb-6">L’objectif principal de la LEAGUE est de révéler les nouvelles PEPITE de demain.</h4>
     <h3 class="text-center text-4xl font-medium sm:w-2/3">A VOS MARQUES</h3>
   </main>
-  <main v-else class="mt-40 flex items-center justify-center">
-    <BaseProgressCircular size="36" indeterminate color="var(--color-orange-500)" />
-  </main>
 </template>
 
-<script>
-import { ref, onMounted } from '@nuxtjs/composition-api'
-
-export default {
-  layout: 'default',
-  head: {
-    title: 'A propos | League PEPITE'
-  },
-  setup() {
-    const isLoaded = ref(false)
-
-    onMounted(async () => {
-      isLoaded.value = true
-    })
-
-    return {
-      isLoaded
-    }
-  }
-}
+<script setup>
+useMeta({
+  title: 'A propos | League PEPITE'
+})
 </script>

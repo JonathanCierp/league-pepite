@@ -1,0 +1,11 @@
+.v3dp__datepicker {
+  --vdp-bg-color: var(--color-background-lighter);
+  --vdp-text-color: var(--color-text);
+  --vdp-heading-hover-color: var(--color-background);
+  --vdp-arrow-color: var(--color-text);
+  --vdp-elem-color: var(--color-text);
+  --vdp-hover-bg-color: var(--color-orange-500);
+  --vdp-selected-bg-color: var(--color-orange-500);
+  --vdp-divider-color: var(--color-border);
+  --vdp-disabled-color: var(--color-border);
+}

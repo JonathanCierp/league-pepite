@@ -1,5 +1,5 @@
 <template>
-  <main v-if="isLoaded" class="container mx-auto my-4 lg:my-10 px-4 lg:px-0">
+  <main class="container mx-auto my-4 lg:my-10 px-4 lg:px-0">
     <h1 class="hidden">LEAGUE PEPITE : Page la league</h1>
     <BaseAccordion
       v-model="accordionValue"
@@ -20,110 +20,110 @@
       label="Le championnat"
       value="le-championnat"
     >
-     <div class="flex flex-col items-center w-full">
-       <div class="flex flex-col items-center p-6" style="width: 600px">
-         <img class="mb-6 max-w-lg" src="~/assets/img/joins/le-championnat-1.svg" alt="Le championnat 1">
-         <table class="w-full mb-6 max-w-22 sm:max-w-full">
-           <tr>
-             <td class="p-2 text-center font-medium border-2 border-black">ÉQUIPES</td>
-             <td class="p-2 text-center font-medium border-2 border-black">ENTREPRISES</td>
-           </tr>
-           <tr class="text-sm">
-             <td class="p-2 text-center border-2 border-black">Joueur 1</td>
-             <td class="p-2 text-center border-2 border-black" rowspan="8">Entreprise 1</td>
-           </tr>
-           <tr class="text-sm">
-             <td class="p-2 text-center border-2 border-black">Joueur 2</td>
-           </tr>
-           <tr class="text-sm">
-             <td class="p-2 text-center border-2 border-black">Joueur 3</td>
-           </tr>
-           <tr class="text-sm">
-             <td class="p-2 text-center border-2 border-black">Joueur 4</td>
-           </tr>
-           <tr class="text-sm bg-orange-200">
-             <td class="p-2 text-center border-2 border-black">Remplaçant : Joueur 5</td>
-           </tr>
-           <tr class="text-sm bg-orange-200">
-             <td class="p-2 text-center border-2 border-black">Remplaçant : Joueur 6</td>
-           </tr>
-         </table>
-         <img class="mb-6 max-w-lg" src="~/assets/img/joins/le-championnat-2.svg" alt="Le championnat 2">
-         <table class="text-sm w-full mb-6 max-w-22 sm:max-w-full">
-           <tbody>
-           <tr>
-             <td class="p-2 text-center border-2 border-black">Challenge 1</td>
-           </tr>
-           <tr>
-             <td class="p-2 text-center border-2 border-black">Challenge 2</td>
-           </tr>
-           <tr>
-             <td class="p-2 text-center border-2 border-black">Challenge 3</td>
-           </tr>
-           <tr>
-             <td class="p-2 text-center border-2 border-black">Challenge 4</td>
-           </tr>
-           <tr>
-             <td class="p-2 text-center border-2 border-black">Challenge 5</td>
-           </tr>
-           <tr>
-             <td class="p-2 text-center border-2 border-black">Challenge 6</td>
-           </tr>
-           <tr>
-             <td class="p-2 text-center border-2 border-black">Challenge 7</td>
-           </tr>
-           <tr>
-             <td class="p-2 text-center border-2 border-black">Challenge 8</td>
-           </tr>
-           </tbody>
-         </table>
-         <img class="mb-6 max-w-lg" src="~/assets/img/joins/le-championnat-3.svg" alt="Le championnat 3">
-         <table class="text-sm w-full mb-6 max-w-22 sm:max-w-full">
-           <tr>
-             <td class="p-2 text-center font-medium border-2 border-black">CLASSEMENT</td>
-             <td class="p-2 text-center font-medium border-2 border-black">ÉQUIPE</td>
-             <td class="p-2 text-center font-medium border-2 border-black">TOTAL POINTS</td>
-             <td class="p-2 text-center font-medium border-2 border-black">CHALLENGES PRÉCÉDENTS</td>
-           </tr>
-           <tr>
-             <td class="p-2 text-center border-2 border-black">1</td>
-             <td class="p-2 text-center border-2 border-black"></td>
-             <td class="p-2 text-center border-2 border-black"></td>
-             <td class="p-2 text-center border-2 border-black"></td>
-           </tr>
-           <tr>
-             <td class="p-2 text-center border-2 border-black">2</td>
-             <td class="p-2 text-center border-2 border-black"></td>
-             <td class="p-2 text-center border-2 border-black"></td>
-             <td class="p-2 text-center border-2 border-black"></td>
-           </tr>
-           <tr>
-             <td class="p-2 text-center border-2 border-black">3</td>
-             <td class="p-2 text-center border-2 border-black"></td>
-             <td class="p-2 text-center border-2 border-black"></td>
-             <td class="p-2 text-center border-2 border-black"></td>
-           </tr>
-           <tr>
-             <td class="p-2 text-center border-2 border-black">4</td>
-             <td class="p-2 text-center border-2 border-black"></td>
-             <td class="p-2 text-center border-2 border-black"></td>
-             <td class="p-2 text-center border-2 border-black"></td>
-           </tr>
-           <tr>
-             <td class="p-2 text-center border-2 border-black">...</td>
-             <td class="p-2 text-center border-2 border-black"></td>
-             <td class="p-2 text-center border-2 border-black"></td>
-             <td class="p-2 text-center border-2 border-black"></td>
-           </tr>
-           <tr>
-             <td class="p-2 text-center border-2 border-black">20</td>
-             <td class="p-2 text-center border-2 border-black"></td>
-             <td class="p-2 text-center border-2 border-black"></td>
-             <td class="p-2 text-center border-2 border-black"></td>
-           </tr>
-         </table>
-       </div>
-     </div>
+      <div class="flex flex-col items-center w-full">
+        <div class="flex flex-col items-center p-6" style="width: 600px">
+          <img class="mb-6 max-w-lg" src="~/assets/img/joins/le-championnat-1.svg" alt="Le championnat 1">
+          <table class="w-full mb-6 max-w-22 sm:max-w-full">
+            <tr>
+              <td class="p-2 text-center font-medium border-2 border-black">ÉQUIPES</td>
+              <td class="p-2 text-center font-medium border-2 border-black">ENTREPRISES</td>
+            </tr>
+            <tr class="text-sm">
+              <td class="p-2 text-center border-2 border-black">Joueur 1</td>
+              <td class="p-2 text-center border-2 border-black" rowspan="8">Entreprise 1</td>
+            </tr>
+            <tr class="text-sm">
+              <td class="p-2 text-center border-2 border-black">Joueur 2</td>
+            </tr>
+            <tr class="text-sm">
+              <td class="p-2 text-center border-2 border-black">Joueur 3</td>
+            </tr>
+            <tr class="text-sm">
+              <td class="p-2 text-center border-2 border-black">Joueur 4</td>
+            </tr>
+            <tr class="text-sm bg-orange-200">
+              <td class="p-2 text-center border-2 border-black">Remplaçant : Joueur 5</td>
+            </tr>
+            <tr class="text-sm bg-orange-200">
+              <td class="p-2 text-center border-2 border-black">Remplaçant : Joueur 6</td>
+            </tr>
+          </table>
+          <img class="mb-6 max-w-lg" src="~/assets/img/joins/le-championnat-2.svg" alt="Le championnat 2">
+          <table class="text-sm w-full mb-6 max-w-22 sm:max-w-full">
+            <tbody>
+            <tr>
+              <td class="p-2 text-center border-2 border-black">Challenge 1</td>
+            </tr>
+            <tr>
+              <td class="p-2 text-center border-2 border-black">Challenge 2</td>
+            </tr>
+            <tr>
+              <td class="p-2 text-center border-2 border-black">Challenge 3</td>
+            </tr>
+            <tr>
+              <td class="p-2 text-center border-2 border-black">Challenge 4</td>
+            </tr>
+            <tr>
+              <td class="p-2 text-center border-2 border-black">Challenge 5</td>
+            </tr>
+            <tr>
+              <td class="p-2 text-center border-2 border-black">Challenge 6</td>
+            </tr>
+            <tr>
+              <td class="p-2 text-center border-2 border-black">Challenge 7</td>
+            </tr>
+            <tr>
+              <td class="p-2 text-center border-2 border-black">Challenge 8</td>
+            </tr>
+            </tbody>
+          </table>
+          <img class="mb-6 max-w-lg" src="~/assets/img/joins/le-championnat-3.svg" alt="Le championnat 3">
+          <table class="text-sm w-full mb-6 max-w-22 sm:max-w-full">
+            <tr>
+              <td class="p-2 text-center font-medium border-2 border-black">CLASSEMENT</td>
+              <td class="p-2 text-center font-medium border-2 border-black">ÉQUIPE</td>
+              <td class="p-2 text-center font-medium border-2 border-black">TOTAL POINTS</td>
+              <td class="p-2 text-center font-medium border-2 border-black">CHALLENGES PRÉCÉDENTS</td>
+            </tr>
+            <tr>
+              <td class="p-2 text-center border-2 border-black">1</td>
+              <td class="p-2 text-center border-2 border-black"></td>
+              <td class="p-2 text-center border-2 border-black"></td>
+              <td class="p-2 text-center border-2 border-black"></td>
+            </tr>
+            <tr>
+              <td class="p-2 text-center border-2 border-black">2</td>
+              <td class="p-2 text-center border-2 border-black"></td>
+              <td class="p-2 text-center border-2 border-black"></td>
+              <td class="p-2 text-center border-2 border-black"></td>
+            </tr>
+            <tr>
+              <td class="p-2 text-center border-2 border-black">3</td>
+              <td class="p-2 text-center border-2 border-black"></td>
+              <td class="p-2 text-center border-2 border-black"></td>
+              <td class="p-2 text-center border-2 border-black"></td>
+            </tr>
+            <tr>
+              <td class="p-2 text-center border-2 border-black">4</td>
+              <td class="p-2 text-center border-2 border-black"></td>
+              <td class="p-2 text-center border-2 border-black"></td>
+              <td class="p-2 text-center border-2 border-black"></td>
+            </tr>
+            <tr>
+              <td class="p-2 text-center border-2 border-black">...</td>
+              <td class="p-2 text-center border-2 border-black"></td>
+              <td class="p-2 text-center border-2 border-black"></td>
+              <td class="p-2 text-center border-2 border-black"></td>
+            </tr>
+            <tr>
+              <td class="p-2 text-center border-2 border-black">20</td>
+              <td class="p-2 text-center border-2 border-black"></td>
+              <td class="p-2 text-center border-2 border-black"></td>
+              <td class="p-2 text-center border-2 border-black"></td>
+            </tr>
+          </table>
+        </div>
+      </div>
     </BaseAccordion>
     <BaseAccordion
       v-model="accordionValue"
@@ -170,31 +170,12 @@
       </div>
     </BaseAccordion>
   </main>
-  <main v-else class="mt-40 flex items-center justify-center">
-    <BaseProgressCircular size="36" indeterminate color="var(--color-orange-500)" />
-  </main>
 </template>
 
-<script>
-import { ref, onMounted } from '@nuxtjs/composition-api'
+<script setup>
+useMeta({
+  title: 'La league | League PEPITE'
+})
 
-export default {
-  layout: 'default',
-  head: {
-    title: 'La league | League PEPITE'
-  },
-  setup() {
-    const isLoaded = ref(false)
-    const accordionValue = ref(null)
-
-    onMounted(async () => {
-      isLoaded.value = true
-    })
-
-    return {
-      isLoaded,
-      accordionValue
-    }
-  }
-}
+const accordionValue = ref(null)
 </script>

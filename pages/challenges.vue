@@ -1,5 +1,5 @@
 <template>
-  <main v-if="isLoaded" class="container mx-auto my-4 lg:my-10 px-4 lg:px-0">
+  <main class="container mx-auto my-4 lg:my-10 px-4 lg:px-0">
     <h1 class="hidden">LEAGUE PEPITE : Page challenge</h1>
     <BaseAccordion
       v-for="challengesVariant in challengesVariants"
@@ -8,43 +8,28 @@
       :label="challengesVariant.label"
       :value="challengesVariant.id"
     >
-<!--      <div class="p-6" v-html="challengesVariant.description" />-->
       <div class="flex items-center p-6">
-        <img class="w-20 mr-4" :src="require(`~/assets/img/challenges/${challengesVariant.label}.png`)">
+        <img v-if="challengesVariant.label === 'CREATOR'" class="w-20 mr-4" src="~/assets/img/challenges/CREATOR.png">
+        <img v-else-if="challengesVariant.label === 'MIRROR'" class="w-20 mr-4" src="~/assets/img/challenges/MIRROR.png">
+        <img v-else-if="challengesVariant.label === 'RACE'" class="w-20 mr-4" src="~/assets/img/challenges/RACE.png">
+        <img v-else-if="challengesVariant.label === 'VIEW'" class="w-20 mr-4" src="~/assets/img/challenges/VIEW.png">
         <div v-html="challengesVariant.description" />
       </div>
     </BaseAccordion>
   </main>
-  <main v-else class="mt-40 flex items-center justify-center">
-    <BaseProgressCircular size="36" indeterminate color="var(--color-orange-500)" />
-  </main>
 </template>
 
-<script>
-import { ref, onMounted, computed, useStore } from '@nuxtjs/composition-api'
+<script setup>
+useMeta({
+  title: 'Challenge | League PEPITE'
+})
 
-export default {
-  layout: 'default',
-  head: {
-    title: 'Challenge | League PEPITE'
-  },
-  setup() {
-    const store = useStore()
-    const isLoaded = ref(false)
-    const accordionValue = ref(null)
+const { getChallengeVariants } = await useChallenge()
+const challengesVariants = useState('challengesVariants')
 
-    onMounted(async () => {
-      await store.dispatch('challenges/getChallengesVariants')
-      isLoaded.value = true
-    })
+const accordionValue = ref(null)
 
-    const challengesVariants = computed(() => store.state.challenges.challengesVariants)
-
-    return {
-      isLoaded,
-      accordionValue,
-      challengesVariants
-    }
-  }
-}
+onMounted(async () => {
+  await getChallengeVariants()
+})
 </script>

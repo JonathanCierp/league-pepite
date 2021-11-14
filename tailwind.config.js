@@ -1,5 +1,16 @@
-export default {
-  mode: 'jit',
+module.exports = {
+  mode: "jit",
+  purge: [
+    "./assets/**/*.{css}",
+    "./components/*.{vue,js}",
+    "./components/**/*.{vue,js}",
+    "./pages/*.vue",
+    "./pages/**/*.vue",
+    "./plugins/**/*.{js,ts}",
+    "./*.{vue,js,ts}",
+    "./nuxt.config.{js,ts}"
+  ],
+  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
       animation: {
@@ -40,7 +51,7 @@ export default {
           700: 'var(--color-orange-700)',
           800: 'var(--color-orange-800)',
           900: 'var(--color-orange-900)'
-        },
+        }
       },
       boxShadow: {
         DEFAULT: '0 10px 15px -3px var(--shadow), 0 4px 6px -2px var(--shadow)'
@@ -53,10 +64,15 @@ export default {
       },
       height: {
         'fit-content': 'fit-content'
+      },
+      width: {
+        'max-content': 'max-content'
+      },
+      borderWidth: {
+        '3': '3px'
       }
     }
   },
-  variants: {
-    borderColor: ['focus']
-  },
+  variants: {},
+  plugins: []
 }
