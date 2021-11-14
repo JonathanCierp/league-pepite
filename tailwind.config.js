@@ -64,6 +64,12 @@ module.exports = {
       },
       height: {
         'fit-content': 'fit-content'
+      },
+      width: {
+        'max-content': 'max-content'
+      },
+      borderWidth: {
+        '3': '3px'
       }
     }
   },

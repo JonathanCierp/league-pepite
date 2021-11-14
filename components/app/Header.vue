@@ -23,6 +23,33 @@
         <BaseButton to="/auth/signup" class="mr-2">Rejoindre la League</BaseButton>
         <BaseButton to="/auth/signin" text>Se connecter</BaseButton>
       </template>
+      <template v-else>
+        <BaseMenu>
+          <li class="h-full flex items-center normal-case font-medium text-sm cursor-pointer hover:text-orange-500">
+            {{ user.username }}
+          </li>
+          <template #popper>
+            <ul class="flex flex-col">
+              <BaseLink 
+                class="flex items-center pl-4 pr-8 py-4 cursor-pointer hover:text-orange-500 hover:bg-orange-100"
+                tag="li"
+                to="/profile/cvs"
+              >
+                <BaseIcon class="mr-4" name="document-text" />
+                Mes fiches
+              </BaseLink>
+              <BaseLink 
+                class="flex items-center pl-4 pr-8 py-4 cursor-pointer hover:text-orange-500 hover:bg-orange-100"
+                tag="li"
+                @click="onLogout"
+              >
+                <BaseIcon class="mr-4" name="logout" />
+                Se déconnecter
+              </BaseLink>
+            </ul>
+          </template>
+        </BaseMenu>
+      </template>
     </nav>
     <AppBurgerMenu />
   </header>
@@ -30,5 +57,6 @@
 
 <script setup>
 const { menus, mobileMenuIsOpen } = useHeader()
-const { isLogged } = useAuth()
+const { isLogged, onLogout } = useAuth()
+const user = useState('user')
 </script>

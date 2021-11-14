@@ -46,7 +46,7 @@ const props = defineProps({
   },
   color: {
     type: String,
-    default: 'var(--color-blue-500)'
+    default: 'var(--color-orange-500)'
   },
   value: {
     type: [String, Number],

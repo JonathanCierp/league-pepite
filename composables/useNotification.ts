@@ -1,4 +1,4 @@
-import Notification, { NotificationOption } from '~/components/base/notification'
+import Notification, { NotificationOption } from '~~/utils/Notification'
 
 export default (globalOptions: NotificationOption = {}) => {
   if (process.env.SSR !== undefined) {

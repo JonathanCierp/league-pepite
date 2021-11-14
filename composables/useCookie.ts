@@ -7,11 +7,12 @@ class Cookie {
   }
   
   addCookie = (key: string, value: string) => {
-    document.cookie = `${key}=${value};`
+    console.log(1)
+    document.cookie = `${key}=${value}; path=/;`
   }
 
   deleteCookie = (key: string) => {
-    document.cookie = `${key}=; expires=Thu, 01 Jan 1970 00:00:00 UTC;`
+    document.cookie = `${key}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
   }
 }
 

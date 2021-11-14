@@ -10,8 +10,9 @@
 </template>
 
 <script setup lang="ts">
+import 'v-tooltip/dist/v-tooltip.css'
 import authMiddleware from '~/middleware/auth'
-import { User } from '~~/interfaces/User'
+import { User } from '~/interfaces/User'
 
 const config = useState('config', () => useRuntimeConfig())
 const isLogged = useState<boolean>('isLogged')

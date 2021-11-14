@@ -1,0 +1,11 @@
+.v-popper.v-popper--theme-dropdown:not(.v-popper--theme-menu):not(.v-popper--theme-tooltip) {
+  width: 100% !important;
+}
+
+.v-popper.v-popper--theme-tooltip {
+  width: 100% !important;
+}
+
+.v-popper__popper:not(.v-popper--theme-tooltip) .v-popper__inner {
+  padding: 0 !important;
+}

@@ -10,6 +10,8 @@ export default defineNuxtConfig({
     '~/assets/css/tailwind.css',
     '~/assets/css/main.css',
     '~/assets/css/animation.css',
+    '~/assets/css/v-tooltip.css',
+    '~/assets/css/v-datepicker.css'
   ],
   publicRuntimeConfig: {
     BASE_API_URL: process.env.BASE_API_URL,

@@ -13,13 +13,21 @@
 
 <script setup>
 const button = {
-  orange: {
-    base: 'bg-orange-500 hover:bg-orange-600 active:bg-orange-700',
-    text: 'hover:bg-orange-200 bg-transparent'
+  color: {
+    orange: {
+      base: 'bg-orange-500 hover:bg-orange-600 active:bg-orange-700',
+      icon: 'text-orange-500 hover:bg-orange-200 bg-transparent',
+      text: 'hover:bg-orange-200 bg-transparent'
+    },
+    red: {
+      base: 'bg-red-500 hover:bg-red-600 active:bg-red-700',
+      icon: 'text-red-500 hover:bg-red-200 active:bg-red-300 bg-transparent',
+      text: 'hover:bg-red-200 bg-transparent'
+    }
   },
-  red: {
-    base: 'bg-red-500 hover:bg-red-600 active:bg-red-700',
-    text: 'hover:bg-red-200 bg-transparent'
+  size: {
+    sm: 'h-8 py-0 px-3 text-sm',
+    md: 'h-9 py-0 px-5'
   }
 }
 const props = defineProps({
@@ -28,6 +36,10 @@ const props = defineProps({
     default: ''
   },
   text: {
+    type: Boolean,
+    default: false
+  },
+  icon: {
     type: Boolean,
     default: false
   },
@@ -46,21 +58,23 @@ const props = defineProps({
   size: {
     type: String,
     default: 'md'
+  },
+  tag: {
+    type: String,
+    default: 'button'
   }
 })
 
-const tagValue = computed(() => props.to ? 'NuxtLink' : 'button')
+const tagValue = computed(() => props.to ? 'NuxtLink' : props.tag)
 const colorClass = computed(() => {
-  let color = button[props.color].base
-  if (props.text) color = button[props.color].text
+  let color = button.color[props.color].base
+  if (props.icon) color = button.color[props.color].icon
+  if (props.text) color = button.color[props.color].text
 
   return color
 })
 const sizeClass = computed(() => {
-  let size = 'h-9 py-0 px-4'
-  if (props.size === 'md') size = 'h-9 py-0 px-4'
-
-  return size
+  return button.size[props.size]
 })
 const blockClass = computed(() => props.block ? 'w-full' : '')
 </script>

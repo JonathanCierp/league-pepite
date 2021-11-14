@@ -11,7 +11,7 @@
 <script setup>
 import BaseAnimation from '~/components/base/Animation'
 import BaseIcon from '~/components/base/Icon'
-import { NOTIFICATION_TRANSITION } from '~/components/base/notification'
+import { NOTIFICATION_TRANSITION } from '~~/utils/Notification'
 
 const notification = {
   position: {

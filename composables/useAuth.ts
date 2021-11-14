@@ -75,6 +75,11 @@ export default () => {
       }
     }
   }
+  const onLogout = () => {
+    cookie?.deleteCookie('jwt')
+    // TODO : Change for useRouter later
+    document.location.href = '/'
+  }
 
   return {
     isLogged,
@@ -89,6 +94,7 @@ export default () => {
     passwordConfirmEl,
     termsAccepEl,
     onSignin,
-    onSignup
+    onSignup,
+    onLogout
   }
 }

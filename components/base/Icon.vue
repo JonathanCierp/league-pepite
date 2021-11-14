@@ -4,6 +4,9 @@
     :viewBox="icon.attrs.viewBox"
     v-html="icon.contents"
     :class="[size, fill]"
+    stroke="currentColor"
+    stroke-width="2"
+    style="fill: transparent;"
   />
   <component
     v-else-if="iconType === 'heroicon'"
