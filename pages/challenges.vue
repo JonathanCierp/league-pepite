@@ -2,7 +2,7 @@
   <main class="container mx-auto my-4 lg:my-10 px-4 lg:px-0">
     <h1 class="hidden">LEAGUE PEPITE : Page challenge</h1>
     <BaseAccordion
-      v-for="challengesVariant in challengesVariants?.data"
+      v-for="challengesVariant in challengesVariants"
       :key="challengesVariant.id"
       v-model="accordionValue"
       :label="challengesVariant.label"
@@ -24,8 +24,12 @@ useMeta({
   title: 'Challenge | League PEPITE'
 })
 
-const { challengesVariants, getChallengeVariants } = await useChallenge()
+const { getChallengeVariants } = await useChallenge()
+const challengesVariants = useState('challengesVariants')
+
 const accordionValue = ref(null)
 
-getChallengeVariants()
+onMounted(async () => {
+  await getChallengeVariants()
+})
 </script>

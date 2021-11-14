@@ -43,7 +43,6 @@
         </BaseRow>
         <BaseButton block class="mt-4" type="submit" :loading="isLoadingButton">REJOINDRE</BaseButton>
       </form>
-<!--      {{$route}}-->
     </BaseCard>
   </main>
 </template>
@@ -66,4 +65,6 @@ const {
   termsAccepEl,
   onSignup
 } = useAuth()
+
+window.location.href = '/'
 </script>

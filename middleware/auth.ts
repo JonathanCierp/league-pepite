@@ -3,7 +3,12 @@ import { BaseUserResponse } from '~/interfaces'
 import { User } from '~/interfaces/User'
 
 const forbidenConnectedRoutes = ['auth-signin', 'auth-signup']
-const forbidenNoConnectedRoutes = ['profile-cvs', 'profile-cvs-create']
+const forbidenNoConnectedRoutes = [
+  'profile-cvs',
+  'profile-cvs-create',
+  'profile-cvs-preview',
+  'profile-cvs-edit-id'
+]
 
 const cookie = useCookie()
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="overflow-hidden mb-6 shadow">
+  <div class="overflow-hidden mb-6 shadow rounded-sm">
     <BaseRow class="items-center w-full p-5 leading-normal cursor-pointer" :class="[isSelectedLabelClasses]" @click="onSelectAccordion">
       <h2 class="font-medium">
         {{ label }}

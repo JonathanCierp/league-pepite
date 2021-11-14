@@ -7,6 +7,10 @@
     <hr class="my-4">
     <div class="ml-4">
       <BaseRow class="mb-4 gap-4">
+        <img v-if="cvForm.imageB64" :src="cvForm.imageB64" class="rounded-full h-28 w-28 mr-4">
+        <BaseFormFile v-model="cvForm.imageFile" class="w-max-content" label="Photo du CV" accept="image/png, image/jpeg" @update:modelValue="onChangeFile" />
+      </BaseRow>
+      <BaseRow class="mb-4 gap-4">
         <BaseFormInput v-model="cvForm.firstname" label="Prénom" />
         <BaseFormInput v-model="cvForm.lastname" label="Nom" />
         <BaseFormSelect v-model="cvForm.job" label="Nom du poste" :options="jobOptions" />
@@ -17,7 +21,7 @@
         <BaseFormInput v-model="cvForm.city" label="Ville" />
       </BaseRow>
       <BaseRow class="mb-4 gap-4">
-        <BaseFormTextarea v-model="cvForm.informations" label="Mon profil" />
+        <BaseFormTextarea v-model="cvForm.description" label="Mon profil" />
         <BaseFormSelect v-model="cvForm.skills" label="Compétences (max 5)" :options="skillsOptions" multiple item-key="id" item-value="label" />
         <BaseFormSelect v-model="cvForm.interests" label="Intérêts (max 4)" :options="interestOptions" multiple>
           <template #options="{ item }">
@@ -43,11 +47,11 @@
         :key="`education-${i}`" class="gap-4"
         :class="[cvForm.educations.length > 1 && i !== 0 ? 'mt-4' : '']"
       >
-        <BaseFormInput v-model="education.school_name" class="w-64" label="Nom de l'école" />
-        <BaseFormDatepicker v-model="education.start_at" class="w-28" label="Date de début" />
-        <BaseFormDatepicker v-model="education.end_at" class="w-28" label="Date de fin" />
-        <BaseFormInput v-model="education.title" class="w-64" label="Titre de la formation" />
-        <BaseFormTextarea v-model="education.description" class="w-96" label="Description" rows="2" />
+        <BaseFormInput v-model="education.school_name" class="w-3/12" label="Nom de l'école" />
+        <BaseFormDatepicker v-model="education.start_at" class="w-1/12" label="Date de début" />
+        <BaseFormDatepicker v-model="education.end_at" class="w-1/12" label="Date de fin" />
+        <BaseFormInput v-model="education.title" class="w-3/12" label="Titre de la formation" />
+        <BaseFormTextarea v-model="education.description" class="w-4/12" label="Description" rows="2" />
         <BaseButton 
             v-if="cvForm.educations.length > 1 && i !== 0"
             class="self-center" 
@@ -78,11 +82,11 @@
         :key="`experience-${i}`" class="gap-4"
         :class="[cvForm.experiences.length > 1 && i !== 0 ? 'mt-4' : '']"
       >
-        <BaseFormInput v-model="experience.compagny_name" class="w-64" label="Nom de l'entrepise" />
-        <BaseFormDatepicker v-model="experience.start_at" class="w-28" label="Date de début" />
-        <BaseFormDatepicker v-model="experience.end_at" class="w-28" label="Date de fin" />
-        <BaseFormInput v-model="experience.title" class="w-64" label="Titre du poste" />
-        <BaseFormTextarea v-model="experience.description" class="w-96" label="Description" rows="2" />
+        <BaseFormInput v-model="experience.compagny_name" class="w-3/12" label="Nom de l'entrepise" />
+        <BaseFormDatepicker v-model="experience.start_at" class="w-1/12" label="Date de début" />
+        <BaseFormDatepicker v-model="experience.end_at" class="w-1/12" label="Date de fin" />
+        <BaseFormInput v-model="experience.title" class="w-3/12" label="Titre du poste" />
+        <BaseFormTextarea v-model="experience.description" class="w-4/12" label="Description" rows="2" />
         <BaseButton 
             v-if="cvForm.experiences.length > 1 && i !== 0"
             class="self-center" 
@@ -104,7 +108,9 @@
 </template>
 
 <script setup>
-const { 
+import { toBase64 } from '../../../utils'
+
+const {
   jobOptions,
   interestOptions,
   skillsOptions, 
@@ -115,4 +121,8 @@ const {
   addExperience, 
   deleteExperience 
 } = useCv()
+
+const onChangeFile = async (v) => {
+  cvForm.value.imageB64 = await toBase64(v)
+}
 </script>

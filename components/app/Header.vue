@@ -20,7 +20,7 @@
       </NuxtLink>
       <BaseSpacer />
       <template v-if="!isLogged">
-        <BaseButton to="/auth/signup" class="mr-2">Rejoindre la League</BaseButton>
+        <!--<BaseButton to="/auth/signup" class="mr-2">Rejoindre la League</BaseButton>-->
         <BaseButton to="/auth/signin" text>Se connecter</BaseButton>
       </template>
       <template v-else>

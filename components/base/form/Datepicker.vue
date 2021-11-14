@@ -22,32 +22,31 @@ import { generateRandomId } from '~/utils'
 
 const emit = defineEmits(['update:modelValue'])
 const props = defineProps({
-    modelValue: {
-      type: [Date, String],
-      default: ''
-    },
-    label: {
-      type: String,
-      default: ''
-    },
-    placeholder: {
-      type: String,
-      default: ''
-    },
-    required: {
-      type: Boolean,
-      default: false
-    },
-    requiredStar: {
-      type: Boolean,
-      default: false
-    },
-    rules: {
-      type: Array,
-      default: () => []
-    }
-  })
-
+  modelValue: {
+    type: [Date, String],
+    default: ''
+  },
+  label: {
+    type: String,
+    default: ''
+  },
+  placeholder: {
+    type: String,
+    default: ''
+  },
+  required: {
+    type: Boolean,
+    default: false
+  },
+  requiredStar: {
+    type: Boolean,
+    default: false
+  },
+  rules: {
+    type: Array,
+    default: () => []
+  }
+})
 const locale = fr
 const value = ref(new Date(props.modelValue))
 const input = ref(useValidation(props.modelValue, props.rules, false))

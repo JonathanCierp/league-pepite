@@ -10,4 +10,9 @@ interface BaseUserResponse {
   message: string
 }
 
-export { BaseAuthResponse, BaseUserResponse };
+interface BaseResponse {
+  data: any
+  message: string
+}
+
+export { BaseAuthResponse, BaseUserResponse, BaseResponse };
