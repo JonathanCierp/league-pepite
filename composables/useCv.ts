@@ -131,8 +131,11 @@ export default () => {
       const { message }: BaseResponse = await $fetch('/cvs', { method: 'POST', body: cvForm.value, baseURL: config.API_URL })
 
       notification?.success(message)
-      // TODO : Change for useRouter later
-      document.location.href = '/profile/cvs'
+
+      setTimeout(() => {
+        // TODO : Change for useRouter later
+        document.location.href = '/profile/cvs'
+      }, 1500)
     } catch (e) {
       notification?.error(e.response?.data.message || "Erreur lors de l'éxécution de la requête.")
       isLoadingButton.value = false
@@ -151,8 +154,11 @@ export default () => {
       })
 
       notification?.success(message)
-      // TODO : Change for useRouter later
-      document.location.href = '/profile/cvs'
+
+      setTimeout(() => {
+        // TODO : Change for useRouter later
+        document.location.href = '/profile/cvs'
+      }, 1500)
     } catch (e) {
       notification?.error(e.response?.data.message || "Erreur lors de l'éxécution de la requête.")
       isLoadingButton.value = false

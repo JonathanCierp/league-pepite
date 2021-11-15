@@ -42,8 +42,10 @@ export default () => {
         user.value = data.user
         cookie?.addCookie('jwt', data.token)
 
-        // TODO : Change for useRouter later
-        document.location.href = '/'
+        setTimeout(() => {
+          // TODO : Change for useRouter later
+          document.location.href = '/'
+        }, 1500)
       } catch (e) {
         notification?.error(e.response?.data.message || "Erreur lors de l'éxécution de la requête.")
         isLoadingButton.value = false
@@ -67,8 +69,10 @@ export default () => {
         const { message }: BaseAuthResponse  = await $fetch('/auth/signup', { method: 'POST', body: authForm.value, baseURL: API_URL })
         notification?.success(message)
 
-        // TODO : Change for useRouter later
-        document.location.href = '/'
+        setTimeout(() => {
+          // TODO : Change for useRouter later
+          document.location.href = '/'
+        }, 1500)
       } catch (e) {
         notification?.error(e.response?.data.message || "Erreur lors de l'éxécution de la requête.")
         isLoadingButton.value = false
@@ -77,8 +81,11 @@ export default () => {
   }
   const onLogout = () => {
     cookie?.deleteCookie('jwt')
-    // TODO : Change for useRouter later
-    document.location.href = '/'
+
+    setTimeout(() => {
+      // TODO : Change for useRouter later
+      document.location.href = '/'
+    }, 1500)
   }
 
   return {
