@@ -1,7 +1,7 @@
 <template>
   <div class="w-full text-sm">
     <label v-if="label" class="font-medium inline-block mb-2" v-html="fullLabel" />
-    <VDropdown theme="dropdown">
+    <VDropdown theme="dropdown" :shown="shown">
       <div class="flex flex-col">
         <div
           ref="selectEl"
@@ -10,6 +10,7 @@
             !input.isValid ? 'border-red-500' : 'border-border focus:border-orange-500',
             (modelValue && options.find((option) => option[itemKey] === modelValue)) || (Array.isArray(modelValue) && modelValue.length) ? '' : 'h-10'
           ]"
+          @click="openPopper"
         >
           <span v-if="modelValue && options.find((option) => option[itemKey] === modelValue)">
             {{ options.find((option) => option[itemKey] === modelValue)[itemValue] }}
@@ -46,7 +47,6 @@
             :key="option[itemKey]"
             class="flex items-center pl-4 pr-8 py-4 cursor-pointer hover:text-orange-500 hover:bg-orange-100"
             :class="[option[itemKey] === modelValue || modelValue.includes(option[itemKey]) ? 'text-orange-500 bg-orange-100' : '']"
-            v-close-popover
             @click="onChangeValue(option)"
           >
             <BaseIcon v-if="option[itemKey] === modelValue || modelValue.includes(option[itemKey])" name="check" size="h-5" />
@@ -63,7 +63,7 @@
 </template>
 
 <script setup>
-import { Dropdown as VDropdown, VClosePopper as VClosePopover } from 'v-tooltip'
+import { Dropdown as VDropdown } from 'v-tooltip'
 import { simpleSort } from '@/utils'
 
 const emit = defineEmits(['update:modelValue'])
@@ -113,6 +113,7 @@ const props = defineProps({
 const input = ref(useValidation(props.modelValue, props.rules, false))
 const selectEl = ref(null)
 const popoverWidth = ref(0)
+const shown = ref(false)
 
 const fullLabel = computed(() => (props.requiredStar ? `${props.label} <span class="text-red-500">*</span>` : props.label))
 
@@ -128,13 +129,16 @@ const onChangeValue = (option) => {
   } else {
     emit('update:modelValue', option[props.itemKey])
   }
+  shown.value = false
 }
 const onDeleteValue = (option) => {
   emit('update:modelValue', props.modelValue.filter((v) => v != option[props.itemKey]))
+  shown.value = false
 }
 const validate = (v = props.modelValue) => {
   input.value = useValidation(v, props.rules)
 }
+const openPopper = () => shown.value = true
 
 onMounted(() => {
   popoverWidth.value = { width: `${selectEl.value?.offsetWidth}px` }

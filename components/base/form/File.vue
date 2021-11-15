@@ -15,7 +15,7 @@
 const emit = defineEmits(['update:modelValue'])
 const props = defineProps({
   modelValue: {
-    type: [Object, File],
+    type: [Object],
     default: () => {}
   },
   label: {
@@ -25,8 +25,8 @@ const props = defineProps({
   accept: {
     type: String,
     default: ''
-  }
-  ,required: {
+  },
+  required: {
     type: Boolean,
     default: false
   },

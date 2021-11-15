@@ -53,5 +53,3 @@
     </section>
   </main>
 </template>
-
-</template>
