@@ -7,6 +7,7 @@ class Cookie {
   }
   
   addCookie = (key: string, value: string, domain: string) => {
+    console.log(`${key}=${value};`)
     document.cookie = `${key}=${value};`
   }
 
