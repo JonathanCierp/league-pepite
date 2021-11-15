@@ -27,6 +27,9 @@
 import { base64ToFile } from '~/utils';
 import { BaseAuthResponse } from '~/interfaces';
 
+useMeta({
+  title: 'Édition de la fiche | League PEPITE'
+})
 const route = useRoute()
 const { isLoadingButton, getCv, editCv, openPreview, getSkills, getSoftSkills } = useCv()
 const cv = useState('cv')

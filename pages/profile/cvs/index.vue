@@ -43,6 +43,9 @@
 <script setup>
 const { getCvs, previewCv, favoriteCv, deleteCv } = useCv()
 
+useMeta({
+  title: 'Mes fiches | League PEPITE'
+})
 const isLoaded = ref(false)
 const cvs = useState('cvs')
 

@@ -136,6 +136,9 @@
 <script setup lang="ts">
 import { BaseAuthResponse } from '~/interfaces'
 
+useMeta({
+  title: 'Prévisualisation de la fiche | League PEPITE'
+})
 const { interestOptions, getSkills, getSoftSkills } = useCv()
 const skills = useState('skills', () => [])
 const softSkills = useState('softSkills', () => [])

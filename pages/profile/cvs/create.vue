@@ -26,6 +26,9 @@
 <script setup lang="ts">
 import { BaseAuthResponse } from '~/interfaces'
 
+useMeta({
+  title: 'Création de ma fiche | League PEPITE'
+})
 const { isLoadingButton, saveCv, openPreview, getSkills, getSoftSkills } = useCv()
 const cvForm = useState('cvForm')
 const skills = useState('skills', () => [])

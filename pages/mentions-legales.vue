@@ -53,3 +53,9 @@
     </section>
   </main>
 </template>
+
+<script setup>
+useMeta({
+  title: 'Metions légales | League PEPITE'
+})
+</script>
