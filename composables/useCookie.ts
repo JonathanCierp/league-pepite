@@ -7,8 +7,7 @@ class Cookie {
   }
   
   addCookie = (key: string, value: string, domain: string) => {
-    console.log(`${key}=${value}; domain=${domain}; path=/;`)
-    document.cookie = `${key}=${value}; domain=${domain}; path=/;`
+    document.cookie = `${key}=${value};`
   }
 
   deleteCookie = (key: string) => {
