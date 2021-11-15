@@ -16,6 +16,7 @@ export default defineNuxtConfig({
   publicRuntimeConfig: {
     BASE_API_URL: process.env.BASE_API_URL,
     API_URL: process.env.API_URL,
+    DOMAIN: process.env.DOMAIN,
     HOST: process.env.HOST,
     PORT: process.env.PORT,
     JWT_ISS: process.env.JWT_ISS

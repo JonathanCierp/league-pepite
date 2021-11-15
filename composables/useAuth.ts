@@ -7,7 +7,7 @@ const notification = useNotification()
 const cookie = useCookie()
  
 export default () => {
-  const { API_URL } = useState('config').value
+  const { API_URL, DOMAIN } = useState('config').value
   const isLogged = useState('isLogged', () => false)
   const user = useState<User>('user')
   const isLoadingButton = ref(false)
@@ -40,7 +40,7 @@ export default () => {
 
         isLogged.value = true
         user.value = data.user
-        cookie?.addCookie('jwt', data.token)
+        cookie?.addCookie("jwt", data.token, DOMAIN);
 
         setTimeout(() => {
           // TODO : Change for useRouter later

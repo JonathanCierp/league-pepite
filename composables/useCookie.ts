@@ -6,9 +6,8 @@ class Cookie {
     return cookie?.split('=')[1].trim()
   }
   
-  addCookie = (key: string, value: string) => {
-    console.log(1)
-    document.cookie = `${key}=${value}; path=/;`
+  addCookie = (key: string, value: string, domain: string) => {
+    document.cookie = `${key}=${value}; domain=${domain}; path=/;`
   }
 
   deleteCookie = (key: string) => {
