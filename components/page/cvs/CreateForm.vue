@@ -8,7 +8,9 @@
     <div class="ml-4">
       <BaseRow class="mb-4 gap-4">
         <img v-if="cvForm.imageB64" :src="cvForm.imageB64" class="rounded-full h-28 w-28 mr-4">
-        <BaseFormFile v-model="cvForm.imageFile" class="w-max-content" label="Photo du CV" accept="image/png, image/jpeg" @update:modelValue="onChangeFile" />
+        <BaseFormFile ref="fileEl" v-model="cvForm.imageFile" class="w-max-content" label="Photo du CV" 
+          accept="image/png, image/jpeg" @update:modelValue="onChangeFile"
+          required required-star :rules="[]" />
       </BaseRow>
       <BaseRow class="mb-4 gap-4">
         <BaseFormInput v-model="cvForm.firstname" label="Prénom" />
@@ -114,7 +116,18 @@ const {
   jobOptions,
   interestOptions,
   skillsOptions, 
-  softSkillsOptions, 
+  softSkillsOptions,
+  fileEl,
+  firstnameEl,
+  lastnameEl,
+  jobEl,
+  emailEl,
+  phoneEl,
+  cityEl,
+  descriptionEl,
+  skillEl,
+  interestEl,
+  softSkillEl, 
   cvForm, 
   addEducation, 
   deleteEducation, 

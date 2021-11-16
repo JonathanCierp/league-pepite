@@ -65,9 +65,20 @@ export default () => {
     end_at: '',
   }
   const isLoadingButton = ref(false)
+  const fileEl = ref()
+  const firstnameEl = ref()
+  const lastnameEl = ref()
+  const jobEl = ref()
+  const emailEl = ref()
+  const phoneEl = ref()
+  const cityEl = ref()
+  const descriptionEl = ref()
+  const skillEl = ref()
+  const interestEl = ref()
+  const softSkillEl = ref()
+
   const cv = useState('cv', () => [])
   const cvs = useState('cvs', () => [])
-
   const user = useState<User>('user')
   const cvForm = useState('cvForm', () => ({  
     user_id: user.value.id,
@@ -126,16 +137,20 @@ export default () => {
   }
   const saveCv = async () => {
     try {
-      isLoadingButton.value = true
-      cvForm.value.imageB64 = cvForm.value.imageFile.hasOwnProperty("name") ? await toBase64(cvForm.value.imageFile) : ''
-      const { message }: BaseResponse = await $fetch('/cvs', { method: 'POST', body: cvForm.value, baseURL: config.API_URL })
+      fileEl.value.validate()
 
-      notification?.success(message)
+      if (false) {
+        isLoadingButton.value = true
+        cvForm.value.imageB64 = cvForm.value.imageFile.hasOwnProperty("name") ? await toBase64(cvForm.value.imageFile) : ''
+        const { message }: BaseResponse = await $fetch('/cvs', { method: 'POST', body: cvForm.value, baseURL: config.API_URL })
 
-      setTimeout(() => {
-        // TODO : Change for useRouter later
-        document.location.href = '/profile/cvs'
-      }, 1500)
+        notification?.success(message)
+
+        setTimeout(() => {
+          // TODO : Change for useRouter later
+          document.location.href = '/profile/cvs'
+        }, 1500)
+      }
     } catch (e) {
       notification?.error(e.response?.data.message || "Erreur lors de l'éxécution de la requête.")
       isLoadingButton.value = false
@@ -240,6 +255,17 @@ export default () => {
     skillsOptions,
     softSkillsOptions,
     isLoadingButton,
+    fileEl,
+    firstnameEl,
+    lastnameEl,
+    jobEl,
+    emailEl,
+    phoneEl,
+    cityEl,
+    descriptionEl,
+    skillEl,
+    interestEl,
+    softSkillEl,
     cvForm,
     getCv,
     getCvs,
