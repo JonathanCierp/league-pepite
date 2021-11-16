@@ -4,10 +4,15 @@
     <textarea
       :placeholder="placeholder"
       :value="modelValue"
-      class="bg-background-lighter border-2 p-2 rounded-sm border-border focus:border-orange-500"
+      class="bg-background-lighter border-2 p-2 rounded-sm"
+        :class="[!input.isValid ? 'border-red-500' : 'border-border focus:border-orange-500']"
       :rows="rows"
       @input="onInput"
     ></textarea>
+    <p v-if="!input.isValid" class="flex items-center mt-1 font-medium text-red-500 text-xs">
+      <BaseIcon class="mr-2" name="alert-triangle" size="h-4" />
+      {{ input.message }}
+    </p>
   </div>
 </template>
 
@@ -29,12 +34,38 @@ const props = defineProps({
   rows: {
     type: [String, Number],
     default: '4'
-  }
+  },
+  required: {
+    type: Boolean,
+    default: false
+  },
+  requiredStar: {
+    type: Boolean,
+    default: false
+  },
+  rules: {
+    type: Array,
+    default: () => []
+  },
 })
+
+const input = ref(useValidation(props.modelValue, props.rules, false))
+const isValid = ref(input.value.isValid)
 
 const fullLabel = computed(() => (props.required ? `${props.label} <span class="text-red-500">*</span>` : props.label))
 
 const onInput = (e) => {
-  emit('update:modelValue', e.target.value)
+  const v = e.target.value
+
+  emit('update:modelValue', v)
+  validate(v)
 }
+const validate = (v = props.modelValue) => {
+  input.value = useValidation(v.length, props.rules)
+}
+
+defineExpose({
+  validate,
+  isValid
+})
 </script>

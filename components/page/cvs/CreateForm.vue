@@ -10,22 +10,22 @@
         <img v-if="cvForm.imageB64" :src="cvForm.imageB64" class="rounded-full h-28 w-28 mr-4">
         <BaseFormFile ref="fileEl" v-model="cvForm.imageFile" class="w-max-content" label="Photo du CV" 
           accept="image/png, image/jpeg" @update:modelValue="onChangeFile"
-          required required-star :rules="[]" />
+          required required-star :rules="[requiredRule]" />
       </BaseRow>
       <BaseRow class="mb-4 gap-4">
-        <BaseFormInput v-model="cvForm.firstname" label="Prénom" />
-        <BaseFormInput v-model="cvForm.lastname" label="Nom" />
-        <BaseFormSelect v-model="cvForm.job" label="Nom du poste" :options="jobOptions" />
+        <BaseFormInput ref="firstnameEl" v-model="cvForm.firstname" label="Prénom" required required-star :rules="[requiredRule]" />
+        <BaseFormInput ref="lastnameEl" v-model="cvForm.lastname" label="Nom" required required-star :rules="[requiredRule]" />
+        <BaseFormSelect ref="jobEl" v-model="cvForm.job" label="Nom du poste" :options="jobOptions" required required-star :rules="[requiredRule]" />
       </BaseRow>
       <BaseRow class="mb-4 gap-4">
-        <BaseFormInput v-model="cvForm.email" label="Email" />
-        <BaseFormInput v-model="cvForm.phone" label="Téléphone" />
-        <BaseFormInput v-model="cvForm.city" label="Ville" />
+        <BaseFormInput ref="emailEl" v-model="cvForm.email" label="Email" required required-star :rules="[requiredRule]" />
+        <BaseFormInput ref="phoneEl" v-model="cvForm.phone" label="Téléphone" required required-star :rules="[requiredRule]" />
+        <BaseFormInput ref="cityEl" v-model="cvForm.city" label="Ville" required required-star :rules="[requiredRule]" />
       </BaseRow>
       <BaseRow class="mb-4 gap-4">
-        <BaseFormTextarea v-model="cvForm.description" label="Mon profil" />
-        <BaseFormSelect v-model="cvForm.skills" label="Compétences (max 5)" :options="skillsOptions" multiple item-key="id" item-value="label" />
-        <BaseFormSelect v-model="cvForm.interests" label="Intérêts (max 4)" :options="interestOptions" multiple>
+        <BaseFormTextarea ref="descriptionEl" v-model="cvForm.description" label="Mon profil" required required-star :rules="[requiredRule]" />
+        <BaseFormSelect ref="skillEl" v-model="cvForm.skills" label="Compétences (max 5)" :options="skillsOptions" multiple item-key="id" item-value="label" required required-star :rules="[requiredRule]" />
+        <BaseFormSelect ref="interestEl" v-model="cvForm.interests" label="Intérêts (max 4)" :options="interestOptions" multiple required required-star :rules="[requiredRule]">
           <template #options="{ item }">
             <BaseIcon class="mr-4" :icon-type="item.iconType" :name="item.icon" />
             {{ item.value }}
@@ -33,7 +33,7 @@
         </BaseFormSelect>
       </BaseRow>
       <BaseRow class="mb-4 gap-4">
-        <BaseFormSelect v-model="cvForm.softSkills" label="Soft skills (max 5)" :options="softSkillsOptions" multiple item-key="id" item-value="label" />
+        <BaseFormSelect ref="softSkillEl" v-model="cvForm.softSkills" label="Soft skills (max 5)" :options="softSkillsOptions" multiple item-key="id" item-value="label" required required-star :rules="[requiredRule]" />
       </BaseRow>
     </div>
   </BaseCard>
@@ -112,6 +112,7 @@
 <script setup>
 import { toBase64 } from '~/utils'
 
+const { requiredRule } = useValidationRule()
 const {
   jobOptions,
   interestOptions,

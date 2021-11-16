@@ -65,17 +65,18 @@ export default () => {
     end_at: '',
   }
   const isLoadingButton = ref(false)
-  const fileEl = ref()
-  const firstnameEl = ref()
-  const lastnameEl = ref()
-  const jobEl = ref()
-  const emailEl = ref()
-  const phoneEl = ref()
-  const cityEl = ref()
-  const descriptionEl = ref()
-  const skillEl = ref()
-  const interestEl = ref()
-  const softSkillEl = ref()
+  
+  const fileEl = useState('fileEl')
+  const firstnameEl = useState('firstnameEl')
+  const lastnameEl = useState('lastnameEl')
+  const jobEl = useState('jobEl')
+  const emailEl = useState('emailEl')
+  const phoneEl = useState('phoneEl')
+  const cityEl = useState('cityEl')
+  const descriptionEl = useState('descriptionEl')
+  const skillEl = useState('skillEl')
+  const interestEl = useState('interestEl')
+  const softSkillEl = useState('softSkillEl')
 
   const cv = useState('cv', () => [])
   const cvs = useState('cvs', () => [])
@@ -138,8 +139,33 @@ export default () => {
   const saveCv = async () => {
     try {
       fileEl.value.validate()
+      firstnameEl.value.validate()
+      lastnameEl.value.validate()
+      jobEl.value.validate()
+      emailEl.value.validate()
+      phoneEl.value.validate()
+      cityEl.value.validate()
+      descriptionEl.value.validate()
+      skillEl.value.validate()
+      interestEl.value.validate()
+      softSkillEl.value.validate()    
 
-      if (false) {
+      if (fileEl.value.isValid && firstnameEl.value.isValid && lastnameEl.value.isValid && jobEl.value.isValid && emailEl.value.isValid &&
+        phoneEl.value.isValid && cityEl.value.isValid && descriptionEl.value.isValid && skillEl.value.isValid && interestEl.value.isValid && 
+        softSkillEl.value.isValid
+      ) {
+        if (!cvForm.value.educations[0].school_name) {
+          notification?.error('Erreur, Vous devez renseigner au moins 1 formation.')
+
+          return
+        }
+
+        if (!cvForm.value.experiences[0].compagny_name) {
+          notification?.error('Erreur, Vous devez renseigner au moins 1 expérience.')
+
+          return
+        }
+
         isLoadingButton.value = true
         cvForm.value.imageB64 = cvForm.value.imageFile.hasOwnProperty("name") ? await toBase64(cvForm.value.imageFile) : ''
         const { message }: BaseResponse = await $fetch('/cvs', { method: 'POST', body: cvForm.value, baseURL: config.API_URL })

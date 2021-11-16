@@ -111,6 +111,7 @@ const props = defineProps({
 })
 
 const input = ref(useValidation(props.modelValue, props.rules, false))
+const isValid = ref(input.value.isValid)
 const selectEl = ref(null)
 const popoverWidth = ref(0)
 const shown = ref(false)
@@ -123,24 +124,33 @@ const onChangeValue = (option) => {
 
     if (existOption) {
       emit('update:modelValue', props.modelValue.filter((v) => v != option[props.itemKey]).sort(simpleSort()))
+      validate(props.modelValue.filter((v) => v != option[props.itemKey]).sort(simpleSort()))
     } else {
       emit('update:modelValue', [...props.modelValue, option[props.itemKey]].sort(simpleSort()))
+      validate( [...props.modelValue, option[props.itemKey]].sort(simpleSort()))
     }
   } else {
     emit('update:modelValue', option[props.itemKey])
+    validate(option[props.itemKey])
   }
   shown.value = false
 }
 const onDeleteValue = (option) => {
   emit('update:modelValue', props.modelValue.filter((v) => v != option[props.itemKey]))
   shown.value = false
+    validate(props.modelValue.filter((v) => v != option[props.itemKey]).length)
 }
 const validate = (v = props.modelValue) => {
-  input.value = useValidation(v, props.rules)
+  input.value = useValidation(v.length, props.rules)
 }
 const openPopper = () => shown.value = true
 
 onMounted(() => {
   popoverWidth.value = { width: `${selectEl.value?.offsetWidth}px` }
+})
+
+defineExpose({
+  validate,
+  isValid
 })
 </script>

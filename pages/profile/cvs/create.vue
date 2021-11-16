@@ -29,14 +29,22 @@ import { BaseAuthResponse } from '~/interfaces'
 useMeta({
   title: 'Création de ma fiche | League PEPITE'
 })
+
+const notification = useNotification()
+const router = useRouter()
 const { isLoadingButton, saveCv, openPreview, getSkills, getSoftSkills } = useCv()
-const cvForm = useState('cvForm')
+const user = useState('user')
 const skills = useState('skills', () => [])
 const softSkills = useState('softSkills', () => [])
 const isLoaded = ref(false)
 
 onMounted(async () => {
   try {
+    if (user.value.users_cvs.length) {
+      await router.push('/profile/cvs')
+      notification?.error("Erreur, vous ne pouvez avoir qu'une seule fiche.")
+    }
+
     const skillsTemp: BaseAuthResponse = await getSkills()
     const softSkillsTemp: BaseAuthResponse = await getSoftSkills()
 

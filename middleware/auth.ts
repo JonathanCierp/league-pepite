@@ -2,7 +2,7 @@ import jwt_decode from 'jwt-decode'
 import { BaseUserResponse } from '~/interfaces'
 import { User } from '~/interfaces/User'
 
-const forbidenConnectedRoutes = ['auth-signin', 'auth-signup']
+const forbidenConnectedRoutes = ['auth-signin', 'auth-signup-code']
 const forbidenNoConnectedRoutes = [
   'profile-cvs',
   'profile-cvs-create',

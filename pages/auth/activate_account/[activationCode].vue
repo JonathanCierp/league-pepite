@@ -25,6 +25,6 @@ onMounted(async () => {
     }
   }
 
-  await router.push('/')
+  await router.push('/auth/signin')
 })
 </script>

@@ -1,7 +1,7 @@
 <template>
   <main v-if="isLoaded" class="container mx-auto my-4 lg:my-10 px-4 lg:px-0 flex flex-col">
     <BaseRow class="items-center mb-12">
-      <h1 class="uppercase text-5xl font-medium">Mes fiches</h1>
+      <h1 class="uppercase text-5xl font-medium">Ma fiche</h1>
     </BaseRow>
     <div class="grid grid-cols-4 gap-4">
       <BaseCard v-for="(cv, i) in cvs" class="rounded-sm">

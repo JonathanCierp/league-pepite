@@ -58,10 +58,8 @@ const input = ref(useValidation(props.modelValue, props.rules, false))
 const id = computed(() => `base-form-datepicker-${generateRandomId()}`)
 const fullLabel = computed(() => (props.requiredStar ? `${props.label} <span class="text-red-500">*</span>` : props.label))
 
-const onChangeDate = (e) => {
-  const v = e.target.value
-
-  if (e.type === 'blur' && props.required) {
+const onChangeDate = (v) => {
+  if (props.required) {
     validate(v)
   }
 

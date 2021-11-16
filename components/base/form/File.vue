@@ -42,6 +42,7 @@ const props = defineProps({
 
 const cvEl = ref()
 const input = ref(useValidation(props.modelValue, props.rules, false))
+const isValid = ref(input.value.isValid)
 const fullLabel = computed(() => (props.requiredStar ? `${props.label} <span class="text-red-500">*</span>` : props.label))
 
 const onChangeValue = (e) => {
@@ -54,5 +55,11 @@ const onChangeValue = (e) => {
 const validate = (v = props.modelValue) => {
   const value = v?.name ? 'Ok' : ''
   input.value = useValidation(value, props.rules)
+  isValid.value = input.value.isValid
 }
+
+defineExpose({
+  validate,
+  isValid
+})
 </script>

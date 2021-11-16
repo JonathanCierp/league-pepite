@@ -43,8 +43,13 @@ export default () => {
         cookie?.addCookie("jwt", data.token);
 
         setTimeout(() => {
-          // TODO : Change for useRouter later
-          document.location.href = '/'
+          if (!user.value.users_cvs.length) {
+            // TODO : Change for useRouter later
+            document.location.href = '/profile/cvs/create'
+          } else {
+            // TODO : Change for useRouter later
+            document.location.href = '/'
+          }
         }, 1500)
       } catch (e) {
         notification?.error(e.response?.data.message || "Erreur lors de l'éxécution de la requête.")
