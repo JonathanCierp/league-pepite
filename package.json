@@ -1,4 +1,7 @@
 {
+  "name": "league-pepite",
+  "version": "1.0.0",
+  "description": "La League PEPITE est un championnat national étudiants par équipe, qui révèle les pépites de demain.",
   "private": true,
   "scripts": {
     "dev": "nuxt dev --host 0.0.0.0",
