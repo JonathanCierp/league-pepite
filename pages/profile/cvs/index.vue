@@ -24,13 +24,13 @@
         >
           <BaseIcon name="eye" size="h-6" />
         </a>
-        <div
+        <!--<div
           class="flex items-center justify-center w-full p-4 cursor-pointer hover:text-orange-500 active:bg-orange-100 rounded-md"
           :class="[cvs[0].is_favorite ? 'text-orange-500' : '']"
           @click="favoriteCv(cvs[0])"
         >
           <BaseIcon name="heart" size="h-6" :style="cvs[0].is_favorite ? 'fill: var(--color-orange-500);' : ''" />
-        </div>
+        </div>-->
         <BaseLink
           :to="`/profile/cvs/edit/${cvs[0].id}`"
           class="flex items-center justify-center w-full p-4 cursor-pointer hover:text-orange-500 active:bg-orange-100 rounded-md"
