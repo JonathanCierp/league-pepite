@@ -18,8 +18,8 @@
           />
         </BaseRow>
         <BaseRow align="items-start" class="my-4">
-          <BaseFormInput ref="usernameEl" v-model="authForm.username" :rules="[requiredRule]" label="Identifiant"
-                         required required-star
+          <BaseFormInput ref="usernameEl" v-model="authForm.username" required required-star
+                        :rules="[requiredRule, (v) => (!v.toLowerCase().includes(authForm.firstname.toLowerCase()) && !v.toLowerCase().includes(authForm.lastname.toLowerCase())) || `Erreur, l'identifiant ne peut pas contenir le nom ou le prénom`]" label="Identifiant"
           />
         </BaseRow>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-4">
