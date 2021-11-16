@@ -52,7 +52,7 @@ const props = defineProps({
   }
 })
 
-const value = ref(new Date(props.modelValue))
+const value = ref(props.modelValue ? new Date(props.modelValue) : '')
 const input = ref(useValidation(props.modelValue, props.rules, false))
 
 const id = computed(() => `base-form-datepicker-${generateRandomId()}`)
@@ -67,5 +67,6 @@ const onChangeDate = (v) => {
 }
 const validate = (v = props.modelValue) => {
   input.value = useValidation(v, props.rules)
+  isValid.value = input.value.isValid
 }
 </script>

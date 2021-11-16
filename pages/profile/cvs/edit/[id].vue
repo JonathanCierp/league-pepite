@@ -57,6 +57,8 @@ onMounted(async () => {
       skills: cv.value.skills.map((skill: any) => skill.skill_id),
       softSkills: cv.value.soft_skills.map((soft_skill: any) => soft_skill.soft_skill_id),
       interests: cv.value.interests.split(','),
+      contractSearch: cv.value.contract_search,
+      contractSearchAt: cv.value.contract_search_at,
       educations: cv.value.educations,
       experiences: cv.value.experiences
     }

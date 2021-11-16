@@ -7,7 +7,15 @@
       <BaseCard v-for="(cv, i) in cvs" class="rounded-sm">
         <BaseRow class="p-4">
           <img :src="cv.image_b64" class="rounded-full h-20 w-20 mr-4">
-          <h2>Fiche n°{{ cv.id }}</h2>
+          <BaseRow class="flex-col gap-2">
+            <h2>Fiche n°{{ cv.id }}</h2>
+            <BaseTag :color="contractSearchOptions.find((contractSearchOption) => contractSearchOption.key === cv.contract_search).color">
+              <span>
+                <span>{{ contractSearchOptions.find((contractSearchOption) => contractSearchOption.key === cv.contract_search).abrv }}</span>
+                <span v-if="cv.contract_search !== 'NE RECHERCHE PAS'" class="ml-2">{{ (new Date(cv.contract_search_at)).toLocaleDateString() }}</span>
+              </span>
+            </BaseTag>
+          </BaseRow>
         </BaseRow>
         <BaseRow class="justify-between">
           <a
@@ -37,17 +45,27 @@
         </BaseRow>
       </BaseCard>
     </div>
+    <BaseRow v-if="!user.users_cvs.length" class="flex justify-center mt-40">
+      <span class="text-lg font-medium">Aucune fiche n'a été créée</span>
+    </BaseRow>
+    <BaseRow v-if="!user.users_cvs.length" class="flex justify-center mt-4">
+      <BaseButton class="" to="/profile/cvs/create">
+        <BaseIcon class="mr-4" name="plus-circle" />
+        Créer ma fiche
+      </BaseButton>
+    </BaseRow>
   </main>
 </template>
 
 <script setup>
-const { getCvs, previewCv, favoriteCv, deleteCv } = useCv()
+const { contractSearchOptions, getCvs, previewCv, favoriteCv, deleteCv } = useCv()
 
 useMeta({
   title: 'Mes fiches | League PEPITE'
 })
 const isLoaded = ref(false)
 const cvs = useState('cvs')
+const user = useState('user')
 
 onMounted(async () => {
   try {

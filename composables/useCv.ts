@@ -64,6 +64,32 @@ export default () => {
     start_at: '',
     end_at: '',
   }
+  const contractSearchOptions = [
+    {
+      key: 'NE RECHERCHE PAS',
+      value: 'Je ne suis pas en recherche',
+      abrv: 'Pas en recherche',
+      color: '#ff394a'
+    },
+    {
+      key: 'STAGE',
+      value: 'Je recherche un stage',
+      abrv: 'Recherche de stage',
+      color: '#258cf4'
+    },
+    {
+      key: 'ALTERNANCE',
+      value: 'Je recherche une alternance',
+      abrv: "Recherche d'alternance",
+      color: '#0959aa'
+    },
+    {
+      key: 'CDI CDD FREELANCE',
+      value: 'Je recherche un CDI, CDD, Freelance',
+      abrv: 'CDI, CDD, Freelance',
+      color: '#5ade90'
+    }
+  ]
   const isLoadingButton = ref(false)
   
   const fileEl = useState('fileEl')
@@ -77,6 +103,7 @@ export default () => {
   const skillEl = useState('skillEl')
   const interestEl = useState('interestEl')
   const softSkillEl = useState('softSkillEl')
+  const contractSearchEl = useState('contractSearchEl')
 
   const cv = useState('cv', () => [])
   const cvs = useState('cvs', () => [])
@@ -95,6 +122,8 @@ export default () => {
     skills: [],
     softSkills: [],
     interests: [],
+    contractSearch: contractSearchOptions[0].key,
+    contractSearchAt: '',
     educations: [ { ...baseEducation } ],
     experiences: [ { ...baseExperience } ]
   }))
@@ -148,11 +177,12 @@ export default () => {
       descriptionEl.value.validate()
       skillEl.value.validate()
       interestEl.value.validate()
-      softSkillEl.value.validate()    
+      softSkillEl.value.validate()
+      contractSearchEl.value.validate()
 
       if (fileEl.value.isValid && firstnameEl.value.isValid && lastnameEl.value.isValid && jobEl.value.isValid && emailEl.value.isValid &&
         phoneEl.value.isValid && cityEl.value.isValid && descriptionEl.value.isValid && skillEl.value.isValid && interestEl.value.isValid && 
-        softSkillEl.value.isValid
+        softSkillEl.value.isValid && contractSearchEl.value.isValid
       ) {
         if (!cvForm.value.educations[0].school_name) {
           notification?.error('Erreur, Vous devez renseigner au moins 1 formation.')
@@ -167,7 +197,6 @@ export default () => {
         }
 
         isLoadingButton.value = true
-        cvForm.value.imageB64 = cvForm.value.imageFile.hasOwnProperty("name") ? await toBase64(cvForm.value.imageFile) : ''
         const { message }: BaseResponse = await $fetch('/cvs', { method: 'POST', body: cvForm.value, baseURL: config.API_URL })
 
         notification?.success(message)
@@ -178,6 +207,8 @@ export default () => {
         }, 1500)
       }
     } catch (e) {
+      console.log(e);
+      
       notification?.error(e.response?.data.message || "Erreur lors de l'éxécution de la requête.")
       isLoadingButton.value = false
     }
@@ -277,9 +308,12 @@ export default () => {
 
   return {
     jobOptions,
+    baseEducation,
+    baseExperience,
     interestOptions,
     skillsOptions,
     softSkillsOptions,
+    contractSearchOptions,
     isLoadingButton,
     fileEl,
     firstnameEl,
@@ -292,6 +326,7 @@ export default () => {
     skillEl,
     interestEl,
     softSkillEl,
+    contractSearchEl,
     cvForm,
     getCv,
     getCvs,

@@ -158,7 +158,7 @@ const fullname = computed(() => `${cvForm.firstname} ${cvForm.lastname}`)
 const findSkill = (skillId: number) => skills.value.find((skill: any) => skill.id === skillId)
 const findSoftSkill = (softSkillId: number) => softSkills.value.find((softSkill: any) => softSkill.id === softSkillId)
 const findInterest = (interestKey: number) => interestOptions.find((interest: any) => interest.key === interestKey)
-const convertDateToYear = (date: string|number|Date) => (new Date(date)).getFullYear()
+const convertDateToYear = (date: string|number|Date) => date ? (new Date(date)).getFullYear() : ''
 
 
 onMounted(async () => {

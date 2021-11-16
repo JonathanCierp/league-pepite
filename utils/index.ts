@@ -62,4 +62,4 @@ const base64ToFile = async (dataUrl: string, fileName: string): Promise<File> =>
   return new File([blob], fileName, { type: 'image/png' })
 }
 
-export { generateRandomId, dynamicSort, simpleSort, groupBy, toCamelCase, toPascalCase, clearAndUpper, toBase64, base64ToFile }
+export { generateRandomId, dynamicSort, simpleSort, groupBy, toCamelCase, toPascalCase, clearAndUpper, toBase64, base64ToFile, convertDateToFr }

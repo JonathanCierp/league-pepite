@@ -69,7 +69,7 @@ import { simpleSort } from '@/utils'
 const emit = defineEmits(['update:modelValue'])
 const props = defineProps({
   modelValue: {
-    type: [String, Array],
+    type: [String, Array, Number],
     default: () => []
   },
   label: {
@@ -142,6 +142,7 @@ const onDeleteValue = (option) => {
 }
 const validate = (v = props.modelValue) => {
   input.value = useValidation(v.length, props.rules)
+  isValid.value = input.value.isValid
 }
 const openPopper = () => shown.value = true
 
