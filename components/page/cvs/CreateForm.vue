@@ -17,7 +17,7 @@
         <BaseFormInput ref="lastnameEl" v-model="cvForm.lastname" label="Nom" required required-star :rules="[requiredRule]" />
         <BaseFormSelect ref="jobEl" v-model="cvForm.job" label="Nom du poste" :options="jobOptions" required required-star :rules="[requiredRule]" />
         <BaseFormInput ref="emailEl" v-model="cvForm.email" label="Email" required required-star :rules="[requiredRule]" />
-        <BaseFormInput ref="phoneEl" v-model="cvForm.phone" label="Téléphone" required required-star :rules="[requiredRule]" />
+        <BaseFormInput v-model="cvForm.phone" label="Téléphone" />
         <BaseFormInput ref="cityEl" v-model="cvForm.city" label="Ville" required required-star :rules="[requiredRule]" />
         <BaseFormTextarea ref="descriptionEl" v-model="cvForm.description" label="Mon profil" required required-star :rules="[requiredRule]" />
         <BaseFormSelect ref="skillEl" v-model="cvForm.skills" label="Compétences (max 5)" :options="skillsOptions" multiple item-key="id" item-value="label" required required-star :rules="[requiredRule]" />
@@ -129,7 +129,6 @@ const {
   lastnameEl,
   jobEl,
   emailEl,
-  phoneEl,
   cityEl,
   descriptionEl,
   skillEl,

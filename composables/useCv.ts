@@ -99,7 +99,6 @@ export default () => {
   const jobEl = useState('jobEl')
   const emailEl = useState('emailEl')
   const phoneEl = useState('phoneEl')
-  const cityEl = useState('cityEl')
   const descriptionEl = useState('descriptionEl')
   const skillEl = useState('skillEl')
   const interestEl = useState('interestEl')
@@ -174,7 +173,6 @@ export default () => {
       jobEl.value.validate()
       emailEl.value.validate()
       phoneEl.value.validate()
-      cityEl.value.validate()
       descriptionEl.value.validate()
       skillEl.value.validate()
       interestEl.value.validate()
@@ -182,7 +180,7 @@ export default () => {
       contractSearchEl.value.validate()
 
       if (fileEl.value.isValid && firstnameEl.value.isValid && lastnameEl.value.isValid && jobEl.value.isValid && emailEl.value.isValid &&
-        phoneEl.value.isValid && cityEl.value.isValid && descriptionEl.value.isValid && skillEl.value.isValid && interestEl.value.isValid && 
+        phoneEl.value.isValid && descriptionEl.value.isValid && skillEl.value.isValid && interestEl.value.isValid && 
         softSkillEl.value.isValid && contractSearchEl.value.isValid
       ) {
         if (!cvForm.value.educations[0].school_name) {
@@ -322,7 +320,6 @@ export default () => {
     jobEl,
     emailEl,
     phoneEl,
-    cityEl,
     descriptionEl,
     skillEl,
     interestEl,
