@@ -63,6 +63,7 @@ export default () => {
     description: '',
     start_at: '',
     end_at: '',
+    is_now: false
   }
   const contractSearchOptions = [
     {
@@ -205,10 +206,10 @@ export default () => {
           // TODO : Change for useRouter later
           document.location.href = '/profile/cvs'
         }, 1500)
+      } else {
+        notification?.error('Erreur, le formulaire est invalide.')
       }
     } catch (e) {
-      console.log(e);
-      
       notification?.error(e.response?.data.message || "Erreur lors de l'éxécution de la requête.")
       isLoadingButton.value = false
     }

@@ -13,7 +13,7 @@
       </div>
       <label class="ml-2 mt-0.5 font-medium cursor-pointer" :for="id" :class="[disabledClassLabel]" @click="onClick">
         <slot name="label">
-          <span v-html="fullLabel" />
+          <span v-html="label" />
         </slot>
       </label>
     </div>

@@ -29,7 +29,7 @@
         </BaseFormSelect>
         <BaseFormSelect ref="softSkillEl" v-model="cvForm.softSkills" label="Soft skills (max 5)" :options="softSkillsOptions" multiple item-key="id" item-value="label" required required-star :rules="[requiredRule]" />
         <BaseFormSelect ref="contractSearchEl" v-model="cvForm.contractSearch" label="Je recherche" :options="contractSearchOptions" required required-star :rules="[requiredRule]" />
-        <BaseFormDatepicker v-if="cvForm.contractSearch !== 'NE RECHERCHE PAS'" v-model="cvForm.contractSearchAt" label="A partir du" :disabled="true" />
+        <BaseFormDatepicker v-if="cvForm.contractSearch !== 'NE RECHERCHE PAS'" v-model="cvForm.contractSearchAt" label="A partir du" />
       </div>
     </div>
   </BaseCard>
@@ -37,6 +37,7 @@
     <h3 class="flex items-center text-xl font-medium">
       <BaseIcon class="mr-4" name="academic-cap" size="h-6" />
       Mes formations
+      <p class="text-xs ml-2">(+ récent au + ancien)</p>
     </h3>
     <hr class="my-4">
     <div class="ml-4">
@@ -74,29 +75,33 @@
     <h3 class="flex items-center text-xl font-medium">
       <BaseIcon class="mr-4" name="briefcase" size="h-6" />
       Mes expériences
+      <p class="text-xs ml-2">(+ récent au + ancien)</p>
     </h3>
     <hr class="my-4">
     <div class="ml-4">
       <div v-for="(experience, i) in cvForm.experiences" :key="`experience-${i}`">
-        <BaseRow
-          class="gap-4 flex-wrap xl:flex-nowrap"
-          :class="[cvForm.experiences.length > 1 && i !== 0 ? 'mt-4' : '']"
-        >
-          <BaseFormInput v-model="experience.compagny_name" label="Nom de l'entrepise" />
-          <BaseFormDatepicker v-model="experience.start_at" class="sm:w-48 xl:w-24" label="Date de début" />
-          <BaseFormDatepicker v-model="experience.end_at" class="sm:w-48 xl:w-24" label="Date de fin" />
-          <BaseFormInput v-model="experience.title" label="Titre de la formation" />
-          <BaseFormTextarea v-model="experience.description" label="Description" rows="2" />
-          <BaseButton 
-              v-if="cvForm.experiences.length > 1 && i !== 0"
-              class="self-center" 
-              icon 
-              color="red" 
-              size="sm"
-              @click="deleteExperience(i)"
+        <BaseRow class="flex-col">
+          <BaseRow
+            class="gap-4 flex-wrap xl:flex-nowrap"
+            :class="[cvForm.experiences.length > 1 && i !== 0 ? 'mt-4' : '']"
           >
-            <BaseIcon name="trash" size="h-5" />
-          </BaseButton>
+            <BaseFormInput v-model="experience.compagny_name" label="Nom de l'entrepise" />
+            <BaseFormDatepicker v-model="experience.start_at" class="sm:w-48 xl:w-24" label="Date de début" />
+            <BaseFormDatepicker v-model="experience.end_at" class="sm:w-48 xl:w-24" label="Date de fin" :disabled="experience.is_now" />
+            <BaseFormInput v-model="experience.title" label="Poste occupé" />
+            <BaseFormTextarea v-model="experience.description" label="Description" rows="2" />
+            <BaseButton 
+                v-if="cvForm.experiences.length > 1 && i !== 0"
+                class="self-center" 
+                icon 
+                color="red" 
+                size="sm"
+                @click="deleteExperience(i)"
+            >
+              <BaseIcon name="trash" size="h-5" />
+            </BaseButton>
+          </BaseRow>
+          <BaseFormCheckbox v-model="experience.is_now" label="J'occupe actuellement ce poste" @update:modelValue="cvForm.experiences[i].end_at = ''" />
         </BaseRow>
         <hr v-if="cvForm.experiences.length > 1" class="my-4">
       </div>

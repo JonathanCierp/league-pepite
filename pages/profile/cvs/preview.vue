@@ -1,9 +1,9 @@
 <template>
   <main class="container mx-auto my-4 lg:my-10 px-4 lg:px-0 flex flex-col">
     <BaseRow class="items-center mb-12">
-      <h1 class="uppercase text-5xl font-medium">Prévisualisation de ma fiche {{ cvForm.id ? `N°${cvForm.id}` : '' }}</h1>
+      <h1 class="uppercase text-5xl font-medium">Prévisualisation de ma fiche</h1>
     </BaseRow>
-    <BaseRow class="flex-col mx-auto max-w-5xl w-full">
+    <BaseRow class="flex-col mx-auto max-w-4xl w-full">
       <section class="mx-auto py-4 px-12 text-white w-full" style="background-color: #2e2f31;min-height: 200px;">
         <h2 class="text-4xl uppercase text-center mb-2">{{ fullname }}</h2>
         <h3 class="text-xl uppercase text-center">{{ cvForm.job }}</h3>
@@ -110,7 +110,7 @@
             <h3 class="text-white py-2 w-48 text-center font-medium text-base uppercase bg-orange-700">Soft skills</h3>
           </div>
           <div class="flex justify-center flex-wrap text-center mt-4 gap-2">
-            <BaseTag v-for="softSkillId in cvForm.softSkills" :key="softSkillId">
+            <BaseTag v-for="softSkillId in cvForm.softSkills" :key="softSkillId" color="#f5f8fa" class="text-[#2e2f31] border-2 border-[#2e2f31]">
               {{ findSoftSkill(softSkillId)?.label }}
             </BaseTag>
           </div>
@@ -145,12 +145,11 @@ const softSkills = useState('softSkills', () => [])
 
 const cvForm = JSON.parse(localStorage.getItem('cvForm') ?? '')
 
-console.log(cvForm.type)
 if (cvForm.id && typeof cvForm.interests === 'string') {
   cvForm.imageB64 = cvForm.image_b64
   cvForm.interests = cvForm.interests.split(',')
   cvForm.skills = cvForm.skills.map((skill: any) => skill.skill_id)
-  cvForm.soft_skills = cvForm.soft_skills.map((soft_skill: any) => soft_skill.soft_skill_id)
+  cvForm.softSkills = cvForm.soft_skills.map((soft_skill: any) => soft_skill.soft_skill_id)
 }
 
 const fullname = computed(() => `${cvForm.firstname} ${cvForm.lastname}`)

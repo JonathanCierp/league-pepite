@@ -5,7 +5,7 @@
       <input
         :id="id"
         class="bg-background-lighter border-2 p-2 rounded-sm"
-        :class="[!input.isValid ? 'border-red-500' : 'border-border focus:border-orange-500']"
+        :class="[!input.isValid ? 'border-red-500' : 'border-border', disabledClass]"
         :type="type"
         :value="modelValue"
         :readonly="readonly"
@@ -29,6 +29,10 @@ const props = defineProps({
     type: String,
     default: ''
   },
+  value: {
+    type: String,
+    default: ''
+  },
   label: {
     type: String,
     default: ''
@@ -36,6 +40,10 @@ const props = defineProps({
   type: {
     type: String,
     default: 'text'
+  },
+  disabled: {
+    type: Boolean,
+    default: false
   },
   required: {
     type: Boolean,
@@ -60,6 +68,7 @@ const isValid = ref(input.value.isValid)
 
 const id = computed(() => `base-form-input-${generateRandomId()}`)
 const fullLabel = computed(() => (props.requiredStar ? `${props.label} <span class="text-red-500">*</span>` : props.label))
+const disabledClass = computed(() => (props.disabled ? 'cursor-not-allowed bg-gray-100 text-gray-400' : 'bg-background-lighter focus:border-orange-500'))
 
 const onChangeValue = (e) => {
   const v = e.target.value

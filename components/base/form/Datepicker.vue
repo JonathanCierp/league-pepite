@@ -5,15 +5,16 @@
       :id="id"
       v-model="value"
       :enable-time-picker="false"
-      :hide-input-icon="true"
       :clearable="false"
       :auto-apply="true"
       :close-on-auto-apply="true"
+      :disabled="disabled"
       locale="fr-FR"
+      :format="format"
       @update:modelValue="onChangeDate"
     >
       <template #dp-input="{ value, onInput, onEnter, onTab }">
-        <BaseFormInput type="text" :model-value="value" readonly />
+        <BaseFormInput type="text" :model-value="value" readonly :disabled="disabled" />
       </template>
     </Datepicker>
   </div>
@@ -38,6 +39,10 @@ const props = defineProps({
     type: String,
     default: ''
   },
+  disabled: {
+    type: Boolean,
+    default: false
+  },
   required: {
     type: Boolean,
     default: false
@@ -55,6 +60,10 @@ const props = defineProps({
 const value = ref(props.modelValue ? new Date(props.modelValue) : '')
 const input = ref(useValidation(props.modelValue, props.rules, false))
 
+watch(() => props.modelValue, (newVal) => {
+  value.value = newVal
+})
+
 const id = computed(() => `base-form-datepicker-${generateRandomId()}`)
 const fullLabel = computed(() => (props.requiredStar ? `${props.label} <span class="text-red-500">*</span>` : props.label))
 
@@ -68,5 +77,12 @@ const onChangeDate = (v) => {
 const validate = (v = props.modelValue) => {
   input.value = useValidation(v, props.rules)
   isValid.value = input.value.isValid
+}
+const format = (date) => {
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+
+  return `${day}/${month}/${year}`;
 }
 </script>
