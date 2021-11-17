@@ -138,6 +138,9 @@
       </BaseRow>
     </BaseRow>
   </main>
+  <main v-else class="mt-40 flex items-center justify-center">
+    <BaseProgressCircular size="36" indeterminate color="var(--color-orange-500)" />
+  </main>
 </template>
 
 <script setup>
