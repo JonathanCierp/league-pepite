@@ -26,24 +26,6 @@ export default defineNuxtConfig({
     link: [
       { rel: 'canonical', href: 'https://leaguepepite.com' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap' },
-    ],
-    script: [
-      {
-        hid: 'gtm-script1',
-        src: `https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTICS_ID}`,
-        defer: true
-      },
-      {
-        hid: 'gtm-script2',
-        innerHTML: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '${process.env.GOOGLE_ANALYTICS_ID}');
-        `,
-        type: 'text/javascript',
-        charset: 'utf-8'
-      }
     ]
   },
   css: [
@@ -59,7 +41,8 @@ export default defineNuxtConfig({
     DOMAIN: process.env.DOMAIN,
     HOST: process.env.HOST,
     PORT: process.env.PORT,
-    JWT_ISS: process.env.JWT_ISS
+    JWT_ISS: process.env.JWT_ISS,
+    GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID
   },
   build: {
     postcss: {

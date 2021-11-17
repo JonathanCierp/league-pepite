@@ -27,4 +27,21 @@ router.beforeEach(async (to, from) => checkAuth({ to, from, redirect: router.pus
 onMounted(async () => {
   await checkAuth({ to: router.currentRoute.value, redirect: router.push })
 })
+
+console.log(config.value);
+
+if (process.env.SSR !== undefined) {
+  const s1 = document.createElement('script')
+  s1.setAttribute('src', `https://www.googletagmanager.com/gtag/js?id=${config.value.GOOGLE_ANALYTICS_ID}`)
+  document.body.appendChild(s1)
+
+  const s2 = document.createElement('script')
+  s2.innerHTML = `
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '${config.value.GOOGLE_ANALYTICS_ID}');
+  `
+  document.body.appendChild(s2)
+}
 </script>
