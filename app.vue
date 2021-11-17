@@ -1,12 +1,9 @@
 <template>
-  <div v-if="isLoadedApp" class="flex flex-col overflox-hidden w-full min-h-screen">
+  <div class="flex flex-col overflox-hidden w-full min-h-screen">
     <AppHeader />
     <NuxtPage/>
     <AppFooter />
   </div>
-  <main v-else class="mt-40 flex items-center justify-center">
-    <BaseProgressCircular size="36" indeterminate color="var(--color-orange-500)" />
-  </main>
 </template>
 
 <script setup lang="ts">
