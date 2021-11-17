@@ -1,10 +1,6 @@
 export default () => {
   const menus = ref([
     {
-      to: '/',
-      label: 'Présentation'
-    },
-    {
       to: '/rankings',
       label: 'Classement'
     },

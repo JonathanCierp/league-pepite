@@ -3,9 +3,9 @@
     class="flex lg:items-center flex-col lg:flex-row bg-white border-b border-border lg:h-16 px-4 xl:px-8 transition-all duration-500"
     :class="[mobileMenuIsOpen ? '' : 'h-16']"
   >
-    <div class="flex items-center mt-5 lg:mt-0">
+    <NuxtLink to="/" class="flex items-center mt-5 lg:mt-0">
       <img class="w-40 xl:w-52" src="~/assets/img/league-pepite-logo-horizontal.png">
-    </div>
+    </NuxtLink>
     <nav
       class="lg:flex lg:flex-row items-center flex-1 h-full gap-2 font-medium uppercase lg:text-xs xl:text-sm lg:ml-6 xl:ml-12"
       :class="[mobileMenuIsOpen ? 'flex flex-col text-sm my-4 lg:my-0' : 'hidden text-xs']"

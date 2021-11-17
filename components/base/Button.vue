@@ -27,7 +27,8 @@ const button = {
   },
   size: {
     sm: 'h-8 py-0 px-3 text-sm',
-    md: 'h-9 py-0 px-5'
+    md: 'h-9 py-0 px-5',
+    xl: 'h-12 py-0 px-10 text-lg'
   }
 }
 const props = defineProps({

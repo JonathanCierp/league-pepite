@@ -1,5 +1,5 @@
 export default () => {
-  const countDownDate = new Date('01/02/2022')
+  const countDownDate = new Date('12/16/2021')
   const countdown = ref({
     isTime: false,
     days: 0,
