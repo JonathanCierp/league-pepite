@@ -1,5 +1,5 @@
 <template>
-  <main class="container mx-auto my-4 lg:my-10 px-4 lg:px-0">
+  <main v-if="isLoaded" class="container mx-auto my-4 lg:my-10 px-4 lg:px-0">
     <BaseRow class="flex-col items-center mt-20">
       <h1 class="text-6xl font-medium text-center">Championnat National Étudiants</h1>
       <h3 class="text-2xl mt-4">Révélateur d'étudiants bruts</h3>
@@ -147,4 +147,9 @@ useMeta({
 
 const { countDownDate, countdown } = useCountdown()
 const user = useState('user')
+const isLoaded = ref(false)
+
+onMounted(() => {
+  isLoaded.value = true
+})
 </script>
