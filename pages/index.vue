@@ -150,7 +150,6 @@ const user = useState('user')
 const isLoadedVideo = ref(false)
 
 const onVideoCanPlay = () => {
-  console.log(1);
   isLoadedVideo.value = true
 }
 </script>
