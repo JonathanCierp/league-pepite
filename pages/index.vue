@@ -1,15 +1,15 @@
 <template>
   <main v-if="isLoaded" class="container mx-auto my-4 lg:my-10 px-4 lg:px-0">
     <BaseRow class="flex-col items-center mt-20">
-      <h1 class="text-6xl font-medium">Championat national étudiant</h1>
-      <h3 class="text-2xl mt-4">La league pepite regroupe les futurs talents de demain</h3>
+      <h1 class="text-6xl font-medium">Championnat national étudiants</h1>
+      <h3 class="text-2xl mt-4">La LEAGUE PEPITE regroupe les futurs talents de demain</h3>
       <BaseButton v-if="!user" to="/auth/signin" class="mt-8 rounded-full" size="xl">
         Je participe !
         <BaseIcon class="ml-4" name="arrow-right" size="h-6" />
       </BaseButton>
     </BaseRow>
     <BaseRow class="flex-col items-center mt-48">
-      <h4 class="font-medium text-xl">Les écoles qui participe à la LEAGUE</h4>
+      <h4 class="font-medium text-xl">Les écoles qui participent à la LEAGUE</h4>
       <BaseRow class="items-center justify-center gap-20 mt-8 flex-wrap">
         <img class="h-14" src="~/assets/img/schools/my-digital-school.png" alt="My Digital School">
         <img class="h-10" src="~/assets/img/schools/esgi.png" alt="ESGI">
@@ -20,7 +20,7 @@
     </BaseRow>
     <hr class="border-border my-24">
     <BaseRow class="flex-col items-center">
-      <h5 class="font-medium text-xl">Les talents de la league pepite</h5>
+      <h5 class="font-medium text-xl">Les talents de la LEAGUE PEPITE</h5>
       <BaseRow class="items-center justify-center gap-20 mt-16 flex-wrap">
         <BaseRow class="flex-col">
           <BaseIcon class="self-start" name="code" size="h-8" />
@@ -40,13 +40,13 @@
           <BaseIcon class="self-start" name="speakerphone" size="h-8" />
           <h5 class="font-medium mt-4 text-lg mb-2">Marketing digital</h5>
           <p class="mb-1">Analyse du trafic WEB</p>
-          <p class="mb-1">Elaborer et promouvoir des contenus</p>
+          <p class="mb-1">Élaboration et promotion de contenus</p>
           <p>Génération d’une communauté / Lead</p>
         </BaseRow>
         <BaseRow class="flex-col">
           <BaseIcon class="self-start" name="shield-check" size="h-8" />
           <h5 class="font-medium mt-4 text-lg mb-2">Cyber sécurité</h5>
-          <p class="mb-1">Analyser et proposer une procédure adapter</p>
+          <p class="mb-1">Analyser et proposer une procédure adaptée</p>
           <p class="mb-1">Assurer une veille sur les menaces</p>
           <p>Prévoir et contrer les violations de données</p>
         </BaseRow>
@@ -54,8 +54,8 @@
     </BaseRow>
     <hr class="border-border my-24">
     <BaseRow class="flex-col items-center">
-      <h5 class="font-medium text-xl">Les dernières réalisation</h5>
-      <h6 class="mt-10 mb-4 font-medium">Début de la béta le {{ countDownDate.toLocaleDateString() }}</h6>
+      <h5 class="font-medium text-xl">Les dernières réalisations</h5>
+      <h6 class="mt-10 mb-4 font-medium">Début de la bêta le {{ countDownDate.toLocaleDateString() }}</h6>
       <div class="grid gap-4 grid-cols-2 sm:grid-cols-4 mx-auto">
         <BaseCard class="text-center py-10 rounded-md w-36">
           <p class="text-2xl sm:text-3xl font-medium">{{ countdown.days }}</p>
@@ -121,10 +121,10 @@
           <img class="mr-4" src="~/assets/img/icon-quote.svg" alt="Icon quote">
           <BaseRow class="flex-col">
             <p class="text-lg" style="max-width: 422px;">
-              La League Pépite offre un nouveau mode de recrutement performant et fiable pour les entreprises !
+              La LEAGUE PEPITE offre un nouveau mode de recrutement performant et fiable pour les entreprises !
               A travers les challenges, les étudiants peuvent être mis en conditions réelles et se préparer au monde du travail
             </p>
-            <p class="mt-4 italic text-[#5b6066]">— Julien Cuvillier, CEO / Exper en levée de fonds chez Stratos Groupe</p>
+            <p class="mt-4 italic text-[#5b6066]">— Julien Cuvillier, CEO / Expert en levée de fonds chez Stratos Groupe</p>
           </BaseRow>
         </BaseRow>
       </BaseRow>
