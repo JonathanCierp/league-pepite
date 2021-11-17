@@ -1,5 +1,5 @@
 <template>
-  <main v-show="isLoadedVideo" class="container mx-auto my-4 lg:my-10 px-4 lg:px-0">
+  <main class="container mx-auto my-4 lg:my-10 px-4 lg:px-0">
     <BaseRow class="flex-col items-center mt-20">
       <h1 class="text-6xl font-medium text-center">Championnat National Étudiants</h1>
       <h3 class="text-2xl mt-4">Révélateur d'étudiants bruts</h3>
@@ -10,10 +10,16 @@
     </BaseRow>
     <hr class="border-border my-24">
     <BaseRow class="flex-col items-center">
-      <h4 class="font-medium text-xl">Bande annonce LEAGUE PEPITE saison 1</h4>
-      <video class="max-w-xs sm:max-w-xl lg:max-w-4xl mt-8" controls volume="0.2" @canplay="onVideoCanPlay">
-        <source src="~/assets/video/bande-annonce-saison-2021-legere.mp4" type="video/mp4">
-      </video>
+      <iframe 
+        class="max-w-4xl mt-8" 
+        width="100%"
+        height="500"
+        src="https://www.youtube-nocookie.com/embed/TxPCvddmwY4" 
+        title="YouTube video player" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen
+      ></iframe>
     </BaseRow>
     <hr class="border-border my-24">
     <BaseRow class="flex-col items-center">
@@ -147,9 +153,4 @@ useMeta({
 
 const { countDownDate, countdown } = useCountdown()
 const user = useState('user')
-const isLoadedVideo = ref(false)
-
-const onVideoCanPlay = () => {
-  isLoadedVideo.value = true
-}
 </script>
