@@ -12,7 +12,7 @@
     <BaseRow class="flex-col items-center">
       <h4 class="font-medium text-xl">Bande annonce LEAGUE PEPITE saison 1</h4>
       <video class="max-w-xs sm:max-w-xl lg:max-w-4xl mt-8" controls volume="0.2">
-        <source src="~/assets/video/Bande annonce saison 1 légère.mp4" type="video/mp4">
+        <source src="~/assets/video/bande-annonce-saison-2021-legere.mp4" type="video/mp4">
       </video>
     </BaseRow>
     <hr class="border-border my-24">
