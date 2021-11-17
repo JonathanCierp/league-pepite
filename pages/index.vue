@@ -24,21 +24,21 @@
       <BaseRow class="items-center justify-center gap-20 mt-16 flex-wrap">
         <BaseRow class="flex-col">
           <BaseIcon class="self-start" name="code" size="h-8" />
-          <h5 class="font-medium mt-4 text-lg">Développement web</h5>
+          <h5 class="font-medium mt-4 text-lg mb-2">Développement web</h5>
           <p class="mb-1">Développement d'applications web</p>
           <p class="mb-1">Analyse et conception</p>
           <p>Audit de développement</p>
         </BaseRow>
         <BaseRow class="flex-col">
           <BaseIcon class="self-start" name="crop" icon-type="feather" size="h-8" />
-          <h5 class="font-medium mt-4 text-lg">UI / UX Design</h5>
+          <h5 class="font-medium mt-4 text-lg mb-2">UI / UX Design</h5>
           <p class="mb-1">Réalisation Mock-up et maquette</p>
           <p class="mb-1">Gestion retour et expérience utilisateur</p>
           <p>Optimisation des parcours d’interfaces</p>
         </BaseRow>
         <BaseRow class="flex-col">
           <BaseIcon class="self-start" name="speakerphone" size="h-8" />
-          <h5 class="font-medium mt-4 text-lg">Marketing digital</h5>
+          <h5 class="font-medium mt-4 text-lg mb-2">Marketing digital</h5>
           <p class="mb-1">Analyse du trafic WEB</p>
           <p class="mb-1">Elaborer et promouvoir des contenus</p>
           <p>Génération d’une communauté / Lead</p>
