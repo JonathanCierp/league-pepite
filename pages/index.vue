@@ -124,7 +124,7 @@
               La League Pépite offre un nouveau mode de recrutement performant et fiable pour les entreprises !
               A travers les challenges, les étudiants peuvent être mis en conditions réelles et se préparer au monde du travail
             </p>
-            <p class="mt-4 italic text-[#5b6066]">— Julien Cuvillier, CEO / Exper en levée de fonds chez Statos Groupe</p>
+            <p class="mt-4 italic text-[#5b6066]">— Julien Cuvillier, CEO / Exper en levée de fonds chez Stratos Groupe</p>
           </BaseRow>
         </BaseRow>
       </BaseRow>
