@@ -77,7 +77,7 @@ export default () => {
         setTimeout(() => {
           // TODO : Change for useRouter later
           document.location.href = '/'
-        }, 1500)
+        }, 3000)
       } catch (e) {
         notification?.error(e.response?.data.message || "Erreur lors de l'éxécution de la requête.")
         isLoadingButton.value = false
