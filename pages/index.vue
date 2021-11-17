@@ -1,21 +1,29 @@
 <template>
-  <main v-if="isLoaded" class="container mx-auto my-4 lg:my-10 px-4 lg:px-0">
+  <main class="container mx-auto my-4 lg:my-10 px-4 lg:px-0">
     <BaseRow class="flex-col items-center mt-20">
-      <h1 class="text-6xl font-medium">Championnat national étudiants</h1>
-      <h3 class="text-2xl mt-4">La LEAGUE PEPITE regroupe les futurs talents de demain</h3>
+      <h1 class="text-6xl font-medium text-center">Championnat National Étudiants</h1>
+      <h3 class="text-2xl mt-4">Révélateur d'étudiants bruts</h3>
       <BaseButton v-if="!user" to="/auth/signin" class="mt-8 rounded-full" size="xl">
         Je participe !
         <BaseIcon class="ml-4" name="arrow-right" size="h-6" />
       </BaseButton>
     </BaseRow>
-    <BaseRow class="flex-col items-center mt-48">
+    <hr class="border-border my-24">
+    <BaseRow class="flex-col items-center">
+      <h4 class="font-medium text-xl">Bande annonce LEAGUE PEPITE saison 1</h4>
+      <video class="max-w-xs sm:max-w-xl lg:max-w-4xl mt-8" controls volume="0.2">
+        <source src="~/assets/video/Bande annonce saison 1 légère.mp4" type="video/mp4">
+      </video>
+    </BaseRow>
+    <hr class="border-border my-24">
+    <BaseRow class="flex-col items-center">
       <h4 class="font-medium text-xl">Les écoles qui participent à la LEAGUE</h4>
       <BaseRow class="items-center justify-center gap-20 mt-8 flex-wrap">
         <img class="h-14" src="~/assets/img/schools/my-digital-school.png" alt="My Digital School">
         <img class="h-10" src="~/assets/img/schools/esgi.png" alt="ESGI">
         <img class="h-10" src="~/assets/img/schools/ia-school.png" alt="IA School">
         <img class="h-12" src="~/assets/img/schools/cefim.png" alt="Cefim">
-        <img class="h-10" src="~/assets/img/schools/iris.png" alt="Iris">
+        <img class="h-12" src="~/assets/img/schools/iris.png" alt="Iris">
       </BaseRow>
     </BaseRow>
     <hr class="border-border my-24">
@@ -130,9 +138,6 @@
       </BaseRow>
     </BaseRow>
   </main>
-  <main v-else class="mt-40 flex items-center justify-center">
-    <BaseProgressCircular size="36" indeterminate color="var(--color-orange-500)" />
-  </main>
 </template>
 
 <script setup>
@@ -142,7 +147,4 @@ useMeta({
 
 const { countDownDate, countdown } = useCountdown()
 const user = useState('user')
-const isLoaded = ref(false)
-
-setTimeout(() => isLoaded.value = true, 1000)
 </script>

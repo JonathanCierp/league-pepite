@@ -1,5 +1,5 @@
 <template>
-  <main v-if="isLoaded" class="container mx-auto my-4 lg:my-10 px-4 lg:px-0">
+  <main class="container mx-auto my-4 lg:my-10 px-4 lg:px-0">
     <h1 class="text-center uppercase text-5xl font-medium mb-28">Mentions Légales</h1>
     <section class="mb-20">
       <h2 class="text-left uppercase text-4xl mb-6">1. Informations légales</h2>
