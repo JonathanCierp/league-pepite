@@ -28,8 +28,6 @@ onMounted(async () => {
   await checkAuth({ to: router.currentRoute.value, redirect: router.push })
 })
 
-console.log(config.value);
-
 if (process.env.SSR !== undefined) {
   const s1 = document.createElement('script')
   s1.setAttribute('src', `https://www.googletagmanager.com/gtag/js?id=${config.value.GOOGLE_ANALYTICS_ID}`)

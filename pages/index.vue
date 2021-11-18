@@ -8,7 +8,7 @@
         <BaseIcon class="ml-4" name="arrow-right" size="h-6" />
       </BaseButton>
     </BaseRow>
-    <hr class="border-border my-24">
+    <hr class="border-border my-16">
     <BaseRow class="flex-col items-center">
       <iframe 
         class="max-w-4xl mt-8" 
@@ -21,7 +21,7 @@
         allowfullscreen
       ></iframe>
     </BaseRow>
-    <hr class="border-border my-24">
+    <hr class="border-border my-16">
     <BaseRow class="flex-col items-center">
       <h4 class="font-medium text-xl">Les écoles qui participent à la LEAGUE</h4>
       <BaseRow class="items-center justify-center gap-20 mt-8 flex-wrap">
@@ -32,7 +32,7 @@
         <img class="h-12" src="~/assets/img/schools/iris.png" alt="Iris">
       </BaseRow>
     </BaseRow>
-    <hr class="border-border my-24">
+    <hr class="border-border my-16">
     <BaseRow class="flex-col items-center">
       <h5 class="font-medium text-xl">Les talents de la LEAGUE PEPITE</h5>
       <BaseRow class="items-center justify-center gap-20 mt-16 flex-wrap">
@@ -66,7 +66,7 @@
         </BaseRow>
       </BaseRow>
     </BaseRow>
-    <hr class="border-border my-24">
+    <hr class="border-border my-16">
     <BaseRow class="flex-col items-center">
       <h5 class="font-medium text-xl">Les dernières réalisations</h5>
       <h6 class="mt-10 mb-4 font-medium">Début de la bêta le {{ countDownDate.toLocaleDateString() }}</h6>
@@ -89,7 +89,7 @@
         </BaseCard>
       </div>
     </BaseRow>
-    <hr class="border-border my-24">
+    <hr class="border-border my-16">
     <BaseRow class="flex-col items-center">
       <h5 class="font-medium text-xl mb-12">Les actus de la LEAGUE PEPITE</h5>
       <h6 class="mt-10 mb-4 font-medium">Les actus arrivent prochainement...</h6>
@@ -117,7 +117,7 @@
         <path d="M157.762 257.416c-2.33-11.916-11.38-21.353-23.126-25.233 4.242-1.365 6.939-3.386 6.939-5.646 0-4.11-8.886-7.443-19.847-7.443s-19.846 3.332-19.846 7.443c0 2.293 2.77 4.342 7.12 5.707-18.008 5.37-31.079 21.041-31.079 39.496 0 0-5.543 35.535-9.895 63.941-2.785 18.173 12.43 34.416 32.229 34.416h69.633c4.562 0 8.272-3.44 8.272-7.669 0 0-12.83-66.302-20.4-105.012Z" fill="#2f2e41" />
       </svg>
     </BaseRow>
-    <hr class="border-border my-24">
+    <hr class="border-border my-16">
     <BaseRow class="flex-col items-center">
       <h4 class="font-medium text-xl">Les entreprises partenaires</h4>
       <BaseRow class="items-center gap-20 mt-8 flex-wrap justify-center">
@@ -127,7 +127,7 @@
         <img class="h-14" src="~/assets/img/partners/grafity.png" alt="Grafity">
       </BaseRow>
     </BaseRow>
-    <hr class="border-border my-24">
+    <hr class="border-border my-16">
     <BaseRow class="justify-center gap-20">
       <BaseRow>
         <BaseRow class="flex-col sm:flex-row items-start">
