@@ -46,11 +46,11 @@
             v-for="option in options"
             :key="option[itemKey]"
             class="flex items-center pl-4 pr-8 py-4 cursor-pointer hover:text-orange-500 hover:bg-orange-100"
-            :class="[option[itemKey] === modelValue || modelValue.includes(option[itemKey]) ? 'text-orange-500 bg-orange-100' : '']"
+            :class="[option[itemKey] === modelValue || (Array.isArray(modelValue) && modelValue.includes(option[itemKey])) ? 'text-orange-500 bg-orange-100' : '']"
             @click="onChangeValue(option)"
           >
-            <BaseIcon v-if="option[itemKey] === modelValue || modelValue.includes(option[itemKey])" name="check" size="h-5" />
-            <span class="flex items-center" :class="[option[itemKey] === modelValue || modelValue.includes(option[itemKey]) ? 'ml-4' : 'ml-9']">
+            <BaseIcon v-if="option[itemKey] === modelValue || (Array.isArray(modelValue) && modelValue.includes(option[itemKey]))" name="check" size="h-5" />
+            <span class="flex items-center" :class="[option[itemKey] === modelValue || (Array.isArray(modelValue) && modelValue.includes(option[itemKey])) ? 'ml-4' : 'ml-9']">
               <slot name="options" :item="option">
                 {{ option[itemValue] }}
               </slot>
@@ -141,7 +141,8 @@ const onDeleteValue = (option) => {
     validate(props.modelValue.filter((v) => v != option[props.itemKey]).length)
 }
 const validate = (v = props.modelValue) => {
-  input.value = useValidation(v.length, props.rules)
+  v = Array.isArray(v) ? v.length : v
+  input.value = useValidation(v, props.rules)
   isValid.value = input.value.isValid
 }
 const openPopper = () => shown.value = true

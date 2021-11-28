@@ -22,6 +22,11 @@
                         :rules="[requiredRule, (v) => (!v.toLowerCase().includes(authForm.firstname.toLowerCase()) && !v.toLowerCase().includes(authForm.lastname.toLowerCase())) || `Erreur, l'identifiant ne peut pas contenir le nom ou le prénom`]" label="Identifiant"
           />
         </BaseRow>
+        <BaseRow align="items-start" class="my-4">
+          <BaseFormSelect ref="schoolEl" v-model="authForm.school_id"  class="text-left" required required-star :options="schools"
+                        itemKey="id" itemValue="label" :rules="[requiredRule]" label="École"
+          />
+        </BaseRow>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-4">
           <BaseFormInput ref="passwordEl" v-model="authForm.password" :rules="[requiredRule]" label="Mot de passe"
                          required required-star type="password"
@@ -61,15 +66,18 @@ const {
   lastnameEl,
   emailEl,
   usernameEl,
+  schoolEl,
   passwordEl,
   passwordConfirmEl,
   termsAccepEl,
   onSignup
 } = useAuth()
+const { schools, getSchools } = useSchool()
 
-onMounted(() => {
+onMounted(async () => {
   if (route.params.code !== 'RW5jb2RlIHRoZSB0ZXh0IHRvIEJhc2U2NCB1c2luZyBvbmxpbmUgQmFzZTY0IEVuY29kZSB0b29s') {
     document.location.href = '/'
   }
+  await getSchools()
 })
 </script>

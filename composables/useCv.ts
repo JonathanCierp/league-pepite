@@ -109,11 +109,11 @@ export default () => {
   const cvs = useState('cvs', () => [])
   const user = useState<User>('user')
   const cvForm = useState('cvForm', () => ({  
-    user_id: user.value.id,
-    firstname: user.value.firstname,
-    lastname: user.value.lastname,
+    user_id: user.value?.id,
+    firstname: user.value?.firstname,
+    lastname: user.value?.lastname,
     job: jobOptions[0].key,
-    email: user.value.email,
+    email: user.value?.email,
     phone: '',
     city: '',
     description: '',

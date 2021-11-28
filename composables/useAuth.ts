@@ -16,6 +16,7 @@ export default () => {
     lastname: '',
     email: '',
     username: '',
+    school_id: null,
     password: '',
     passwordConfirm: '',
     termsAccept: false
@@ -24,6 +25,7 @@ export default () => {
   const lastnameEl = ref()
   const emailEl = ref()
   const usernameEl = ref()
+  const schoolEl = ref()
   const passwordEl = ref()
   const passwordConfirmEl = ref()
   const termsAccepEl = ref()
@@ -63,12 +65,13 @@ export default () => {
     lastnameEl.value?.validate()
     emailEl.value?.validate()
     usernameEl.value?.validate()
+    schoolEl.value?.validate()
     passwordEl.value?.validate()
     passwordConfirmEl.value?.validate()
     termsAccepEl.value?.validate()
 
     if(firstnameEl.value.isValid && lastnameEl.value.isValid && emailEl.value.isValid && usernameEl.value.isValid
-      && passwordEl.value.isValid && passwordConfirmEl.value.isValid && termsAccepEl.value.isValid) {
+      && schoolEl.value.isValid && passwordEl.value.isValid && passwordConfirmEl.value.isValid && termsAccepEl.value.isValid) {
       isLoadingButton.value = true
       try {
         const { message }: BaseAuthResponse  = await $fetch('/auth/signup', { method: 'POST', body: authForm.value, baseURL: API_URL })
@@ -102,6 +105,7 @@ export default () => {
     lastnameEl,
     emailEl,
     usernameEl,
+    schoolEl,
     passwordEl,
     passwordConfirmEl,
     termsAccepEl,
