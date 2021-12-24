@@ -68,8 +68,7 @@
     </BaseRow>
     <hr class="border-border my-16">
     <BaseRow class="flex-col items-center">
-      <h5 class="font-medium text-xl">Les dernières réalisations</h5>
-      <h6 class="mt-10 mb-4 font-medium">Début de la bêta le {{ countDownDate.toLocaleDateString() }}</h6>
+      <!-- <h6 class="mt-10 mb-4 font-medium">Début de la bêta le {{ countDownDate.toLocaleDateString() }}</h6>
       <div class="grid gap-4 grid-cols-2 sm:grid-cols-4 mx-auto">
         <BaseCard class="text-center py-10 rounded-md w-36">
           <p class="text-2xl sm:text-3xl font-medium">{{ countdown.days }}</p>
@@ -87,7 +86,43 @@
           <p class="text-2xl sm:text-3xl font-medium">{{ countdown.seconds }}</p>
           <p class="text-lg">Secondes</p>
         </BaseCard>
-      </div>
+      </div> -->
+      <h5 class="font-medium my-10 text-xl">Classement de la bêta du {{ countDownDate.toLocaleDateString() }}</h5>
+      <table class="w-full border-2 border-border">
+        <tbody>
+          <tr class="bg-background-lighter">
+            <td class="text-center p-2 w-1/12">1</td>
+            <td class="p-2 w-2/12">
+              <img class="w-16" src="@//assets/img/jerseys/esgi.png" alt="ESGI LYON team 1 jerseys">
+            </td>
+            <td class="p-2">ESGI EQUIPE 1</td>
+            <td class="p-2 w-2/12">Lyon</td>
+            <td class="p-2 w-1/12 font-medium">71</td>
+          </tr>
+          <tr style="background-color: #e7eaf0">
+            <td class="text-center p-2 w-1/12">2</td>
+            <td class="p-2 w-2/12">
+              <img class="w-16" src="@//assets/img/jerseys/my-digital-school.png" alt="MY DIGITAL SCHOOL team 1 jerseys">
+            </td>
+            <td class="p-2">MY DIGITAL SCHOOL EQUIPE 2</td>
+            <td class="p-2 w-2/12">Nantes</td>
+            <td class="p-2 w-1/12 font-medium">65</td>
+          </tr>
+          <tr class="bg-background-lighter">
+            <td class="text-center p-2 w-1/12">3</td>
+            <td class="p-2 w-2/12">
+              <img class="w-16" src="@//assets/img/jerseys/esgi.png" alt="ESGI LYON team 2 jerseys">
+            </td>
+            <td class="p-2">ESGI EQUIPE 2</td>
+            <td class="p-2 w-2/12">Lyon</td>
+            <td class="p-2 w-1/12 font-medium">63</td>
+          </tr>
+        </tbody>
+      </table>
+      <BaseLink class="flex items-center mt-4 underline" to="/rankings">
+        Voir le classement général 
+        <BaseIcon class="ml-4" name="arrow-right" />
+      </BaseLink>
     </BaseRow>
     <hr class="border-border my-16">
     <BaseRow class="flex-col items-center">
